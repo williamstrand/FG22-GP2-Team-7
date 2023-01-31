@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel;
 using UnityEngine;
 
 [RequireComponent(typeof(InputHandler), typeof(Rigidbody))]
@@ -17,14 +16,14 @@ public class CharacterController : MonoBehaviour
     [Range(0.001f, 2)][SerializeField] float _decelerationTime = .05f;
     [Tooltip("Should acceleration and deceleration be used")]
     [SerializeField] bool _useAcceleration = true;
-    
+
     [Header("Jump")]
-    [SerializeField] float _jumpForce = 5;
+    [Range(0, 30)][SerializeField] float _jumpForce = 5;
     [SerializeField] LayerMask _groundLayer;
 
     float _currentSpeed;
     Vector2 _lastDirection = Vector2.zero;
-    
+
     // References
     InputHandler _inputHandler;
     Rigidbody _rb;
@@ -68,7 +67,6 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
-            var direction3D = new Vector3(_lastDirection.x, 0, _lastDirection.y).normalized;
             if (direction == Vector2.zero)
             {
                 _currentSpeed -= 1 / _decelerationTime * Time.deltaTime;
@@ -78,8 +76,9 @@ public class CharacterController : MonoBehaviour
                 _lastDirection = direction;
                 _currentSpeed += 1 / _accelerationTime * Time.deltaTime;
             }
-
             _currentSpeed = Mathf.Clamp(_currentSpeed, 0, _maxSpeed);
+
+            var direction3D = new Vector3(_lastDirection.x, 0, _lastDirection.y).normalized;
             _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * direction3D);
         }
     }
@@ -92,7 +91,7 @@ public class CharacterController : MonoBehaviour
         if (!IsGrounded()) return;
 
         if (_rb.velocity.y > 0) return;
-        
+
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 
@@ -102,11 +101,17 @@ public class CharacterController : MonoBehaviour
     /// <returns>true if character is on the ground.</returns>
     bool IsGrounded() => Physics.CheckSphere(transform.position + Vector3.down * GroundCheckDistance, GroundCheckRadius, _groundLayer);
 
+    /// <summary>
+    /// Interact with an object.
+    /// </summary>
     void Interact()
     {
         Debug.Log("Interact");
     }
-    
+
+    /// <summary>
+    /// Performs the player specific action.
+    /// </summary>
     protected virtual void PlayerAction()
     {
         Debug.Log("Player Action");
