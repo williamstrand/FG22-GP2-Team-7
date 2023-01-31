@@ -10,11 +10,11 @@ public class CharacterController : MonoBehaviour
 
     [Header("Move")]
     [Tooltip("Speed if acceleration is on")]
-    [SerializeField] float _maxSpeed = 5;
+    [Range(0, 100)][SerializeField] float _maxSpeed = 5;
     [Tooltip("Time in seconds until max speed from stationary position")]
-    [SerializeField] float _accelerationTime = .04f;
+    [Range(0.001f, 2)][SerializeField] float _accelerationTime = .04f;
     [Tooltip("Time in seconds until no speed from max speed")]
-    [SerializeField] float _decelerationTime = .05f;
+    [Range(0.001f, 2)][SerializeField] float _decelerationTime = .05f;
     [Tooltip("Should acceleration and deceleration be used")]
     [SerializeField] bool _useAcceleration = true;
     
@@ -80,7 +80,6 @@ public class CharacterController : MonoBehaviour
             }
 
             _currentSpeed = Mathf.Clamp(_currentSpeed, 0, _maxSpeed);
-
             _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * direction3D);
         }
     }
@@ -92,8 +91,9 @@ public class CharacterController : MonoBehaviour
     {
         if (!IsGrounded()) return;
 
-        _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
-        //_rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        if (_rb.velocity.y > 0) return;
+        
+        _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 
     /// <summary>
