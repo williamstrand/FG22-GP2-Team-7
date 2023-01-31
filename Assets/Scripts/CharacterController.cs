@@ -60,6 +60,9 @@ public class CharacterController : MonoBehaviour
         ApplyGravityScale();
     }
 
+    /// <summary>
+    /// Applies gravity to the character.
+    /// </summary>
     private void ApplyGravityScale()
     {
         _rb.AddForce(Vector3.down * _gravityScale, ForceMode.Acceleration);
@@ -71,6 +74,7 @@ public class CharacterController : MonoBehaviour
     /// <param name="direction">the direction to move the character.</param>
     void Move(Vector2 direction)
     {
+        _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
         if (!_useAcceleration)
         {
             var direction3D = new Vector3(direction.x, 0, direction.y);
@@ -103,7 +107,8 @@ public class CharacterController : MonoBehaviour
 
         if (_rb.velocity.y > 0) return;
 
-        _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        //_rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
     }
 
     /// <summary>
