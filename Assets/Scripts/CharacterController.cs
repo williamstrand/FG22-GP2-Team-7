@@ -11,9 +11,9 @@ public class CharacterController : MonoBehaviour
     [Tooltip("Speed if acceleration is on")]
     [Range(0, 100)][SerializeField] float _maxSpeed = 5;
     [Tooltip("Time in seconds until max speed from stationary position")]
-    [Range(0.001f, 2)][SerializeField] float _accelerationTime = .04f;
+    [Range(0.001f, 2)][SerializeField] float _accelerationTime = .15f;
     [Tooltip("Time in seconds until no speed from max speed")]
-    [Range(0.001f, 2)][SerializeField] float _decelerationTime = .05f;
+    [Range(0.001f, 2)][SerializeField] float _decelerationTime = .3f;
     [Tooltip("Should acceleration and deceleration be used")]
     [SerializeField] bool _useAcceleration = true;
 
@@ -69,12 +69,12 @@ public class CharacterController : MonoBehaviour
         {
             if (direction == Vector2.zero)
             {
-                _currentSpeed -= 1 / _decelerationTime * Time.deltaTime;
+                _currentSpeed -= _maxSpeed / _decelerationTime * Time.deltaTime;
             }
             else
             {
                 _lastDirection = direction;
-                _currentSpeed += 1 / _accelerationTime * Time.deltaTime;
+                _currentSpeed += _maxSpeed / _accelerationTime * Time.deltaTime;
             }
             _currentSpeed = Mathf.Clamp(_currentSpeed, 0, _maxSpeed);
 
