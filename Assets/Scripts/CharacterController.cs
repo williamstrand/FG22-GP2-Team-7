@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using UnityEngine;
 
 [RequireComponent(typeof(InputHandler), typeof(Rigidbody))]
@@ -7,13 +8,23 @@ public class CharacterController : MonoBehaviour
     const float GroundCheckDistance = .5f;
     const float GroundCheckRadius = .45f;
 
-    [Header("Stats")]
-    [SerializeField] float _speed = 5;
+    [Header("Move")]
+    [Tooltip("Speed if acceleration is on")]
+    [SerializeField] float _maxSpeed = 5;
+    [Tooltip("Time in seconds until max speed from stationary position")]
+    [SerializeField] float _accelerationTime = .04f;
+    [Tooltip("Time in seconds until no speed from max speed")]
+    [SerializeField] float _decelerationTime = .05f;
+    [Tooltip("Should acceleration and deceleration be used")]
+    [SerializeField] bool _useAcceleration = true;
+    
+    [Header("Jump")]
     [SerializeField] float _jumpForce = 5;
-
-    [Space(15)]
     [SerializeField] LayerMask _groundLayer;
 
+    float _currentSpeed;
+    Vector2 _lastDirection = Vector2.zero;
+    
     // References
     InputHandler _inputHandler;
     Rigidbody _rb;
@@ -27,7 +38,6 @@ public class CharacterController : MonoBehaviour
 
     void OnEnable()
     {
-        _inputHandler.OnMove += Move;
         _inputHandler.OnJump += Jump;
         _inputHandler.OnInteract += Interact;
         _inputHandler.OnPlayerAction += PlayerAction;
@@ -35,10 +45,14 @@ public class CharacterController : MonoBehaviour
 
     void OnDisable()
     {
-        _inputHandler.OnMove -= Move;
         _inputHandler.OnJump -= Jump;
         _inputHandler.OnInteract -= Interact;
         _inputHandler.OnPlayerAction -= PlayerAction;
+    }
+
+    void Update()
+    {
+        Move(_inputHandler.MoveInput);
     }
 
     /// <summary>
@@ -47,8 +61,28 @@ public class CharacterController : MonoBehaviour
     /// <param name="direction">the direction to move the character.</param>
     void Move(Vector2 direction)
     {
-        var direction3D = new Vector3(direction.x, 0, direction.y).normalized;
-        _rb.MovePosition(_rb.position + _speed * Time.deltaTime * direction3D);
+        if (!_useAcceleration)
+        {
+            var direction3D = new Vector3(direction.x, 0, direction.y);
+            _rb.MovePosition(_rb.position + _maxSpeed * Time.deltaTime * direction3D);
+        }
+        else
+        {
+            var direction3D = new Vector3(_lastDirection.x, 0, _lastDirection.y).normalized;
+            if (direction == Vector2.zero)
+            {
+                _currentSpeed -= 1 / _decelerationTime * Time.deltaTime;
+            }
+            else
+            {
+                _lastDirection = direction;
+                _currentSpeed += 1 / _accelerationTime * Time.deltaTime;
+            }
+
+            _currentSpeed = Mathf.Clamp(_currentSpeed, 0, _maxSpeed);
+
+            _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * direction3D);
+        }
     }
 
     /// <summary>

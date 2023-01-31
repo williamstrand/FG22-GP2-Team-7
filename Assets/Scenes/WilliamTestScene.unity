@@ -364,6 +364,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _jumpForce: 5
+  _accelerationTime: 0.2
+  _decelerationTime: 0.1
   _groundLayer:
     serializedVersion: 2
     m_Bits: 128
