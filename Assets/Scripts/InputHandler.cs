@@ -6,6 +6,7 @@ public class InputHandler : MonoBehaviour
     public Action OnJump;
     public Action<Vector2> OnMove;
     public Action OnInteract;
+    public Action OnPlayerAction;
 
     Vector2 _moveInput;
 
@@ -14,9 +15,10 @@ public class InputHandler : MonoBehaviour
     void Awake()
     {
         _controls = new Controls();
-        _controls.Player.Jump.performed += ctx => OnJump?.Invoke();
+        _controls.Player.Jump.performed += _ => OnJump?.Invoke();
         _controls.Player.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
-        _controls.Player.Interact.performed += ctx => OnInteract?.Invoke();
+        _controls.Player.Interact.performed += _ => OnInteract?.Invoke();
+        _controls.Player.PlayerAction.performed += _ => OnPlayerAction?.Invoke();
         _controls.Enable();
     }
 

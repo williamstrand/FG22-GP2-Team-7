@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(InputHandler), typeof(Rigidbody))]
@@ -10,7 +11,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] float _speed = 5;
     [SerializeField] float _jumpForce = 5;
 
-    [Space(20)]
+    [Space(15)]
     [SerializeField] LayerMask _groundLayer;
 
     // References
@@ -28,12 +29,16 @@ public class CharacterController : MonoBehaviour
     {
         _inputHandler.OnMove += Move;
         _inputHandler.OnJump += Jump;
+        _inputHandler.OnInteract += Interact;
+        _inputHandler.OnPlayerAction += PlayerAction;
     }
 
     void OnDisable()
     {
         _inputHandler.OnMove -= Move;
         _inputHandler.OnJump -= Jump;
+        _inputHandler.OnInteract -= Interact;
+        _inputHandler.OnPlayerAction -= PlayerAction;
     }
 
     /// <summary>
@@ -42,12 +47,12 @@ public class CharacterController : MonoBehaviour
     /// <param name="direction">the direction to move the character.</param>
     void Move(Vector2 direction)
     {
-        var direction3D = new Vector3(direction.x, 0, direction.y);
+        var direction3D = new Vector3(direction.x, 0, direction.y).normalized;
         _rb.MovePosition(_rb.position + _speed * Time.deltaTime * direction3D);
     }
 
     /// <summary>
-    /// 
+    /// Makes the character jump.
     /// </summary>
     void Jump()
     {
@@ -62,6 +67,16 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     /// <returns>true if character is on the ground.</returns>
     bool IsGrounded() => Physics.CheckSphere(transform.position + Vector3.down * GroundCheckDistance, GroundCheckRadius, _groundLayer);
+
+    void Interact()
+    {
+        Debug.Log("Interact");
+    }
+    
+    protected virtual void PlayerAction()
+    {
+        Debug.Log("Player Action");
+    }
 
 #if UNITY_EDITOR
 
