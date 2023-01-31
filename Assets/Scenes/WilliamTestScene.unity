@@ -366,10 +366,11 @@ MonoBehaviour:
   _accelerationTime: 0.15
   _decelerationTime: 0.3
   _useAcceleration: 1
-  _jumpForce: 7
+  _jumpForce: 20
   _groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  _gravityScale: 10
 --- !u!54 &944378950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -385,7 +386,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!114 &944378951
 MonoBehaviour:
   m_ObjectHideFlags: 0

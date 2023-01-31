@@ -18,8 +18,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField] bool _useAcceleration = true;
 
     [Header("Jump")]
-    [Range(0, 30)][SerializeField] float _jumpForce = 5;
+    [Range(0, 50)][SerializeField] float _jumpForce = 5;
     [SerializeField] LayerMask _groundLayer;
+    [Range(0, 100)][SerializeField] float _gravityScale = 1;
 
     float _currentSpeed;
     Vector2 _lastDirection = Vector2.zero;
@@ -52,6 +53,16 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         Move(_inputHandler.MoveInput);
+    }
+
+    void FixedUpdate()
+    {
+        ApplyGravityScale();
+    }
+
+    private void ApplyGravityScale()
+    {
+        _rb.AddForce(Vector3.down * _gravityScale, ForceMode.Acceleration);
     }
 
     /// <summary>
