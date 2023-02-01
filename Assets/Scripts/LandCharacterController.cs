@@ -8,7 +8,6 @@ public class LandCharacterController : CharacterController
 
     [Space(15)]
     [SerializeField] float _interactRange = 1f;
-    [SerializeField] Collider _collider;
 
     LandPlayerState _playerState = LandPlayerState.Default;
     

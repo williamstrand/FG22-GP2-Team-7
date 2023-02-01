@@ -28,6 +28,7 @@ public class CharacterController : MonoBehaviour
     // References
     InputHandler _inputHandler;
     protected Rigidbody _rb;
+    protected Collider _collider;
 
 
 
@@ -35,6 +36,22 @@ public class CharacterController : MonoBehaviour
     {
         _inputHandler = GetComponent<InputHandler>();
         _rb = GetComponent<Rigidbody>();
+        FindCollider();
+    }
+
+    void FindCollider()
+    {
+        if (TryGetComponent(out _collider)) return;
+        
+        foreach (Transform child in transform)
+        {
+            if (child.TryGetComponent(out _collider))
+            {
+                return;
+            }
+        }
+
+        Debug.LogError($"No collider on {name} or it's children");
     }
 
     void OnEnable()
