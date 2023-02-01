@@ -29,6 +29,7 @@ public class CharacterController : MonoBehaviour
     InputHandler _inputHandler;
     protected Rigidbody _rb;
     protected Collider _collider;
+    protected MeshRenderer _meshRenderer;
 
 
 
@@ -36,6 +37,7 @@ public class CharacterController : MonoBehaviour
     {
         _inputHandler = GetComponent<InputHandler>();
         _rb = GetComponent<Rigidbody>();
+        _meshRenderer = GetComponentInChildren<MeshRenderer>();
         FindCollider();
     }
 
