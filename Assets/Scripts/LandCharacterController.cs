@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LandCharacterController : CharacterController
 {
-    LandPlayerState _playerState = LandPlayerState.Default;
     [Header("Climbing")]
-    [SerializeField] float _climbSpeed = 1f;
+    [Range(0, 2)][SerializeField] float _climbSpeed = 1f;
+    Climbable _currentClimbable;
 
     [Space(15)]
     [SerializeField] Collider _collider;
 
-    Climbable _currentClimbable;
-
+    LandPlayerState _playerState = LandPlayerState.Default;
+    
     public enum LandPlayerState
     {
         Default,
@@ -52,6 +50,9 @@ public class LandCharacterController : CharacterController
         }
     }
 
+    /// <summary>
+    /// Interact with the closest interactable object.
+    /// </summary>
     protected override void Interact()
     {
         var closeObjects = Physics.OverlapSphere(transform.position, 1);
@@ -75,6 +76,9 @@ public class LandCharacterController : CharacterController
         }
     }
 
+    /// <summary>
+    /// Start climbing.
+    /// </summary>
     void StartClimb()
     {
         _playerState = LandPlayerState.Climbing;
@@ -82,6 +86,9 @@ public class LandCharacterController : CharacterController
         _rb.velocity = Vector3.zero;
     }
 
+    /// <summary>
+    /// Stop climbing.
+    /// </summary>
     void StopClimb()
     {
         _playerState = LandPlayerState.Default;
