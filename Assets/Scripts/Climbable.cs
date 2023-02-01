@@ -17,7 +17,7 @@ public class Climbable : MonoBehaviour
         _characterTransform = character.transform;
         var botToTop = _topPoint.position - _bottomPoint.position;
         var botToCharacter = _characterTransform.position - _bottomPoint.position;
-        _characterHeight = botToCharacter.magnitude / botToTop.magnitude; 
+        _characterHeight = botToCharacter.magnitude / botToTop.magnitude;
         _characterTransform.position = GetPositionOnClimbable(_characterHeight);
 
     }
@@ -50,4 +50,22 @@ public class Climbable : MonoBehaviour
     /// <param name="height">the height.</param>
     /// <returns>the position on the climbable object at the correct height.</returns>
     Vector3 GetPositionOnClimbable(float height) => Vector3.Lerp(_bottomPoint.position, _topPoint.position, height);
+
+#if UNITY_EDITOR
+    [Header("Gizmos")]
+    [SerializeField] bool _drawGizmos = true;
+    [SerializeField] Color _gizmoColor = Color.red;
+
+    void OnDrawGizmos()
+    {
+        if (!_drawGizmos) return;
+
+        Gizmos.color = _gizmoColor;
+        var radius = .2f;
+        Gizmos.DrawSphere(_bottomPoint.position, radius);
+        Gizmos.DrawSphere(_topPoint.position, radius);
+        Gizmos.DrawLine(_bottomPoint.position, _topPoint.position);
+    }
+
+#endif
 }

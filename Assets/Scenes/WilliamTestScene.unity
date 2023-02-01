@@ -916,6 +916,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3586026011647158133, guid: 675d259b6b7646f44a2733590974294f, type: 3}
+      propertyPath: _drawGizmos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586026011647158133, guid: 675d259b6b7646f44a2733590974294f, type: 3}
+      propertyPath: _gizmoColor.b
+      value: 0.033018887
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586026011647158133, guid: 675d259b6b7646f44a2733590974294f, type: 3}
+      propertyPath: _gizmoColor.g
+      value: 0.033018887
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586026011647158133, guid: 675d259b6b7646f44a2733590974294f, type: 3}
+      propertyPath: _gizmoColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3586026011647158136, guid: 675d259b6b7646f44a2733590974294f, type: 3}
       propertyPath: m_Name
       value: Climbable Object
