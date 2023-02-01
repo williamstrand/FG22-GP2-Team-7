@@ -235,8 +235,9 @@ MonoBehaviour:
   _jumpForce: 5
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 128
-  _gravityScale: 1
+    m_Bits: 16
+  _gravityScale: 10
+  _diveSpeed: 2
 --- !u!54 &5856157690419383512
 Rigidbody:
   m_ObjectHideFlags: 0

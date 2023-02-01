@@ -135,7 +135,7 @@ public class CharacterController : MonoBehaviour
     /// Checks if character is on the ground.
     /// </summary>
     /// <returns>true if character is on the ground.</returns>
-    bool IsGrounded() => Physics.CheckSphere(transform.position + Vector3.down * GroundCheckDistance, GroundCheckRadius, _groundLayer);
+    protected bool IsGrounded() => Physics.CheckSphere(transform.position + Vector3.down * GroundCheckDistance, GroundCheckRadius, _groundLayer);
 
     /// <summary>
     /// Interact with an object.
