@@ -27,13 +27,31 @@ public class CharacterController : MonoBehaviour
 
     // References
     InputHandler _inputHandler;
-    Rigidbody _rb;
+    protected Rigidbody _rb;
+    protected Collider _collider;
+
 
 
     void Awake()
     {
         _inputHandler = GetComponent<InputHandler>();
         _rb = GetComponent<Rigidbody>();
+        FindCollider();
+    }
+
+    void FindCollider()
+    {
+        if (TryGetComponent(out _collider)) return;
+        
+        foreach (Transform child in transform)
+        {
+            if (child.TryGetComponent(out _collider))
+            {
+                return;
+            }
+        }
+
+        Debug.LogError($"No collider on {name} or it's children");
     }
 
     void OnEnable()
@@ -55,7 +73,7 @@ public class CharacterController : MonoBehaviour
         Move(_inputHandler.MoveInput);
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         ApplyGravityScale();
     }
@@ -72,7 +90,7 @@ public class CharacterController : MonoBehaviour
     /// Moves the character in the given direction.
     /// </summary>
     /// <param name="direction">the direction to move the character.</param>
-    void Move(Vector2 direction)
+    protected virtual void Move(Vector2 direction)
     {
         _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
         if (!_useAcceleration)
@@ -120,9 +138,9 @@ public class CharacterController : MonoBehaviour
     /// <summary>
     /// Interact with an object.
     /// </summary>
-    void Interact()
+    protected virtual void Interact()
     {
-        Debug.Log("Interact");
+
     }
 
     /// <summary>
