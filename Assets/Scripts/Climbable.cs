@@ -19,7 +19,6 @@ public class Climbable : MonoBehaviour
         var botToCharacter = _characterTransform.position - _bottomPoint.position;
         _characterHeight = botToCharacter.magnitude / botToTop.magnitude;
         _characterTransform.position = GetPositionOnClimbable(_characterHeight);
-
     }
 
     /// <summary>

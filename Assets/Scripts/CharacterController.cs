@@ -22,13 +22,15 @@ public class CharacterController : MonoBehaviour
     [SerializeField] LayerMask _groundLayer;
     [Range(0, 100)][SerializeField] float _gravityScale = 1;
 
+    [SerializeField] protected bool _applyGravity = true;
     float _currentSpeed;
     Vector2 _lastDirection = Vector2.zero;
 
     // References
-    InputHandler _inputHandler;
+    protected InputHandler _inputHandler;
     protected Rigidbody _rb;
     protected Collider _collider;
+    protected MeshRenderer _meshRenderer;
 
 
 
@@ -36,13 +38,14 @@ public class CharacterController : MonoBehaviour
     {
         _inputHandler = GetComponent<InputHandler>();
         _rb = GetComponent<Rigidbody>();
+        _meshRenderer = GetComponentInChildren<MeshRenderer>();
         FindCollider();
     }
 
     void FindCollider()
     {
         if (TryGetComponent(out _collider)) return;
-        
+
         foreach (Transform child in transform)
         {
             if (child.TryGetComponent(out _collider))
@@ -75,7 +78,8 @@ public class CharacterController : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        ApplyGravityScale();
+        if (_applyGravity)
+            ApplyGravityScale();
     }
 
     /// <summary>
@@ -133,7 +137,7 @@ public class CharacterController : MonoBehaviour
     /// Checks if character is on the ground.
     /// </summary>
     /// <returns>true if character is on the ground.</returns>
-    bool IsGrounded() => Physics.CheckSphere(transform.position + Vector3.down * GroundCheckDistance, GroundCheckRadius, _groundLayer);
+    protected bool IsGrounded() => Physics.CheckSphere(transform.position + Vector3.down * GroundCheckDistance, GroundCheckRadius, _groundLayer);
 
     /// <summary>
     /// Interact with an object.
