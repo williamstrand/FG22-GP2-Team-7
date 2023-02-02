@@ -10,7 +10,7 @@ public class LandCharacterController : CharacterController
     [SerializeField] float _interactRange = 1f;
 
     LandPlayerState _playerState = LandPlayerState.Default;
-    
+
     public enum LandPlayerState
     {
         Default,

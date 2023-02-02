@@ -22,11 +22,12 @@ public class CharacterController : MonoBehaviour
     [SerializeField] LayerMask _groundLayer;
     [Range(0, 100)][SerializeField] float _gravityScale = 1;
 
+    [SerializeField] protected bool _applyGravity = true;
     float _currentSpeed;
     Vector2 _lastDirection = Vector2.zero;
 
     // References
-    InputHandler _inputHandler;
+    protected InputHandler _inputHandler;
     protected Rigidbody _rb;
     protected Collider _collider;
     protected MeshRenderer _meshRenderer;
@@ -44,7 +45,7 @@ public class CharacterController : MonoBehaviour
     void FindCollider()
     {
         if (TryGetComponent(out _collider)) return;
-        
+
         foreach (Transform child in transform)
         {
             if (child.TryGetComponent(out _collider))
@@ -77,7 +78,8 @@ public class CharacterController : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        ApplyGravityScale();
+        if (_applyGravity)
+            ApplyGravityScale();
     }
 
     /// <summary>
