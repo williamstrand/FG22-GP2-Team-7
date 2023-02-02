@@ -7,6 +7,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] InputHandler _landPlayer;
     [SerializeField] InputHandler _waterPlayer;
 
+    InputDevice _device1;
+    InputDevice _device2;
+
     void Start()
     {
         StartCoroutine(DevicePairing());
@@ -14,40 +17,42 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator DevicePairing()
     {
-        InputDevice device1 = null;
-
         var action = new InputAction(type: InputActionType.PassThrough, binding: "*/<Button>");
         action.Enable();
 
-        while (device1 == null)
+        Debug.Log("Press any button on the first device");
+        while (_device1 == null)
         {
             if (action.triggered)
             {
                 var device = action.activeControl.device;
                 if (device is Keyboard or Gamepad)
                 {
-                    device1 = device;
+                    _device1 = device;
                 }
             }
             yield return null;
         }
+        Debug.Log("Player 1 bound to " + _device1.displayName);
 
-        InputDevice device2 = null;
-        while (device2 == null)
+        Debug.Log("Press any button on the second device");
+        while (_device2 == null)
         {
             if (action.triggered)
             {
                 var device = action.activeControl.device;
-                if (device != device1 && device is Keyboard or Gamepad)
+                if (device != _device1 && device is Keyboard or Gamepad)
                 {
-                    device2 = device;
+                    _device2 = device;
                 }
             }
             yield return null;
         }
+        Debug.Log("Player 2 bound to " + _device2.displayName);
+        
         action.Disable();
 
-        _landPlayer.Join(device1);
-        _waterPlayer.Join(device2);
+        _landPlayer.Join(_device1);
+        _waterPlayer.Join(_device2);
     }
 }
