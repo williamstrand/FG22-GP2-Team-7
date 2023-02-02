@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Users;
 
 [RequireComponent(typeof(PlayerInput))]

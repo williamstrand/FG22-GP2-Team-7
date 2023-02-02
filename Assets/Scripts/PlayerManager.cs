@@ -49,7 +49,7 @@ public class PlayerManager : MonoBehaviour
             yield return null;
         }
         Debug.Log("Player 2 bound to " + _device2.displayName);
-        
+
         action.Disable();
 
         _landPlayer.Join(_device1);
