@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] InputHandler _landPlayer;
     [SerializeField] InputHandler _waterPlayer;
+    [SerializeField] bool _singlePlayer;
 
     InputDevice _device1;
     InputDevice _device2;
@@ -34,6 +35,11 @@ public class PlayerManager : MonoBehaviour
             yield return null;
         }
         Debug.Log("Player 1 bound to " + _device1.displayName);
+        if (_singlePlayer)
+        {
+            _landPlayer.Join(_device1);
+            yield break;
+        }
 
         Debug.Log("Press any button on the second device");
         while (_device2 == null)
