@@ -29,10 +29,15 @@ public class InputHandler : MonoBehaviour
         _controls.Player.PlayerAction.performed += _ => OnPlayerAction?.Invoke();
     }
 
-    public void Join(InputDevice device)
+    public InputUser Join(InputDevice device, bool keyboard2 = false, int playerIndex = 0)
     {
         var user = InputUser.PerformPairingWithDevice(device);
         user.AssociateActionsWithUser(_controls);
+        if (keyboard2)
+        {
+            user.ActivateControlScheme(playerIndex == 0 ? "KBM" : "KBM2");
+        }
         _controls.Enable();
+        return user;
     }
 }
