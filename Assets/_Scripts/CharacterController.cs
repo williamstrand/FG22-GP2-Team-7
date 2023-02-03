@@ -4,7 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(InputHandler), typeof(Rigidbody))]
 public class CharacterController : MonoBehaviour
 {
-
     [Header("Move")]
     [Tooltip("Speed if acceleration is on")]
     [Range(0, 100)][SerializeField] float _maxSpeed = 5;
@@ -19,9 +18,12 @@ public class CharacterController : MonoBehaviour
     [Range(0, 50)][SerializeField] float _jumpForce = 5;
     [SerializeField] LayerMask _groundLayer;
     [Range(0, 100)][SerializeField] float _gravityScale = 1;
+    [Tooltip("The distance from the middle of the character to check for ground.")]
     [Range(0, 2)][SerializeField] float _groundCheckDistance = .5f;
+    [Tooltip("The radius of the ground check.")]
     [Range(0, 2)][SerializeField] float _groundCheckRadius = .45f;
-
+    [Space(15)]
+    [Tooltip("Should character be affected by gravity?")]
     [SerializeField] protected bool _applyGravity = true;
     float _currentSpeed;
     Vector2 _lastDirection = Vector2.zero;
@@ -30,15 +32,12 @@ public class CharacterController : MonoBehaviour
     protected InputHandler _inputHandler;
     protected Rigidbody _rb;
     protected Collider _collider;
-    protected MeshRenderer _meshRenderer;
-
-
 
     void Awake()
     {
         _inputHandler = GetComponent<InputHandler>();
         _rb = GetComponent<Rigidbody>();
-        _meshRenderer = GetComponentInChildren<MeshRenderer>();
+        _rb.useGravity = false;
         FindCollider();
     }
 

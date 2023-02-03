@@ -8,15 +8,15 @@ public class WaterCharacterController : CharacterController
     bool _canDive = true;
 
     [Header("Diving")]
-    [SerializeField] float _diveSpeed = 1;
-    [SerializeField] float _diveDepth = 2f;
+    [Range(0, 5)][SerializeField] float _diveSpeed = 1;
+    [Range(0, 5)][SerializeField] float _diveDepth = 2f;
 
     public enum WaterPlayerState
     {
         Default,
         Diving
     }
-    
+
     protected override void PlayerAction()
     {
         if (!CanDive()) return;
