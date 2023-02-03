@@ -42,7 +42,6 @@ public class LandCharacterController : CharacterController
                 break;
 
             case LandPlayerState.Climbing:
-                Debug.Log(direction.y);
                 switch (direction.y)
                 {
                     case 0:
