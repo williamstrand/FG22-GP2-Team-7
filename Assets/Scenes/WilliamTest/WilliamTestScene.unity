@@ -802,17 +802,6 @@ Transform:
   m_Father: {fileID: 1770862173}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1626858084 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6389759222064143229, guid: 1eb2caa3c0f4a3c46907c4062652efef, type: 3}
-  m_PrefabInstance: {fileID: 1781663727}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ad1b4a4e5c88a4797a8e0c42151f37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1770862169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,7 +1132,7 @@ PrefabInstance:
     - target: {fileID: 6183573849262586592, guid: 58efdfeac87071845969bab99361a2d9, type: 3}
       propertyPath: _landPlayer
       value: 
-      objectReference: {fileID: 1626858084}
+      objectReference: {fileID: 0}
     - target: {fileID: 6183573849262586592, guid: 58efdfeac87071845969bab99361a2d9, type: 3}
       propertyPath: _waterPlayer
       value: 
