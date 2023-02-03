@@ -4,9 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(InputHandler), typeof(Rigidbody))]
 public class CharacterController : MonoBehaviour
 {
-    const float GroundCheckDistance = .5f;
-    const float GroundCheckRadius = .45f;
-
     [Header("Move")]
     [Tooltip("Speed if acceleration is on")]
     [Range(0, 100)][SerializeField] float _maxSpeed = 5;
@@ -21,7 +18,12 @@ public class CharacterController : MonoBehaviour
     [Range(0, 50)][SerializeField] float _jumpForce = 5;
     [SerializeField] LayerMask _groundLayer;
     [Range(0, 100)][SerializeField] float _gravityScale = 1;
-
+    [Tooltip("The distance from the middle of the character to check for ground.")]
+    [Range(0, 2)][SerializeField] float _groundCheckDistance = .5f;
+    [Tooltip("The radius of the ground check.")]
+    [Range(0, 2)][SerializeField] float _groundCheckRadius = .45f;
+    [Space(15)]
+    [Tooltip("Should character be affected by gravity?")]
     [SerializeField] protected bool _applyGravity = true;
     float _currentSpeed;
     Vector2 _lastDirection = Vector2.zero;
@@ -30,15 +32,12 @@ public class CharacterController : MonoBehaviour
     protected InputHandler _inputHandler;
     protected Rigidbody _rb;
     protected Collider _collider;
-    protected MeshRenderer _meshRenderer;
-
-
 
     void Awake()
     {
         _inputHandler = GetComponent<InputHandler>();
         _rb = GetComponent<Rigidbody>();
-        _meshRenderer = GetComponentInChildren<MeshRenderer>();
+        _rb.useGravity = false;
         FindCollider();
     }
 
@@ -137,7 +136,7 @@ public class CharacterController : MonoBehaviour
     /// Checks if character is on the ground.
     /// </summary>
     /// <returns>true if character is on the ground.</returns>
-    protected bool IsGrounded() => Physics.CheckSphere(transform.position + Vector3.down * GroundCheckDistance, GroundCheckRadius, _groundLayer);
+    protected bool IsGrounded() => Physics.CheckSphere(transform.position + Vector3.down * _groundCheckDistance, _groundCheckRadius, _groundLayer);
 
     /// <summary>
     /// Interact with an object.
@@ -160,7 +159,7 @@ public class CharacterController : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + Vector3.down * GroundCheckDistance, GroundCheckRadius);
+        Gizmos.DrawWireSphere(transform.position + Vector3.down * _groundCheckDistance, _groundCheckRadius);
     }
 
 #endif
