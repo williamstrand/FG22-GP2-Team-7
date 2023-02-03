@@ -6,8 +6,16 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] InputHandler _landPlayer;
     [SerializeField] InputHandler _waterPlayer;
-    [SerializeField] bool _singlePlayer;
+    [SerializeField] Player _player;
 
+    public enum Player
+    {
+        Both,
+        Landie,
+        Swimmie
+    }
+
+    
     InputDevice _device1;
     InputDevice _device2;
 
@@ -20,45 +28,86 @@ public class PlayerManager : MonoBehaviour
     {
         var action = new InputAction(type: InputActionType.PassThrough, binding: "*/<Button>");
         action.Enable();
-
-        Debug.Log("Press any button on the first device");
-        while (_device1 == null)
+        switch (_player)
         {
-            if (action.triggered)
-            {
-                var device = action.activeControl.device;
-                if (device is Keyboard or Gamepad)
+            case Player.Both:
+                Debug.Log("Press any button on the first device");
+                while (_device1 == null)
                 {
-                    _device1 = device;
+                    if (action.triggered)
+                    {
+                        var device = action.activeControl.device;
+                        if (device is Keyboard or Gamepad)
+                        {
+                            _device1 = device;
+                        }
+                    }
+                    yield return null;
                 }
-            }
-            yield return null;
-        }
-        Debug.Log("Player 1 bound to " + _device1.displayName);
-        if (_singlePlayer)
-        {
-            _landPlayer.Join(_device1);
-            yield break;
-        }
 
-        Debug.Log("Press any button on the second device");
-        while (_device2 == null)
-        {
-            if (action.triggered)
-            {
-                var device = action.activeControl.device;
-                if (device != _device1 && device is Keyboard or Gamepad)
+                Debug.Log("Press any button on the second device");
+                while (_device2 == null)
                 {
-                    _device2 = device;
+                    if (action.triggered)
+                    {
+                        var device = action.activeControl.device;
+                        if (device != _device1 && device is Keyboard or Gamepad)
+                        {
+                            _device2 = device;
+                        }
+                    }
+                    yield return null;
                 }
-            }
-            yield return null;
+                Debug.Log("Player 2 bound to " + _device2.displayName);
+
+                action.Disable();
+
+                _landPlayer.Join(_device1);
+                _waterPlayer.Join(_device2);
+                break;
+
+            case Player.Landie:
+                Debug.Log("Press any button on the first device");
+                while (_device1 == null)
+                {
+                    if (action.triggered)
+                    {
+                        var device = action.activeControl.device;
+                        if (device is Keyboard or Gamepad)
+                        {
+                            _device1 = device;
+                        }
+                    }
+                    yield return null;
+                }
+                Debug.Log("Player 1 bound to " + _device1.displayName);
+
+                action.Disable();
+
+                _landPlayer.Join(_device1);
+                break;
+
+            case Player.Swimmie:
+                Debug.Log("Press any button on the first device");
+                while (_device2 == null)
+                {
+                    if (action.triggered)
+                    {
+                        var device = action.activeControl.device;
+                        if (device is Keyboard or Gamepad)
+                        {
+                            _device2 = device;
+                        }
+                    }
+                    yield return null;
+                }
+                Debug.Log("Player 2 bound to " + _device2.displayName);
+
+                action.Disable();
+
+                _waterPlayer.Join(_device2);
+                break;
+
         }
-        Debug.Log("Player 2 bound to " + _device2.displayName);
-
-        action.Disable();
-
-        _landPlayer.Join(_device1);
-        _waterPlayer.Join(_device2);
     }
 }
