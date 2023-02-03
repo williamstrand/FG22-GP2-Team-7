@@ -10,6 +10,7 @@ public class WaterCharacterController : CharacterController
     [Header("Diving")]
     [Range(0, 5)][SerializeField] float _diveSpeed = 1;
     [Range(0, 5)][SerializeField] float _diveDepth = 2f;
+    
 
     public enum WaterPlayerState
     {
@@ -30,6 +31,18 @@ public class WaterCharacterController : CharacterController
 
             case WaterPlayerState.Diving:
                 Resurface();
+                break;
+        }
+    }
+
+    protected override void Jump()
+    {
+        switch (_playerState)
+        {
+            case WaterPlayerState.Default:
+                base.Jump();
+                break;
+            case WaterPlayerState.Diving:
                 break;
         }
     }
@@ -58,6 +71,8 @@ public class WaterCharacterController : CharacterController
     {
         _applyGravity = false;
         _canDive = false;
+        var waterCollider = Physics.OverlapSphere(transform.position, _diveDepth, _groundLayer)[0];
+        Physics.IgnoreCollision(_collider, waterCollider, down);
         var targetY = down ? transform.position.y - _diveDepth : transform.position.y + _diveDepth;
         var startY = transform.position.y;
 

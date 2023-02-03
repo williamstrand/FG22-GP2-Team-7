@@ -16,7 +16,7 @@ public class CharacterController : MonoBehaviour
 
     [Header("Jump")]
     [Range(0, 50)][SerializeField] float _jumpForce = 5;
-    [SerializeField] LayerMask _groundLayer;
+    [SerializeField] protected LayerMask _groundLayer;
     [Range(0, 100)][SerializeField] float _gravityScale = 1;
     [Tooltip("The distance from the middle of the character to check for ground.")]
     [Range(0, 2)][SerializeField] float _groundCheckDistance = .5f;
@@ -122,7 +122,7 @@ public class CharacterController : MonoBehaviour
     /// <summary>
     /// Makes the character jump.
     /// </summary>
-    void Jump()
+    protected virtual void Jump()
     {
         if (!IsGrounded()) return;
 
