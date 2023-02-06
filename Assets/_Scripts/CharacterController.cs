@@ -13,6 +13,7 @@ public class CharacterController : MonoBehaviour
     [Range(0.001f, 2)][SerializeField] float _decelerationTime = .3f;
     [Tooltip("Should acceleration and deceleration be used")]
     [SerializeField] bool _useAcceleration = true;
+    [Range(0, 10)][SerializeField] float _rotationSpeed = 2;
 
     [Header("Jump")]
     [Range(0, 50)][SerializeField] float _jumpForce = 5;
@@ -73,6 +74,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         Move(_inputHandler.MoveInput);
+        Rotate();
     }
 
     protected virtual void FixedUpdate()
@@ -119,6 +121,16 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    void Rotate()
+    {
+        var dir = _inputHandler.MoveInput;
+        var targetDir = new Vector3(dir.x, 0, dir.y);
+
+        if (targetDir == Vector3.zero) return;
+
+        _rb.rotation = Quaternion.RotateTowards(_rb.rotation, Quaternion.LookRotation(targetDir, transform.up), _rotationSpeed * Time.deltaTime * 360);
+    }
+    
     /// <summary>
     /// Makes the character jump.
     /// </summary>
