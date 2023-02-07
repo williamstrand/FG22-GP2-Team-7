@@ -6,6 +6,10 @@ public class LandCharacterController : CharacterController
     [Range(0, 2)][SerializeField] float _climbSpeed = 1f;
     Climbable _currentClimbable;
 
+    [Header("Catapult")]
+    [SerializeField] float _catapultAimSpeed = 1f;
+    Catapult _catapult;
+
     [Space(15)]
     [SerializeField] float _interactRange = 1f;
 
@@ -14,7 +18,8 @@ public class LandCharacterController : CharacterController
     public enum LandPlayerState
     {
         Default,
-        Climbing
+        Climbing,
+        Catapult
     }
 
     protected override void FixedUpdate()
@@ -25,11 +30,19 @@ public class LandCharacterController : CharacterController
                 base.FixedUpdate();
                 break;
 
-            case LandPlayerState.Climbing:
-                break;
-
             default:
                 break;
+        }
+    }
+
+    protected override void Rotate()
+    {
+        switch (_playerState)
+        {
+            case LandPlayerState.Default:
+                base.Rotate();
+                break;
+
         }
     }
 
@@ -56,7 +69,9 @@ public class LandCharacterController : CharacterController
                 }
                 break;
 
-            default:
+            case LandPlayerState.Catapult:
+                _catapult.SetAim(_catapult.AimAngle + direction.y * _catapultAimSpeed);
+                _catapult.SetRotation(direction.x * _catapultAimSpeed * .3f);
                 break;
         }
     }
@@ -69,21 +84,53 @@ public class LandCharacterController : CharacterController
         var closeObjects = Physics.OverlapSphere(transform.position, _interactRange);
         foreach (var closeObject in closeObjects)
         {
-            if (closeObject.TryGetComponent(out Climbable climbable))
+            if (closeObject.TryGetComponent(out IInteractable interactable))
             {
-                if (_playerState == LandPlayerState.Climbing)
+                if (interactable is Climbable climbable)
                 {
-                    _currentClimbable.StopClimb();
-                    _currentClimbable = null;
-                    StopClimb();
+                    if (_playerState == LandPlayerState.Climbing)
+                    {
+                        _currentClimbable.StopClimb();
+                        _currentClimbable = null;
+                        StopClimb();
+                    }
+                    else
+                    {
+                        climbable.StartClimb(this);
+                        _currentClimbable = climbable;
+                        StartClimb();
+                    }
                 }
-                else
+                else if (interactable is Catapult catapult)
                 {
-                    climbable.StartClimb(this);
-                    _currentClimbable = climbable;
-                    StartClimb();
+                    if (_playerState == LandPlayerState.Catapult)
+                    {
+                        _catapult.ExitCatapult(this);
+                        _catapult = null;
+                        _playerState = LandPlayerState.Default;
+                    }
+                    else
+                    {
+                        catapult.EnterCatapult(this);
+                        _playerState = LandPlayerState.Catapult;
+                        _catapult = catapult;
+                    }
                 }
             }
+        }
+    }
+
+    protected override void PlayerAction()
+    {
+        switch (_playerState)
+        {
+            case LandPlayerState.Default:
+                base.PlayerAction();
+                break;
+                
+            case LandPlayerState.Catapult:
+                _catapult.Fire();
+                break;
         }
     }
 
