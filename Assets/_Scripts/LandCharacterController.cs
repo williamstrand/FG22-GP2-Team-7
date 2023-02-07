@@ -71,7 +71,7 @@ public class LandCharacterController : CharacterController
 
             case LandPlayerState.Catapult:
                 _catapult.SetAim(_catapult.AimAngle + direction.y * _catapultAimSpeed);
-                _catapult.SetRotation(direction.x * _catapultAimSpeed * .3f);
+                //_catapult.SetRotation(direction.x * _catapultAimSpeed * .3f);
                 break;
         }
     }
@@ -84,38 +84,32 @@ public class LandCharacterController : CharacterController
         var closeObjects = Physics.OverlapSphere(transform.position, _interactRange);
         foreach (var closeObject in closeObjects)
         {
-            if (closeObject.TryGetComponent(out IInteractable interactable))
+            if (!closeObject.TryGetComponent(out IInteractable interactable)) continue;
+            switch (interactable)
             {
-                if (interactable is Climbable climbable)
-                {
-                    if (_playerState == LandPlayerState.Climbing)
-                    {
-                        _currentClimbable.StopClimb();
-                        _currentClimbable = null;
-                        StopClimb();
-                    }
-                    else
-                    {
-                        climbable.StartClimb(this);
-                        _currentClimbable = climbable;
-                        StartClimb();
-                    }
-                }
-                else if (interactable is Catapult catapult)
-                {
-                    if (_playerState == LandPlayerState.Catapult)
-                    {
-                        _catapult.ExitCatapult(this);
-                        _catapult = null;
-                        _playerState = LandPlayerState.Default;
-                    }
-                    else
-                    {
-                        catapult.EnterCatapult(this);
-                        _playerState = LandPlayerState.Catapult;
-                        _catapult = catapult;
-                    }
-                }
+                case Climbable when _playerState == LandPlayerState.Climbing:
+                    _currentClimbable.StopClimb();
+                    _currentClimbable = null;
+                    StopClimb();
+                    break;
+
+                case Climbable climbable:
+                    climbable.StartClimb(this);
+                    _currentClimbable = climbable;
+                    StartClimb();
+                    break;
+
+                case Catapult when _playerState == LandPlayerState.Catapult:
+                    _catapult.ExitCatapult(this);
+                    _catapult = null;
+                    _playerState = LandPlayerState.Default;
+                    break;
+
+                case Catapult catapult:
+                    catapult.EnterCatapult(this);
+                    _playerState = LandPlayerState.Catapult;
+                    _catapult = catapult;
+                    break;
             }
         }
     }
@@ -127,7 +121,7 @@ public class LandCharacterController : CharacterController
             case LandPlayerState.Default:
                 base.PlayerAction();
                 break;
-                
+
             case LandPlayerState.Catapult:
                 _catapult.Fire();
                 break;
