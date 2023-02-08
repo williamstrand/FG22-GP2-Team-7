@@ -2,48 +2,159 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df791d7b-ca6e-42de-bf61-1cc2b928ffaf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/.idea/.idea.DynamicSplitScreenURP-main/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/.idea/.idea.DynamicSplitScreenURP-main/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/.idea/.idea.DynamicSplitScreenURP-main/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Materials/SplitScreen.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Scripts/SplitScreen.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Scripts/SplitScreen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Beautiful_PipelineAsset.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Beautiful_PipelineAsset.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Beautiful_PipelineAsset_ForwardRenderer.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Beautiful_PipelineAsset_ForwardRenderer.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fantastic_PipelineAsset.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fantastic_PipelineAsset.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fantastic_PipelineAsset_ForwardRenderer.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fantastic_PipelineAsset_ForwardRenderer.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fast_PipelineAsset.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fast_PipelineAsset.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fast_PipelineAsset_ForwardRenderer.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fast_PipelineAsset_ForwardRenderer.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fastest_PipelineAsset.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fastest_PipelineAsset.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fastest_PipelineAsset_ForwardRenderer.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Fastest_PipelineAsset_ForwardRenderer.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Good_PipelineAsset.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Good_PipelineAsset.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Good_PipelineAsset_ForwardRenderer.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Good_PipelineAsset_ForwardRenderer.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Simple_PipelineAsset.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Simple_PipelineAsset.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Simple_PipelineAsset_ForwardRenderer.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Settings/Simple_PipelineAsset_ForwardRenderer.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Shaders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Shaders/SplitScreenMask.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/UniversalRenderPipelineAsset.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/UniversalRenderPipelineGlobalSettings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/EditorGrassPainter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Liquid.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Liquid.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Skybox_Stylized.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Skybox_Stylized.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/New Terrain 1.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/New Terrain 1.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/HannasTest.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/HannasTest.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/ComputeGrassShaderHLSL.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Grass.compute" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Grass.compute.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/GrassBlades.compute" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/GrassBlades.compute.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Liquid.shadergraph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Liquid.shadergraph.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Stylized Skybox.shadergraph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Stylized Skybox.shadergraph.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain/Terrain_0_0_dd84af00-b170-4c6c-aa0b-439b41034801.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain/Terrain_0_0_dd84af00-b170-4c6c-aa0b-439b41034801.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain/Terrain_0_0_e969f059-4a1d-4297-8d8c-c407b7bf594b.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain/Terrain_0_0_e969f059-4a1d-4297-8d8c-c407b7bf594b.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Noise_Base.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Noise_Base.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Noise_Primary.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Noise_Primary.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Noise_Secondary.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Noise_Secondary.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/aryan-nikhil-lv7c_5ZXCvE-unsplash.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/aryan-nikhil-lv7c_5ZXCvE-unsplash.jpg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/tex_swirl_0002_MK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/tex_swirl_0002_MK.jpg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/DistanceJoint3D.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/DistanceJoint3D.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/Buoyancy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/Buoyancy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/ObjectTeleport.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/ObjectTeleport.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/RotateObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/RotateObject.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/SpikeTrap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/SpikeTrap.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/FrictionJoint3D.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/FrictionJoint3D.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Liquid.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Liquid.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/RenderTerrainMap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/RenderTerrainMap.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/RopeRoot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/RopeRoot.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Shaders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Shaders/GrassComputeScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Shaders/GrassComputeScript.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Shaders/GrassPainter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Shaders/GrassPainter.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Shaders/ShaderInteractor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Shaders/ShaderInteractor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Wobble.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Wobble.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uploads_files_757918_roupe.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uploads_files_757918_roupe/source.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uploads_files_757918_roupe/source/RoupeWithSceleton.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uploads_files_757918_roupe/source/RoupeWithSceleton.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uploads_files_757918_roupe/source/Roupe_blinn.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uploads_files_757918_roupe/source/Roupe_blinn.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uploads_files_757918_roupe/textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uploads_files_757918_roupe/textures/nm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uploads_files_757918_roupe/textures/nm.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uploads_files_757918_roupe/textures/txtr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uploads_files_757918_roupe/textures/txtr.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FG22-GP2-Team-7/.idea/indexLayout.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FG22-GP2-Team-7/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FG22-GP2-Team-7/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/EditorGrassPainter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/EditorGrassPainter.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Ground_mat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Liquid.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Liquid.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ripples_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Ripples_mat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Skybox_Stylized.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Skybox_Stylized.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/SplitScreen.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Materials/SplitScreen.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/SplitScreen.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/UniversalRenderPipelineAsset.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Unlit - Copy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Materials/Unlit.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Unlit - Copy.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Custom_Shader.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Unlit.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Custom_Shader.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Unlit.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Materials/Unlit.mat.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Materials/Water.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Water.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Samples/Universal RP/12.1.9/URP Package Samples/CameraStacking/SplitScreen/SplitScreen/PostProcessingVolume Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/Universal RP/12.1.9/URP Package Samples/CameraStacking/SplitScreen/SplitScreen/PostProcessingVolume Profile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/Universal RP/12.1.9/URP Package Samples/RendererFeatures/KeepFrame/AdditiveParticle.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/Universal RP/12.1.9/URP Package Samples/RendererFeatures/KeepFrame/AdditiveParticle.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Samples/Universal RP/12.1.9/URP Package Samples/Shaders/Lit/Materials/BaseRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/Universal RP/12.1.9/URP Package Samples/Shaders/Lit/Materials/BaseRed.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/Universal RP/12.1.9/URP Package Samples/Shaders/Lit/Materials/MetallicOne.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/Universal RP/12.1.9/URP Package Samples/Shaders/Lit/Materials/MetallicOne.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/Universal RP/12.1.9/URP Package Samples/Shaders/Lit/Materials/MetallicSmoothnessZero.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/Universal RP/12.1.9/URP Package Samples/Shaders/Lit/Materials/MetallicSmoothnessZero.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/HannasTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/HannasTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TarikTestScene/TarikTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TarikTestScene/TarikTestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WilliamTest/WilliamTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/WilliamTest/WilliamTestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/URP1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP1.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/URP1.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/URP2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP2.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/URP2.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset_ForwardRenderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset_ForwardRenderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Universal Render Pipeline Asset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Universal Render Pipeline Asset.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/Universal Render Pipeline Asset_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Universal Render Pipeline Asset_Renderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/ComputeGrassShaderHLSL.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/ComputeGrassShaderHLSL.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Grass.compute" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Grass.compute.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/GrassBlades.compute" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/GrassBlades.compute.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Stylized Skybox.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/Stylized Skybox.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/StylizedWaterInteractive.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/StylizedWaterInteractive.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/RotateObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/RotateObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/RenderTerrainMap.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/RenderTerrainMap.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/SetInteractiveShaderEffects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/SetInteractiveShaderEffects.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Shaders.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Shaders/GrassComputeScript.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Shaders/GrassComputeScript.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Shaders/GrassPainter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Shaders/GrassPainter.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Shaders/ShaderInteractor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Shaders/ShaderInteractor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/NewSplitScreen.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Shaders/NewSplitScreen.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/NewSplitScreen.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Shaders/UnlitShader.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/SplitScreenMask.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Shaders/SplitScreenMask.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/SplitScreenMask.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Shaders/NewSplitScreen.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/UnlitShader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DynamicSplitScreen/Assets/Shaders/UnlitShader.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/UnlitShader.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/ComputeGrassShaderHLSL.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/caust12.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/caust12.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/CharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/CharacterController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/DynamicSplitScreen.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/DynamicSplitScreen.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/EditorGrassPainter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/ObjectSwitch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/ObjectSwitch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/ObjectSwitch.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/ObjectSwitch.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/PlatformMover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/PlatformMover.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/PlatformMover.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/PlatformMover.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/TriggerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/TriggerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/TriggerController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Environment Interactions/TriggerController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/flag/Materials/ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/flag/Materials/ground.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,9 +165,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/Downloads/Dynamic-Splitscreen-master/Dynamic-Splitscreen-master/Assets/Scripts/Movement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ComputeGrassURP/Scripts/GrassComputeScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/SetInteractiveShaderEffects.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Shaders/GrassComputeScript.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2L6Tq63rCWwZcaILLHLWGRC3Fcb" />
   <component name="ProjectReloadState">
@@ -66,14 +179,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Discover.Launch.Via.Unity" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
@@ -111,10 +224,7 @@
       <workItem from="1675426088682" duration="621000" />
       <workItem from="1675451218636" duration="2297000" />
       <workItem from="1675453564874" duration="5794000" />
-      <workItem from="1675775397325" duration="632000" />
-      <workItem from="1675797200105" duration="2264000" />
-      <workItem from="1675844541176" duration="2116000" />
-      <workItem from="1675863826768" duration="3076000" />
+      <workItem from="1675780450639" duration="5000" />
     </task>
     <servers />
   </component>
@@ -134,7 +244,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

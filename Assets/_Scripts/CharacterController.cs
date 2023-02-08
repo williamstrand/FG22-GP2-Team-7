@@ -121,7 +121,7 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    void Rotate()
+    protected virtual void Rotate()
     {
         var dir = _inputHandler.MoveInput;
         var targetDir = new Vector3(dir.x, 0, dir.y);

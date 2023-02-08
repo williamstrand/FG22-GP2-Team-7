@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Climbable : MonoBehaviour
+public class Climbable : MonoBehaviour, IInteractable
 {
     [SerializeField] Transform _topPoint;
     [SerializeField] Transform _bottomPoint;
