@@ -16,6 +16,7 @@ public class Catapult : MonoBehaviour, IInteractable
     [SerializeField] Rigidbody _coconut;
     [SerializeField] Transform _shootPoint;
     [SerializeField] Transform _cockpit;
+    [SerializeField] Transform _target;
     LineRenderer _lineRenderer;
 
     public float Force { get; private set; }
@@ -128,6 +129,9 @@ public class Catapult : MonoBehaviour, IInteractable
             if (hit.Length > 0)
             {
                 _lineRenderer.SetPosition(i, hit[0].ClosestPoint(pos));
+                _target.gameObject.SetActive(true);
+                var prevPos = GetPosition((i - 1) / 10f, Force);
+                _target.position = hit[0].ClosestPoint(prevPos) + Vector3.up * .05f;
                 break;
             }
             _lineRenderer.SetPosition(i, pos);
@@ -140,6 +144,7 @@ public class Catapult : MonoBehaviour, IInteractable
     void ClearAim()
     {
         _lineRenderer.positionCount = 0;
+        _target.gameObject.SetActive(false);
     }
 
     void Update()
