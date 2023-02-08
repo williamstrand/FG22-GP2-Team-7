@@ -71,6 +71,7 @@ public class LandCharacterController : CharacterController
 
             case LandPlayerState.Catapult:
                 _catapult.SetAim(_catapult.AimAngle + direction.y * _catapultAimSpeed);
+                _catapult.SetForce(_catapult.Force + direction.x * _catapultAimSpeed * .1f);
                 //_catapult.SetRotation(direction.x * _catapultAimSpeed * .3f);
                 break;
         }

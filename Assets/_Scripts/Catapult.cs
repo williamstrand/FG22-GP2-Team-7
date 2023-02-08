@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class Catapult : MonoBehaviour, IInteractable
 {
     private const float GravityScale = 9.81f;
@@ -9,10 +10,12 @@ public class Catapult : MonoBehaviour, IInteractable
     [SerializeField] float _cooldown;
     [SerializeField] float _minForce;
     [SerializeField] float _maxForce;
+    public float Force { get; private set; }
     [SerializeField] Rigidbody _coconut;
     [SerializeField] Transform _shootPoint;
     [SerializeField] Transform _cockpit;
     public float AimAngle { get; private set; } = 45f;
+    [SerializeField] LayerMask _groundLayer;
 
     LineRenderer _lineRenderer;
 
@@ -30,7 +33,7 @@ public class Catapult : MonoBehaviour, IInteractable
         LoadCoconut(_coconut);
         
         _coconut.transform.SetParent(null);
-        _coconut.AddForce(_shootPoint.forward * _maxForce, ForceMode.VelocityChange);
+        _coconut.AddForce(_shootPoint.forward * Force, ForceMode.VelocityChange);
         
         ClearAim();
     }
@@ -72,13 +75,25 @@ public class Catapult : MonoBehaviour, IInteractable
         DrawAim();
     }
 
+    public void SetForce(float force)
+    {
+        Force = Mathf.Clamp(force, _minForce, _maxForce);
+        DrawAim();
+    }
+
     void DrawAim()
     {
         ClearAim();
         for (int i = 0; i < MaxAimDrawAmount; i++)
         {
-            var pos = GetPosition(i, _maxForce);
-            if (pos.y < transform.position.y) break;
+            var pos = GetPosition(i/10f, Force);
+            var hit = Physics.OverlapSphere(pos, .1f, _groundLayer);
+            if (hit.Length > 0)
+            {
+                _lineRenderer.positionCount++;
+                _lineRenderer.SetPosition(i, hit[0].ClosestPoint(pos));
+                break;
+            }
             _lineRenderer.positionCount++;
             _lineRenderer.SetPosition(i, pos);
         }

@@ -151,6 +151,9 @@ MonoBehaviour:
   _coconut: {fileID: 0}
   _shootPoint: {fileID: 4600812680529000847}
   _cockpit: {fileID: 1455124623}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 144
 --- !u!120 &4600812680246968324
 LineRenderer:
   m_ObjectHideFlags: 0
