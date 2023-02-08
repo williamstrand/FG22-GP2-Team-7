@@ -30,6 +30,12 @@ public class Catapult : MonoBehaviour, IInteractable
         _lineRenderer = GetComponent<LineRenderer>();
     }
 
+    void Start()
+    {
+        // TODO: Add manual loading of coconut.
+        LoadCoconut(_coconut);
+    }
+
     /// <summary>
     /// Fires the catapult.
     /// </summary>
@@ -39,8 +45,6 @@ public class Catapult : MonoBehaviour, IInteractable
         _cooldownTimer = _cooldown;
 
         SetAim(AimAngle);
-        // TODO: Add manual loading of coconut.
-        LoadCoconut(_coconut);
 
         _coconut.transform.SetParent(null);
         _coconut.AddForce(_shootPoint.forward * Force, ForceMode.VelocityChange);
