@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977078396270604266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8124071032928118514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -75,15 +75,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5873883a3189f7445aac68ca378d2f01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 10.355307
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5873883a3189f7445aac68ca378d2f01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -11.531676
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5873883a3189f7445aac68ca378d2f01, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 84.752975
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5873883a3189f7445aac68ca378d2f01, type: 3}
       propertyPath: m_LocalRotation.w
@@ -91,15 +91,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5873883a3189f7445aac68ca378d2f01, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5873883a3189f7445aac68ca378d2f01, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5873883a3189f7445aac68ca378d2f01, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5873883a3189f7445aac68ca378d2f01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -152,7 +152,7 @@ MonoBehaviour:
   _topPoint: {fileID: 4885669189434344414}
   _bottomPoint: {fileID: 5737231520434751349}
   _drawGizmos: 1
-  _gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  _gizmoColor: {r: 1, g: 0, b: 0.008489609, a: 1}
 --- !u!4 &9046567801341476816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5873883a3189f7445aac68ca378d2f01, type: 3}
