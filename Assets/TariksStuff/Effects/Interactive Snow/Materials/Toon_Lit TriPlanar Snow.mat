@@ -38,7 +38,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: f27641effaa3e5343b1701567712cfc0, type: 3}
-        m_Scale: {x: 1.52, y: 1}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexBase:
         m_Texture: {fileID: 2800000, guid: 2c4d62415f7d7654ebc94ce5ff0fdd57, type: 3}
@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise:
-        m_Texture: {fileID: 2800000, guid: d91e8a1af01c6c74ca3fc12110967a43, type: 3}
+        m_Texture: {fileID: 2800000, guid: b501bf3dbf79c6549b6f23cddfb68634, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
@@ -95,8 +95,8 @@ Material:
     - _FadeFactor: 1
     - _MaxTessDistance: 100
     - _Metallic: 0
-    - _NoiseScale: 0.83
-    - _NoiseWeight: 0.4
+    - _NoiseScale: 0.18
+    - _NoiseWeight: 1.43
     - _OcclusionStrength: 1
     - _ParallaxStrength: 0
     - _PathBlending: 3
@@ -105,9 +105,9 @@ Material:
     - _RimPower: 20
     - _Scale: 0.226
     - _Smoothness: 0.1
-    - _SnowDepth: 1
-    - _SnowHeight: 0.45
-    - _SnowTextureOpacity: 0.91
+    - _SnowDepth: 2
+    - _SnowHeight: 0.3
+    - _SnowTextureOpacity: 0.887
     - _SnowTextureScale: 0.02
     - _SparkCutoff: 0.9
     - _SparkleScale: 5.8
@@ -121,15 +121,15 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor2: {r: 0.5865967, g: 0.8613625, b: 0.9811321, a: 1}
-    - _Color: {r: 1, g: 0.75909704, b: 0.6933962, a: 1}
+    - _Color: {r: 1, g: 0.9617135, b: 0.69411767, a: 1}
     - _EdgeColor: {r: 0.120149516, g: 0.26003355, b: 0.33962262, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _MainCol: {r: 0.5028248, g: 0, b: 1, a: 1}
     - _PathColor: {r: 0.16487186, g: 0.8342471, b: 0.8962264, a: 1}
-    - _PathColorIn: {r: 0.49056602, g: 0.14069064, b: 0.053221796, a: 1}
-    - _PathColorOut: {r: 0.5471698, g: 0.12801039, b: 0.018066937, a: 1}
+    - _PathColorIn: {r: 0.6981132, g: 0.21941145, b: 0.10208259, a: 1}
+    - _PathColorOut: {r: 0.6415094, g: 0.17366871, b: 0.04538981, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0.2516465, g: 0.25488633, b: 0.2735849, a: 1}
+    - _ShadowColor: {r: 0.10946953, g: 0.11009253, b: 0.11320752, a: 1}
     - _ToonRamp: {r: 0.05549128, g: 0.16648202, b: 0.2735849, a: 1}
     - _WireframeColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

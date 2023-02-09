@@ -368,11 +368,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5856157690419383514, guid: 08c605415d8a8124b866ae944321e98d, type: 3}
   m_PrefabInstance: {fileID: 826873686}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &656449014 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5856157688849300527, guid: 08c605415d8a8124b866ae944321e98d, type: 3}
-  m_PrefabInstance: {fileID: 826873686}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &671425851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,8 +1055,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cc802726cad31458c4d375cefaf403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderTexture: {fileID: 8600000, guid: 96aa8ac989e450442b55bd234bea9381, type: 2}
-  _target: {fileID: 656449014}
+  rt: {fileID: 0}
+  target: {fileID: 0}
 --- !u!114 &1511196509
 MonoBehaviour:
   m_ObjectHideFlags: 0
