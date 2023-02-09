@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(WaterPower))]
 public class WaterCharacterController : CharacterController
 {
 
@@ -10,27 +11,60 @@ public class WaterCharacterController : CharacterController
     [Header("Diving")]
     [Range(0, 5)][SerializeField] float _diveSpeed = 1;
     [Range(0, 5)][SerializeField] float _diveDepth = 2f;
-    
+
+    [Header("Water Power")]
+    [Range(1, 5)][SerializeField] float _waterPowerTurnSpeed = 1;
+
+
+    WaterPower _waterPower;
 
     public enum WaterPlayerState
     {
         Default,
-        Diving
+        Diving,
+        WaterPower
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _waterPower = GetComponent<WaterPower>();
     }
 
     protected override void PlayerAction()
     {
-        if (!CanDive()) return;
 
         switch (_playerState)
         {
             case WaterPlayerState.Default:
+                if (!CanDive()) return;
                 if (!IsGrounded()) return;
                 Dive();
                 break;
 
             case WaterPlayerState.Diving:
+                if (!CanDive()) return;
                 Resurface();
+                break;
+
+            case WaterPlayerState.WaterPower:
+                _waterPower.Shoot();
+                break;
+        }
+    }
+
+    protected override void Interact()
+    {
+        switch (_playerState)
+        {
+            case WaterPlayerState.Default:
+                _playerState = WaterPlayerState.WaterPower;
+                _waterPower.ActivateWaterPower();
+                break;
+
+            case WaterPlayerState.WaterPower:
+                _playerState = WaterPlayerState.Default;
+                _waterPower.DeactivateWaterPower();
                 break;
         }
     }
@@ -42,7 +76,37 @@ public class WaterCharacterController : CharacterController
             case WaterPlayerState.Default:
                 base.Jump();
                 break;
+        }
+    }
+
+    protected override void Move(Vector2 direction)
+    {
+        switch (_playerState)
+        {
+            case WaterPlayerState.Default:
+                base.Move(direction);
+                break;
+
             case WaterPlayerState.Diving:
+                base.Move(direction);
+                break;
+
+            case WaterPlayerState.WaterPower:
+                _waterPower.Turn(direction.x, _waterPowerTurnSpeed);
+                break;
+        }
+    }
+
+    protected override void Rotate()
+    {
+        switch (_playerState)
+        {
+            case WaterPlayerState.Default:
+                base.Rotate();
+                break;
+
+            case WaterPlayerState.Diving:
+                base.Rotate();
                 break;
         }
     }
@@ -69,6 +133,7 @@ public class WaterCharacterController : CharacterController
 
     IEnumerator DiveRoutine(bool down)
     {
+        _playerState = down ? WaterPlayerState.Diving : WaterPlayerState.Default;
         _applyGravity = false;
         _canDive = false;
         var waterCollider = Physics.OverlapSphere(transform.position, _diveDepth, _groundLayer)[0];
@@ -93,7 +158,6 @@ public class WaterCharacterController : CharacterController
         }
 
         _canDive = true;
-        _playerState = down ? WaterPlayerState.Diving : WaterPlayerState.Default;
         _applyGravity = !down;
     }
 

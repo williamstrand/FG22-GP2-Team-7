@@ -34,7 +34,7 @@ public class CharacterController : MonoBehaviour
     protected Rigidbody _rb;
     protected Collider _collider;
 
-    void Awake()
+    protected virtual void Awake()
     {
         _inputHandler = GetComponent<InputHandler>();
         _rb = GetComponent<Rigidbody>();
