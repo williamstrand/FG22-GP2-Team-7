@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class RopeRoot : MonoBehaviour {
 
-    public float RigidbodyMass = 1f;
-    public float ColliderRadius = 0.1f;
-    public float JointSpring = 0.1f;
-    public float JointDamper = 5f;
-    public Vector3 RotationOffset;
-    public Vector3 PositionOffset;
+    public float rigidbodyMass = 1f;
+    public float colliderRadius = 0.1f;
+    public float jointSpring = 0.1f;
+    public float jointDamper = 5f;
+    public Vector3 rotationOffset;
+    public Vector3 positionOffset;
 
     protected List<Transform> CopySource;
     protected List<Transform> CopyDestination;
@@ -24,7 +24,7 @@ public class RopeRoot : MonoBehaviour {
         CopySource = new List<Transform>();
         CopyDestination = new List<Transform>();
 
-        //add children
+        // Add children
         AddChildren(transform);
     }
 
@@ -35,28 +35,29 @@ public class RopeRoot : MonoBehaviour {
             var child = parent.GetChild(i);
             var representative = new GameObject(child.gameObject.name);
             representative.transform.parent = RigidBodyContainer.transform;
-            //rigidbody
+            
+            //Rigidbody
             var childRigidbody = representative.gameObject.AddComponent<Rigidbody>();
             childRigidbody.useGravity = true;
             childRigidbody.isKinematic = false;
             childRigidbody.freezeRotation = true;
-            childRigidbody.mass = RigidbodyMass;
+            childRigidbody.mass = rigidbodyMass;
 
-            //collider
+            //Collider
             var collider = representative.gameObject.AddComponent<SphereCollider>();
             collider.center = Vector3.zero;
-            collider.radius = ColliderRadius;
+            collider.radius = colliderRadius;
 
             //DistanceJoint
             var joint = representative.gameObject.AddComponent<DistanceJoint3D>();
-            joint.ConnectedRigidbody = parent;
-            joint.DetermineDistanceOnStart = true;
-            joint.Spring = JointSpring;
-            joint.Damper = JointDamper;
-            joint.DetermineDistanceOnStart = false;
-            joint.Distance = Vector3.Distance(parent.position, child.position);
+            joint.connectedRigidbody = parent;
+            joint.determineDistanceOnStart = true;
+            joint.spring = jointSpring;
+            joint.damper = jointDamper;
+            joint.determineDistanceOnStart = false;
+            joint.distance = Vector3.Distance(parent.position, child.position);
 
-            //add copy source
+            //Add copy source
             CopySource.Add(representative.transform);
             CopyDestination.Add(child);
 
@@ -68,8 +69,8 @@ public class RopeRoot : MonoBehaviour {
     {
         for (int i = 0; i < CopySource.Count; i++)
         {
-            CopyDestination[i].position = CopySource[i].position + PositionOffset;
-            CopyDestination[i].rotation = CopySource[i].rotation * Quaternion.Euler(RotationOffset);
+            CopyDestination[i].position = CopySource[i].position + positionOffset;
+            CopyDestination[i].rotation = CopySource[i].rotation * Quaternion.Euler(rotationOffset);
         }
     }
 }
