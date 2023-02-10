@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 167183084}
   - component: {fileID: 167183083}
   - component: {fileID: 167183082}
+  - component: {fileID: 167183087}
   m_Layer: 0
   m_Name: Coconut
   m_TagString: Untagged
@@ -230,13 +231,36 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167183081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.07, y: 1.15, z: -15.08}
+  m_LocalPosition: {x: -2.75, y: 1.15, z: -9.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &167183087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167183081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb0c3458a0bb2b4eb789c702d245ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 2084501151}
+  _pickUpDistance: 1
+  _forceMultiplier: 1
+  _baseForce: 10
+  _readyToThrow: 0
+  _itemIsPicked: 0
+  _pushPullDistance: 1
+  _pushPullMultiplier: 1
+  _pushPullBaseForce: 1
+  _isPushing: 0
+  _isPulling: 0
 --- !u!4 &276747088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2053531073292894776, guid: 0a640120783f83a448bc723c6f15ebab, type: 3}
@@ -1016,11 +1040,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2053531073292894776, guid: 0a640120783f83a448bc723c6f15ebab, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000023192541
+      value: -0.000000023192538
       objectReference: {fileID: 0}
     - target: {fileID: 2053531073292894776, guid: 0a640120783f83a448bc723c6f15ebab, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000000736379
+      value: 0.000000007363789
       objectReference: {fileID: 0}
     - target: {fileID: 2053531073292894776, guid: 0a640120783f83a448bc723c6f15ebab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1120,11 +1144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5309100959412190858, guid: 05ec0226421bcaa4d9fc2115d2c3d158, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000023192541
+      value: -0.000000023192538
       objectReference: {fileID: 0}
     - target: {fileID: 5309100959412190858, guid: 05ec0226421bcaa4d9fc2115d2c3d158, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000000736379
+      value: 0.000000007363789
       objectReference: {fileID: 0}
     - target: {fileID: 5309100959412190858, guid: 05ec0226421bcaa4d9fc2115d2c3d158, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1724,10 +1748,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6389759220413808050, guid: 1eb2caa3c0f4a3c46907c4062652efef, type: 3}
   m_PrefabInstance: {fileID: 1781663727}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1996259070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1996259071}
+  m_Layer: 0
+  m_Name: PickupPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1996259071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996259070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2084501151}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2026779020 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8138299981985125571, guid: 47ecc519f8000e147af7f98af58a296b, type: 3}
   m_PrefabInstance: {fileID: 1458966805}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2084501151 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6389759222064143230, guid: 1eb2caa3c0f4a3c46907c4062652efef, type: 3}
+  m_PrefabInstance: {fileID: 1781663727}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2101291104 stripped
 Transform:
@@ -1802,6 +1862,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Catapult
       objectReference: {fileID: 0}
+    - target: {fileID: 4600812680246968322, guid: f1db798b3b518b447bb0574d02ab4106, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4600812680246968325, guid: f1db798b3b518b447bb0574d02ab4106, type: 3}
       propertyPath: _coconut
       value: 
@@ -1861,7 +1925,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6183573849262586592, guid: 58efdfeac87071845969bab99361a2d9, type: 3}
       propertyPath: _player
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6183573849262586592, guid: 58efdfeac87071845969bab99361a2d9, type: 3}
       propertyPath: m_Enabled
