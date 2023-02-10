@@ -16,7 +16,7 @@ public class WaterPower : MonoBehaviour
     /// </summary>
     public void ToggleShooting()
     {
-        if (_waterPowerParticles.isPlaying)
+        if (_waterPowerParticles.isEmitting)
         {
             _waterPowerParticles.Stop();
         }
@@ -60,7 +60,7 @@ public class WaterPower : MonoBehaviour
     void UpdateAim()
     {
         _aimLineRenderer.SetPosition(0, transform.position);
-        _aimLineRenderer.SetPosition(1, transform.position + transform.forward * 10);
+        _aimLineRenderer.SetPosition(1, transform.position + transform.forward * 10 + transform.up * 2);
     }
 
     /// <summary>
