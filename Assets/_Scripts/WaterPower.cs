@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer), typeof(ParticleSystem))]
@@ -56,6 +57,6 @@ public class WaterPower : MonoBehaviour
     void OnParticleCollision(GameObject other)
     {
         // TODO: Add particle collision detection
-        Debug.Log("Hit " + other.name);
     }
 }
+    
