@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer), typeof(ParticleSystem))]
@@ -12,7 +11,10 @@ public class WaterPower : MonoBehaviour
         _aimLineRenderer = GetComponent<LineRenderer>();
     }
 
-    public void Shoot()
+    /// <summary>
+    /// Toggles water shooting.
+    /// </summary>
+    public void ToggleShooting()
     {
         if (_waterPowerParticles.isPlaying)
         {
@@ -22,32 +24,49 @@ public class WaterPower : MonoBehaviour
         {
             _waterPowerParticles.Play();
         }
-
     }
 
+    /// <summary>
+    /// Turns the player.
+    /// </summary>
+    /// <param name="direction">the direction to turn in. less than 0 is left, greater than 0 is right.</param>
+    /// <param name="speed">the speed at which the player will rotate.</param>
     public void Turn(float direction, float speed)
     {
         transform.rotation *= Quaternion.Euler(0, direction * speed, 0);
         UpdateAim();
     }
 
+    /// <summary>
+    /// Activates the water power.
+    /// </summary>
     public void ActivateWaterPower()
     {
         AimEnabled(true);
     }
 
+    /// <summary>
+    /// Deactivates the water power.
+    /// </summary>
     public void DeactivateWaterPower()
     {
         AimEnabled(false);
         _waterPowerParticles.Stop();
     }
 
+    /// <summary>
+    /// Updates the aim line renderer.
+    /// </summary>
     void UpdateAim()
     {
         _aimLineRenderer.SetPosition(0, transform.position);
         _aimLineRenderer.SetPosition(1, transform.position + transform.forward * 10);
     }
 
+    /// <summary>
+    /// Enables or disables the aim line renderer.
+    /// </summary>
+    /// <param name="isEnabled"></param>
     void AimEnabled(bool isEnabled)
     {
         _aimLineRenderer.enabled = isEnabled;
@@ -59,4 +78,3 @@ public class WaterPower : MonoBehaviour
         // TODO: Add particle collision detection
     }
 }
-    

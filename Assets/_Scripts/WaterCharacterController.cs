@@ -48,7 +48,7 @@ public class WaterCharacterController : CharacterController
                 break;
 
             case WaterPlayerState.WaterPower:
-                _waterPower.Shoot();
+                _waterPower.ToggleShooting();
                 break;
         }
     }
