@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class FireController : MonoBehaviour
 {
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("IgnitableObject"))
@@ -33,4 +35,5 @@ public class FireController : MonoBehaviour
         }
     }
 
+    
 }
