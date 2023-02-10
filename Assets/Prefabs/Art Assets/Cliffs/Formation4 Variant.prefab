@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 772700837}
   - component: {fileID: 772700838}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 886604618}
   - component: {fileID: 886604619}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1127160955}
   - component: {fileID: 1127160956}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1213864051}
   - component: {fileID: 1213864052}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1443116633}
   - component: {fileID: 1443116634}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2074671947}
   - component: {fileID: 2074671948}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,6 +328,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fde74a6f0aee17748a92dda738d5e441, type: 3}
       propertyPath: m_Name
       value: Formation4 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fde74a6f0aee17748a92dda738d5e441, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde74a6f0aee17748a92dda738d5e441, type: 3}

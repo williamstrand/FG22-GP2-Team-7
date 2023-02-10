@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 266626500}
   - component: {fileID: 266626501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 760120120}
   - component: {fileID: 760120121}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 893201477}
   - component: {fileID: 893201478}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1002857759}
   - component: {fileID: 1002857760}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1029390437}
   - component: {fileID: 1029390438}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425183878}
   - component: {fileID: 1425183879}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1736438423}
   - component: {fileID: 1736438424}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1781881871}
   - component: {fileID: 1781881872}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,6 +418,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 05c339dc11e856a40b711a610d9e0f30, type: 3}
       propertyPath: m_Name
       value: Formation5 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05c339dc11e856a40b711a610d9e0f30, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05c339dc11e856a40b711a610d9e0f30, type: 3}
