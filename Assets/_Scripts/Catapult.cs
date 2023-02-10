@@ -13,7 +13,7 @@ public class Catapult : MonoBehaviour, IInteractable
     [SerializeField] float _maxForce;
 
     [Header("References")]
-    [SerializeField] Rigidbody _coconut;
+    PickUpDrop _coconut;
     [SerializeField] Transform _shootPoint;
     [SerializeField] Transform _cockpit;
     [SerializeField] Transform _target;
@@ -33,7 +33,6 @@ public class Catapult : MonoBehaviour, IInteractable
     void Start()
     {
         // TODO: Add manual loading of coconut.
-        LoadCoconut(_coconut);
     }
 
     /// <summary>
@@ -41,13 +40,15 @@ public class Catapult : MonoBehaviour, IInteractable
     /// </summary>
     public void Fire()
     {
+        if (_coconut == null) return;
         if (_cooldownTimer > 0) return;
         _cooldownTimer = _cooldown;
 
         SetAim(AimAngle);
 
         _coconut.transform.SetParent(null);
-        _coconut.AddForce(_shootPoint.forward * Force, ForceMode.VelocityChange);
+        // TODO: Optimize
+        _coconut.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * Force, ForceMode.VelocityChange);
 
         ClearAim();
     }
@@ -56,10 +57,11 @@ public class Catapult : MonoBehaviour, IInteractable
     /// Loads a coconut in to the catapult.
     /// </summary>
     /// <param name="coconut">the coconut.</param>
-    public void LoadCoconut(Rigidbody coconut)
+    public void LoadCoconut(PickUpDrop coconut)
     {
-        coconut.velocity = Vector3.zero;
-        coconut.rotation = Quaternion.identity;
+        var rb = coconut.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.rotation = Quaternion.identity;
         coconut.transform.position = _shootPoint.position;
         coconut.transform.SetParent(_shootPoint);
         _coconut = coconut;

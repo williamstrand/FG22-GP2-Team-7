@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(LineRenderer), typeof(ParticleSystem))]
 public class WaterPower : MonoBehaviour
 {
     LineRenderer _aimLineRenderer;

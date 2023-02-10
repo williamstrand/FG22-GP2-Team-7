@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class LandCharacterController : CharacterController
 {
+    // TODO: Rework everything about picking up and dropping.
+    
     [Header("Climbing")]
     [Range(0, 2)][SerializeField] float _climbSpeed = 1f;
     Climbable _currentClimbable;
@@ -14,12 +16,20 @@ public class LandCharacterController : CharacterController
     [SerializeField] float _interactRange = 1f;
 
     LandPlayerState _playerState = LandPlayerState.Default;
+    PickUpDrop _heldItem;
+    bool _holdingItem = false;
 
     public enum LandPlayerState
     {
         Default,
         Climbing,
         Catapult
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _inputHandler.OnInteractUp += InteractReleased;
     }
 
     protected override void FixedUpdate()
@@ -29,9 +39,15 @@ public class LandCharacterController : CharacterController
             case LandPlayerState.Default:
                 base.FixedUpdate();
                 break;
+        }
+    }
 
-            default:
-                break;
+    protected override void Update()
+    {
+        base.Update();
+        if (_inputHandler.InteractButtonHeld)
+        {
+            InteractHeld();
         }
     }
 
@@ -106,12 +122,45 @@ public class LandCharacterController : CharacterController
                     _playerState = LandPlayerState.Default;
                     break;
 
-                case Catapult catapult:
+                case Catapult catapult when !_heldItem:
                     catapult.EnterCatapult(this);
                     _playerState = LandPlayerState.Catapult;
                     _catapult = catapult;
                     break;
+
+                case Catapult catapult when _heldItem:
+                    _heldItem.Drop();
+                    catapult.LoadCoconut(_heldItem);
+                    _heldItem = null;
+                    break;
+
+                case PickUpDrop pickUpDrop:
+                    if (_heldItem) break;
+                    pickUpDrop.Pickup(transform);
+                    _heldItem = pickUpDrop;
+                    break;
             }
+        }
+    }
+
+    void InteractHeld()
+    {
+        if (_heldItem && _holdingItem)
+        {
+            _heldItem.ChargeThrow();
+        }
+    }
+
+    void InteractReleased()
+    {
+        if (!_holdingItem && _heldItem)
+        {
+            _holdingItem = true;
+        }
+        else if (_heldItem && _heldItem.Throw())
+        {
+            _heldItem = null;
+            _holdingItem = false;
         }
     }
 

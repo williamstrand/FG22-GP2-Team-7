@@ -71,7 +71,7 @@ public class CharacterController : MonoBehaviour
         _inputHandler.OnPlayerAction -= PlayerAction;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         Move(_inputHandler.MoveInput);
         Rotate();
