@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6584270893590054220}
   - component: {fileID: 7287941732532943207}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,6 +103,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1b6b5d0adf1ee34e9eee81b45dac91b, type: 3}
       propertyPath: m_Name
       value: FormationSmall2 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1b6b5d0adf1ee34e9eee81b45dac91b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1b6b5d0adf1ee34e9eee81b45dac91b, type: 3}
