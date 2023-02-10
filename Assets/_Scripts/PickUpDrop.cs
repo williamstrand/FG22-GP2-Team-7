@@ -8,14 +8,14 @@ public class PickUpDrop : MonoBehaviour
     private Transform _pickUpPoint;
     [SerializeField] private Transform _player;
     
-
+    [Header("Pickup/Drop")]
     [SerializeField] private float _pickUpDistance;
     [SerializeField] private float _forceMultiplier;
     [SerializeField] private float _baseForce;
-
     [SerializeField] private bool _readyToThrow;
     [SerializeField] private bool _itemIsPicked;
     
+    [Header("Push/Pull")]
     [SerializeField] private float _pushPullDistance;
     [SerializeField] private float _pushPullMultiplier;
     [SerializeField] private float _pushPullBaseForce;
@@ -23,7 +23,7 @@ public class PickUpDrop : MonoBehaviour
     [SerializeField] private bool _isPulling;
 
     private Rigidbody _rigidbody;
-    // Start is called before the first frame update
+    
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();

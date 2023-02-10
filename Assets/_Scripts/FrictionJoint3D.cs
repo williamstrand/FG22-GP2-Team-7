@@ -7,17 +7,17 @@ public class FrictionJoint3D : MonoBehaviour {
     [Range(0,1)]
     public float Friction;
 
-    protected Rigidbody Rigidbody;
+    protected Rigidbody rigidbody;
     
     void Awake()
     {
-        Rigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
-        Rigidbody.velocity = Rigidbody.velocity * (1 - Friction);
-        Rigidbody.angularVelocity = Rigidbody.angularVelocity * (1 - Friction);
+        rigidbody.velocity = rigidbody.velocity * (1 - Friction);
+        rigidbody.angularVelocity = rigidbody.angularVelocity * (1 - Friction);
     }
 
 
