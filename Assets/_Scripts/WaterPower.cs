@@ -4,11 +4,12 @@ using UnityEngine;
 public class WaterPower : MonoBehaviour
 {
     LineRenderer _aimLineRenderer;
-    [SerializeField] ParticleSystem _waterPowerParticles;
+    ParticleSystem _waterPowerParticles;
 
     void Awake()
     {
         _aimLineRenderer = GetComponent<LineRenderer>();
+        _waterPowerParticles = GetComponent<ParticleSystem>();
     }
 
     /// <summary>
