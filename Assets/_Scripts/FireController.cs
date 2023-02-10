@@ -2,21 +2,35 @@ using UnityEngine;
 
 public class FireController : MonoBehaviour
 {
-    [SerializeField] FirePropagation _firePropagation;
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("IgnitionSource"))
+        if (other.CompareTag("IgnitableObject"))
         {
-            _firePropagation.IgniteFire();
+            IgnitedObject ignitedObject = other.GetComponent<IgnitedObject>();
+            ignitedObject.Ignite();
+            
+
+            FirePropagation firePropagation = other.GetComponent<FirePropagation>();
+            if (firePropagation != null)
+            {
+                firePropagation.IgniteFire();
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("IgnitionSource"))
+        if (other.CompareTag("IgnitableObject"))
         {
-            _firePropagation.PutOutFire();
+            IgnitedObject ignitedObject = other.GetComponent<IgnitedObject>();
+            ignitedObject.Extinguish();
+
+            FirePropagation firePropagation = other.GetComponent<FirePropagation>();
+            if (firePropagation != null)
+            {
+                firePropagation.PutOutFire();
+            }
         }
     }
+
 }
