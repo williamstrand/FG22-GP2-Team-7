@@ -29,7 +29,7 @@ public class IgnitedObject : MonoBehaviour
             if (_currentHealth <= 0)
             {
                 _isOnFire = false;
-                _animator.SetBool("falling", true);
+                _animator.SetBool("isBurnt", true);
             }
         }
     }
