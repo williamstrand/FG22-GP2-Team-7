@@ -118,22 +118,33 @@ public class CharacterController : MonoBehaviour
             _currentSpeed = Mathf.Clamp(_currentSpeed, 0, _maxSpeed);
 
             var direction3D = new Vector3(_lastDirection.x, 0, _lastDirection.y).normalized;
-            var dirWithCamera = _cameraTransform.right * direction3D.x + new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z) * direction3D.z;
+            var dirWithCamera = DirectionToCameraDirection(direction3D, _cameraTransform.forward);
             _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * dirWithCamera);
         }
     }
 
+    /// <summary>
+    /// Rotates the character when moving.
+    /// </summary>
     protected virtual void Rotate()
     {
         var dir = _inputHandler.MoveInput;
         var targetDir = new Vector3(dir.x, 0, dir.y);
 
         if (targetDir == Vector3.zero) return;
-        
-        var dirWithCamera = _cameraTransform.right * targetDir.x + new Vector3(_cameraTransform.forward.x, 0,_cameraTransform.forward.z) * targetDir.z;
+
+        var dirWithCamera = DirectionToCameraDirection(targetDir, _cameraTransform.forward);
         _rb.rotation = Quaternion.RotateTowards(_rb.rotation, Quaternion.LookRotation(dirWithCamera, transform.up), _rotationSpeed * Time.deltaTime * 360);
     }
-    
+
+    /// <summary>
+    /// Translates a direction in relation to camera direction.
+    /// </summary>
+    /// <param name="direction">the direction.</param>
+    /// <param name="cameraDirection">the camera direction.</param>
+    /// <returns>the new direction as a Vector3.</returns>
+    protected Vector3 DirectionToCameraDirection(Vector3 direction, Vector3 cameraDirection) => cameraDirection * direction.x + new Vector3(cameraDirection.x, 0, cameraDirection.z) * direction.z;
+
     /// <summary>
     /// Makes the character jump.
     /// </summary>
