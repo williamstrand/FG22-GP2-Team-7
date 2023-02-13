@@ -51,7 +51,7 @@ public class PickUpDrop : MonoBehaviour, IInteractable
         GetComponent<Collider>().enabled = false;
         _rigidbody.isKinematic = true;
         transform.position = _pickUpPoint.position;
-        transform.parent = GameObject.Find("PickupPoint").transform;
+        transform.parent = _player.Find("PickupPoint").transform;
 
         _itemIsPicked = true;
         _forceMultiplier = 0;
