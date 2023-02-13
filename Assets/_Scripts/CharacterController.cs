@@ -118,7 +118,7 @@ public class CharacterController : MonoBehaviour
             _currentSpeed = Mathf.Clamp(_currentSpeed, 0, _maxSpeed);
 
             var direction3D = new Vector3(_lastDirection.x, 0, _lastDirection.y).normalized;
-            var dirWithCamera = DirectionToCameraDirection(direction3D, _cameraTransform.forward);
+            var dirWithCamera = DirectionToCameraDirection(direction3D, _cameraTransform);
             _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * dirWithCamera);
         }
     }
@@ -133,7 +133,7 @@ public class CharacterController : MonoBehaviour
 
         if (targetDir == Vector3.zero) return;
 
-        var dirWithCamera = DirectionToCameraDirection(targetDir, _cameraTransform.forward);
+        var dirWithCamera = DirectionToCameraDirection(targetDir, _cameraTransform);
         _rb.rotation = Quaternion.RotateTowards(_rb.rotation, Quaternion.LookRotation(dirWithCamera, transform.up), _rotationSpeed * Time.deltaTime * 360);
     }
 
@@ -141,9 +141,9 @@ public class CharacterController : MonoBehaviour
     /// Translates a direction in relation to camera direction.
     /// </summary>
     /// <param name="direction">the direction.</param>
-    /// <param name="cameraDirection">the camera direction.</param>
+    /// <param name="camera">the camera transform.</param>
     /// <returns>the new direction as a Vector3.</returns>
-    protected Vector3 DirectionToCameraDirection(Vector3 direction, Vector3 cameraDirection) => cameraDirection * direction.x + new Vector3(cameraDirection.x, 0, cameraDirection.z) * direction.z;
+    protected Vector3 DirectionToCameraDirection(Vector3 direction, Transform camera) => camera.right * direction.x + new Vector3(camera.forward.x, 0, camera.forward.z) * direction.z;
 
     /// <summary>
     /// Makes the character jump.

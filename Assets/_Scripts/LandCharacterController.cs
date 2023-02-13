@@ -17,7 +17,7 @@ public class LandCharacterController : CharacterController
 
     LandPlayerState _playerState = LandPlayerState.Default;
     PickUpDrop _heldItem;
-    bool _holdingItem = false;
+    //bool _holdingItem = false;
 
     public enum LandPlayerState
     {
@@ -58,7 +58,6 @@ public class LandCharacterController : CharacterController
             case LandPlayerState.Default:
                 base.Rotate();
                 break;
-
         }
     }
 
@@ -108,60 +107,65 @@ public class LandCharacterController : CharacterController
                     _currentClimbable.StopClimb();
                     _currentClimbable = null;
                     StopClimb();
-                    break;
+                    return;
 
                 case Climbable climbable:
                     climbable.StartClimb(this);
                     _currentClimbable = climbable;
                     StartClimb();
-                    break;
+                    return;
 
                 case Catapult when _playerState == LandPlayerState.Catapult:
                     _catapult.ExitCatapult(this);
                     _catapult = null;
                     _playerState = LandPlayerState.Default;
-                    break;
+                    return;
 
                 case Catapult catapult when !_heldItem:
                     catapult.EnterCatapult(this);
                     _playerState = LandPlayerState.Catapult;
                     _catapult = catapult;
-                    break;
+                    return;
 
                 case Catapult catapult when _heldItem:
                     _heldItem.Drop();
                     catapult.LoadCoconut(_heldItem);
                     _heldItem = null;
-                    break;
+                    return;
 
                 case PickUpDrop pickUpDrop:
-                    if (_heldItem) break;
                     pickUpDrop.Pickup(transform);
                     _heldItem = pickUpDrop;
-                    break;
+                    return;
             }
+        }
+
+        if (_heldItem)
+        {
+            _heldItem.Drop();
+            _heldItem = null;
         }
     }
 
     void InteractHeld()
     {
-        if (_heldItem && _holdingItem)
-        {
-            _heldItem.ChargeThrow();
-        }
+        //if (_heldItem && _holdingItem)
+        //{
+        //    _heldItem.ChargeThrow();
+        //}
     }
 
     void InteractReleased()
     {
-        if (!_holdingItem && _heldItem)
-        {
-            _holdingItem = true;
-        }
-        else if (_heldItem && _heldItem.Throw())
-        {
-            _heldItem = null;
-            _holdingItem = false;
-        }
+        //if (!_holdingItem && _heldItem)
+        //{
+        //    _holdingItem = true;
+        //}
+        //else if (_heldItem && _heldItem.Throw())
+        //{
+        //    _heldItem = null;
+        //    _holdingItem = false;
+        //}
     }
 
     protected override void PlayerAction()
