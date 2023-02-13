@@ -58,7 +58,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f27641effaa3e5343b1701567712cfc0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -66,7 +66,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise:
-        m_Texture: {fileID: 2800000, guid: 95c7cc79adc3c7a4b8784b33d24ba797, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -114,16 +114,16 @@ Material:
     - _Glossiness: 0
     - _GlossinessSource: 0
     - _GlossyReflections: 0
-    - _MaxTessDistance: 70.3
+    - _MaxTessDistance: 100
     - _Metallic: 0
-    - _NoiseScale: 0.06
-    - _NoiseWeight: 0.1
+    - _NoiseScale: 0.516
+    - _NoiseWeight: 0.195
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _PathBlending: 1.52
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimPower: 0.6
+    - _RimPower: 20
     - _Shininess: 0
     - _Smoothness: 0.5
     - _SmoothnessSource: 1
@@ -131,20 +131,20 @@ Material:
     - _SnowDepth: 0.3
     - _SnowHeight: 0.43
     - _SnowPathStrength: 2
-    - _SnowTextureOpacity: 0.3
-    - _SnowTextureScale: 0.3
+    - _SnowTextureOpacity: 1.325
+    - _SnowTextureScale: 0.019
     - _SparkCutoff: 0.9
-    - _SparkleScale: 4.74
+    - _SparkleScale: 0
     - _SpecSource: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _Tess: 20
+    - _Tess: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.6509434, g: 0.48061243, b: 0.4022339, a: 1}
-    - _Color: {r: 0.6509434, g: 0.48061234, b: 0.40223387, a: 1}
+    - _Color: {r: 0.5, g: 0.18293992, b: 0.035377353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _PathColorIn: {r: 0.5566038, g: 0.4542097, b: 0.4542097, a: 1}
     - _PathColorOut: {r: 0.5, g: 0.5, b: 1, a: 1}
