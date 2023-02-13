@@ -33,6 +33,7 @@ public class CharacterController : MonoBehaviour
     protected InputHandler _inputHandler;
     protected Rigidbody _rb;
     protected Collider _collider;
+    [SerializeField] protected Transform _cameraTransform;
 
     protected virtual void Awake()
     {
@@ -117,7 +118,8 @@ public class CharacterController : MonoBehaviour
             _currentSpeed = Mathf.Clamp(_currentSpeed, 0, _maxSpeed);
 
             var direction3D = new Vector3(_lastDirection.x, 0, _lastDirection.y).normalized;
-            _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * direction3D);
+            var dirWithCamera = _cameraTransform.right * direction3D.x + _cameraTransform.forward * direction3D.z;
+            _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * dirWithCamera);
         }
     }
 
@@ -127,8 +129,9 @@ public class CharacterController : MonoBehaviour
         var targetDir = new Vector3(dir.x, 0, dir.y);
 
         if (targetDir == Vector3.zero) return;
-
-        _rb.rotation = Quaternion.RotateTowards(_rb.rotation, Quaternion.LookRotation(targetDir, transform.up), _rotationSpeed * Time.deltaTime * 360);
+        
+        var dirWithCamera = _cameraTransform.right * targetDir.x + Vector3.forward * Mathf.Sign(_cameraTransform.forward.z) * targetDir.z;
+        _rb.rotation = Quaternion.RotateTowards(_rb.rotation, Quaternion.LookRotation(dirWithCamera, transform.up), _rotationSpeed * Time.deltaTime * 360);
     }
     
     /// <summary>
