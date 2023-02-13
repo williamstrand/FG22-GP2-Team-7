@@ -118,7 +118,7 @@ public class CharacterController : MonoBehaviour
             _currentSpeed = Mathf.Clamp(_currentSpeed, 0, _maxSpeed);
 
             var direction3D = new Vector3(_lastDirection.x, 0, _lastDirection.y).normalized;
-            var dirWithCamera = _cameraTransform.right * direction3D.x + _cameraTransform.forward * direction3D.z;
+            var dirWithCamera = _cameraTransform.right * direction3D.x + new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z) * direction3D.z;
             _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * dirWithCamera);
         }
     }
@@ -130,7 +130,7 @@ public class CharacterController : MonoBehaviour
 
         if (targetDir == Vector3.zero) return;
         
-        var dirWithCamera = _cameraTransform.right * targetDir.x + Vector3.forward * Mathf.Sign(_cameraTransform.forward.z) * targetDir.z;
+        var dirWithCamera = _cameraTransform.right * targetDir.x + new Vector3(_cameraTransform.forward.x, 0,_cameraTransform.forward.z) * targetDir.z;
         _rb.rotation = Quaternion.RotateTowards(_rb.rotation, Quaternion.LookRotation(dirWithCamera, transform.up), _rotationSpeed * Time.deltaTime * 360);
     }
     
