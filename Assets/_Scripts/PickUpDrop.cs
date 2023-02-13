@@ -3,7 +3,7 @@ using UnityEngine;
 public class PickUpDrop : MonoBehaviour, IInteractable
 {
     private Transform _pickUpPoint;
-    [SerializeField] private Transform _player;
+    private Transform _player;
 
     [Header("Pickup/Drop")]
     [SerializeField] private float _pickUpDistance;
@@ -29,7 +29,7 @@ public class PickUpDrop : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        PushPull();
+        //PushPull();
     }
 
     public void ChargeThrow()
@@ -42,47 +42,39 @@ public class PickUpDrop : MonoBehaviour, IInteractable
 
     public void Pickup(Transform player)
     {
+        _player = player;
         _pickUpDistance = Vector3.Distance(_player.position, transform.position);
 
-        if (_pickUpDistance <= 2)
-        {
-            if (!_itemIsPicked && _pickUpPoint.childCount < 1)
-            {
-                GetComponent<Rigidbody>().useGravity = false;
-                GetComponent<Collider>().enabled = false;
-                _rigidbody.isKinematic = true;
-                transform.position = _pickUpPoint.position;
-                transform.parent = GameObject.Find("PickupPoint").transform;
+        if (_itemIsPicked || _pickUpPoint.childCount >= 1) return;
 
-                _itemIsPicked = true;
-                _forceMultiplier = 0;
-                _readyToThrow = true;
+        GetComponent<Rigidbody>().useGravity = false;
+        GetComponent<Collider>().enabled = false;
+        _rigidbody.isKinematic = true;
+        transform.position = _pickUpPoint.position;
+        transform.parent = GameObject.Find("PickupPoint").transform;
 
-            }
-        }
+        _itemIsPicked = true;
+        _forceMultiplier = 0;
+        _readyToThrow = true;
     }
 
     public bool Throw()
     {
-        if (_itemIsPicked)
+        if (!_itemIsPicked) return false;
+        
+        if (_forceMultiplier > 1)
         {
-
-            if (_forceMultiplier > 1)
-            {
-                _rigidbody.AddForce(_player.transform.TransformDirection(0, 0, 1) * _forceMultiplier);
-                transform.parent = null;
-                GetComponent<Rigidbody>().useGravity = true;
-                GetComponent<Collider>().enabled = true;
-                _itemIsPicked = false;
-                _forceMultiplier = 0;
-                _rigidbody.isKinematic = false;
-                _readyToThrow = false;
-                return true;
-            }
+            _rigidbody.AddForce(_player.transform.TransformDirection(0, 0, 1) * _forceMultiplier);
+            transform.parent = null;
+            GetComponent<Rigidbody>().useGravity = true;
+            GetComponent<Collider>().enabled = true;
+            _itemIsPicked = false;
             _forceMultiplier = 0;
-            return false;
+            _rigidbody.isKinematic = false;
+            _readyToThrow = false;
+            return true;
         }
-
+        _forceMultiplier = 0;
         return false;
     }
 
