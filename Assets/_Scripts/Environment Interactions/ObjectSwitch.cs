@@ -4,7 +4,13 @@ public class ObjectSwitch : MonoBehaviour
 {
     [SerializeField] private GameObject _object;
     [SerializeField] private TriggerController _trigger;
+    
+    /// <summary>
+    /// Toggle showing/hiding objects
+    /// </summary>
     [SerializeField] private bool revealWhenPressed = true;
+    
+    [Header("Object Fading")]
     [SerializeField] private bool fadeInOut = false;
     [SerializeField] private float fadeDuration = 1f;
 

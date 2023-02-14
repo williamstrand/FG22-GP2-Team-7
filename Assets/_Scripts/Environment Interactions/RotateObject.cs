@@ -3,39 +3,39 @@ using UnityEngine;
 
 public class RotateObject : MonoBehaviour
 {
-    public TriggerController triggerController;
-    public float rotationAmount = 90f;
-    public Vector3 rotationAxis = Vector3.up;
-    public float speed = 1f;
-    public bool rotateContinuously = false;
-    public float damping = 10f;
+    [SerializeField] TriggerController _triggerController;
+    [SerializeField] float _rotationAmount = 90f;
+    [SerializeField] Vector3 _rotationAxis = Vector3.up;
+    [SerializeField] float _speed = 1f;
+    [SerializeField] bool _rotateContinuously = false;
+    [SerializeField] float _damping = 10f;
 
-    private float totalRotation = 0f;
+    private float _totalRotation = 0f;
 
     private void Update()
     {
-        if (triggerController.isPressed)
+        if (_triggerController.isPressed)
         {
-            if (!rotateContinuously)
+            if (!_rotateContinuously)
             {
-                float rotationThisFrame = rotationAmount * speed * Time.deltaTime;
-                float rotationLeft = rotationAmount - totalRotation;
+                float rotationThisFrame = _rotationAmount * _speed * Time.deltaTime;
+                float rotationLeft = _rotationAmount - _totalRotation;
 
                 if (rotationLeft <= rotationThisFrame)
                 {
-                    transform.Rotate(rotationAxis, rotationLeft);
-                    triggerController.isPressed = false;
-                    totalRotation = 0f;
+                    transform.Rotate(_rotationAxis, rotationLeft);
+                    _triggerController.isPressed = false;
+                    _totalRotation = 0f;
                 }
                 else
                 {
-                    transform.Rotate(rotationAxis, rotationThisFrame);
-                    totalRotation += rotationThisFrame;
+                    transform.Rotate(_rotationAxis, rotationThisFrame);
+                    _totalRotation += rotationThisFrame;
                 }
             }
             else
             {
-                transform.Rotate(rotationAxis, rotationAmount * speed * Time.deltaTime);
+                transform.Rotate(_rotationAxis, _rotationAmount * _speed * Time.deltaTime);
             }
         }
     }
