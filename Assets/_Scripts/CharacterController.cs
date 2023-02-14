@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(InputHandler), typeof(Rigidbody))]
@@ -25,7 +24,7 @@ public class CharacterController : MonoBehaviour
     [Range(0, 2)][SerializeField] float _groundCheckRadius = .45f;
     [Space(15)]
     [Tooltip("Should character be affected by gravity?")]
-    [SerializeField] protected bool _applyGravity = true;
+    protected bool _applyGravity = true;
     float _currentSpeed;
     Vector2 _lastDirection = Vector2.zero;
 

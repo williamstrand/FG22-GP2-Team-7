@@ -30,11 +30,6 @@ public class Catapult : MonoBehaviour, IInteractable
         _lineRenderer = GetComponent<LineRenderer>();
     }
 
-    void Start()
-    {
-        // TODO: Add manual loading of coconut.
-    }
-
     /// <summary>
     /// Fires the catapult.
     /// </summary>
@@ -47,7 +42,6 @@ public class Catapult : MonoBehaviour, IInteractable
         SetAim(AimAngle);
 
         _coconut.transform.SetParent(null);
-        // TODO: Optimize
         _coconut.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * Force, ForceMode.VelocityChange);
 
         ClearAim();
@@ -73,8 +67,7 @@ public class Catapult : MonoBehaviour, IInteractable
     /// <param name="player">the player.</param>
     public void EnterCatapult(LandCharacterController player)
     {
-        player.transform.position = _cockpit.position;
-        player.transform.rotation = _cockpit.rotation;
+        player.transform.SetPositionAndRotation(_cockpit.position, _cockpit.rotation);
         player.transform.SetParent(_cockpit);
         DrawAim();
     }
