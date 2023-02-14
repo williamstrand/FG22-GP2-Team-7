@@ -47,6 +47,11 @@ public class SpikeTrap : MonoBehaviour
         {
             RetractSpikes();
         }
+
+        if (other.CompareTag("Player") || other.CompareTag ("Coconut"))
+        {
+            RaiseSpikes();
+        }
     }
 
     void RaiseSpikes()
