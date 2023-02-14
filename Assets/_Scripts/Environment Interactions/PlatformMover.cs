@@ -4,39 +4,42 @@ using UnityEngine;
 
 public class PlatformMover : MonoBehaviour
 {
-    public Transform startPoint;
-    public Transform endPoint;
-    public float speed = 1.0f;
-    public GameObject triggerObject;
-    public bool shouldReturn = false;
-    private TriggerController triggerController;
-    private Vector3 currentTarget;
-    private float startTime;
-    private float journeyLength;
+    [Header("Platform Positions")]
+    [SerializeField] Transform _startPoint;
+    [SerializeField] Transform _endPoint;
+    
+    [SerializeField] float _speed = 1.0f;
+    [SerializeField] GameObject _triggerObject;
+    [SerializeField] bool _shouldReturn = false;
+    
+    private TriggerController _triggerController;
+    private Vector3 _currentTarget;
+    private float _startTime;
+    private float _journeyLength;
 
     private void Start()
     {
-        if (triggerObject != null)
+        if (_triggerObject != null)
         {
-            triggerController = triggerObject.GetComponent<TriggerController>();
-            if (triggerController == null)
+            _triggerController = _triggerObject.GetComponent<TriggerController>();
+            if (_triggerController == null)
             {
                 Debug.LogError("The trigger object does not have a TriggerController script attached.");
             }
         }
         else
         {
-            Debug.LogError("The trigger object has not been set in the ElevatorMover script.");
+            Debug.LogError("The trigger object has not been set in the PlatformMover script.");
         }
 
-        currentTarget = endPoint.position;
-        startTime = Time.time;
-        journeyLength = Vector3.Distance(startPoint.position, endPoint.position);
+        _currentTarget = _endPoint.position;
+        _startTime = Time.time;
+        _journeyLength = Vector3.Distance(_startPoint.position, _endPoint.position);
     }
 
     private void Update()
     {
-        if (triggerController != null && triggerController.isPressed)
+        if (_triggerController != null && _triggerController.isPressed)
         {
             MovePlatform();
         }
@@ -44,15 +47,15 @@ public class PlatformMover : MonoBehaviour
 
     private void MovePlatform()
     {
-        float distCovered = (Time.time - startTime) * speed;
-        float fracJourney = distCovered / journeyLength;
-        transform.position = Vector3.Lerp(startPoint.position, currentTarget, fracJourney);
+        float distCovered = (Time.time - _startTime) * _speed;
+        float fracJourney = distCovered / _journeyLength;
+        transform.position = Vector3.Lerp(_startPoint.position, _currentTarget, fracJourney);
 
-       if (transform.position == startPoint.position)
+       if (transform.position == _startPoint.position)
         {
-            currentTarget = endPoint.position;
-            startTime = Time.time;
-            journeyLength = Vector3.Distance(startPoint.position, endPoint.position);
+            _currentTarget = _endPoint.position;
+            _startTime = Time.time;
+            _journeyLength = Vector3.Distance(_startPoint.position, _endPoint.position);
         }
     }
 }
