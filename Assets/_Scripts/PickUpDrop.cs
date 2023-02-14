@@ -61,7 +61,7 @@ public class PickUpDrop : MonoBehaviour, IInteractable
     public bool Throw()
     {
         if (!_itemIsPicked) return false;
-        
+
         if (_forceMultiplier > 1)
         {
             _rigidbody.AddForce(_player.transform.TransformDirection(0, 0, 1) * _forceMultiplier);

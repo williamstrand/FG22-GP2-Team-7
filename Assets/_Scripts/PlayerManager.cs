@@ -40,7 +40,6 @@ public class PlayerManager : MonoBehaviour
             case Player.Swimmie:
                 yield return BindPlayer2(action);
                 break;
-
         }
         action.Disable();
     }

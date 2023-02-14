@@ -51,6 +51,7 @@ public class Climbable : MonoBehaviour, IInteractable
     Vector3 GetPositionOnClimbable(float height) => Vector3.Lerp(_bottomPoint.position, _topPoint.position, height);
 
 #if UNITY_EDITOR
+
     [Header("Gizmos")]
     [SerializeField] bool _drawGizmos = true;
     [SerializeField] Color _gizmoColor = Color.red;
