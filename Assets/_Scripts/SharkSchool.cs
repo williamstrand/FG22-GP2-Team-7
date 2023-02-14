@@ -26,6 +26,9 @@ public class SharkSchool : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Disables collider for a set duration.
+    /// </summary>
     IEnumerator DisableCollider()
     {
         _collider.enabled = false;

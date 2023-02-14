@@ -10,6 +10,7 @@ public class Checkpoint : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<CharacterController>().SetRespawnPoint(_respawnPoint.position);
+            gameObject.SetActive(false);
         }
     }
 }

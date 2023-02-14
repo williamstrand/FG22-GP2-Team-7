@@ -46,6 +46,9 @@ public class CharacterController : MonoBehaviour
         _respawnPoint = transform.position;
     }
 
+    /// <summary>
+    /// Finds collider component on GameObject or it's children.
+    /// </summary>
     void FindCollider()
     {
         if (TryGetComponent(out _collider)) return;
@@ -172,7 +175,7 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     protected virtual void Interact()
     {
-
+        Debug.Log("Interact");
     }
 
     /// <summary>
@@ -183,11 +186,18 @@ public class CharacterController : MonoBehaviour
         Debug.Log("Player Action");
     }
 
+    /// <summary>
+    /// Sets the respawn point.
+    /// </summary>
+    /// <param name="respawnPoint">the position of the respawn point.</param>
     public void SetRespawnPoint(Vector3 respawnPoint)
     {
         _respawnPoint = respawnPoint;
     }
 
+    /// <summary>
+    /// Respawns the character.
+    /// </summary>
     public virtual void Respawn()
     {
         transform.position = _respawnPoint;
