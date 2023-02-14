@@ -3,7 +3,7 @@ using UnityEngine;
 public class LandCharacterController : CharacterController
 {
     // TODO: Rework everything about picking up and dropping.
-    
+
     [Header("Climbing")]
     [Range(0, 2)][SerializeField] float _climbSpeed = 1f;
     Climbable _currentClimbable;

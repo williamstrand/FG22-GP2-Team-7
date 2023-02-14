@@ -15,7 +15,7 @@ public class Checkpoint : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Player")) return;
-        
+
         var characterController = other.gameObject.GetComponent<CharacterController>();
         switch (characterController)
         {

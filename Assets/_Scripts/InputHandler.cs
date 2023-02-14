@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.Users;
 [RequireComponent(typeof(PlayerInput))]
 public class InputHandler : MonoBehaviour
 {
-    public static int PlayerIndex { get; private set; } = 0;
+    public static int PlayerIndex { get; private set; }
 
     public Action OnJump;
     public Action OnInteract;
