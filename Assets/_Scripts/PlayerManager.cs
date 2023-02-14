@@ -92,8 +92,8 @@ public class PlayerManager : MonoBehaviour
         }
         Debug.Log("Player 2 bound to " + _device2.displayName);
 
-        _landPlayer.Join(_device1, dualKeyboard, 0);
-        _waterPlayer.Join(_device2, dualKeyboard, 1);
+        _waterPlayer.Join(_device2, dualKeyboard);
+        _landPlayer.Join(_device1, dualKeyboard);
     }
 
     IEnumerator BindPlayer1(InputAction action)

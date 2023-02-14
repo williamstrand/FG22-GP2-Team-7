@@ -6,6 +6,8 @@ using UnityEngine.InputSystem.Users;
 [RequireComponent(typeof(PlayerInput))]
 public class InputHandler : MonoBehaviour
 {
+    public static int PlayerIndex { get; private set; } = 0;
+
     public Action OnJump;
     public Action OnInteract;
     public Action OnInteractUp;
@@ -31,13 +33,14 @@ public class InputHandler : MonoBehaviour
         _controls.Player.PlayerAction.performed += _ => OnPlayerAction?.Invoke();
     }
 
-    public void Join(InputDevice device, bool keyboard2 = false, int playerIndex = 0)
+    public void Join(InputDevice device, bool keyboard2 = false)
     {
         var user = InputUser.PerformPairingWithDevice(device);
         user.AssociateActionsWithUser(_controls);
         if (keyboard2)
         {
-            user.ActivateControlScheme(playerIndex == 0 ? "KBM" : "KBM2");
+            user.ActivateControlScheme(PlayerIndex == 0 ? "KBM" : "KBM2");
+            PlayerIndex++;
         }
         _controls.Enable();
     }
