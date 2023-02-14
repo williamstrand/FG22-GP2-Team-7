@@ -17,19 +17,12 @@ public class LandCharacterController : CharacterController
 
     LandPlayerState _playerState = LandPlayerState.Default;
     PickUpDrop _heldItem;
-    //bool _holdingItem = false;
 
     public enum LandPlayerState
     {
         Default,
         Climbing,
         Catapult
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-        _inputHandler.OnInteractUp += InteractReleased;
     }
 
     protected override void FixedUpdate()
@@ -39,15 +32,6 @@ public class LandCharacterController : CharacterController
             case LandPlayerState.Default:
                 base.FixedUpdate();
                 break;
-        }
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-        if (_inputHandler.InteractButtonHeld)
-        {
-            InteractHeld();
         }
     }
 
@@ -87,7 +71,6 @@ public class LandCharacterController : CharacterController
             case LandPlayerState.Catapult:
                 _catapult.SetAim(_catapult.AimAngle + direction.y * _catapultAimSpeed);
                 _catapult.SetForce(_catapult.Force + direction.x * _catapultAimSpeed * .1f);
-                //_catapult.SetRotation(direction.x * _catapultAimSpeed * .3f);
                 break;
         }
     }
@@ -140,32 +123,10 @@ public class LandCharacterController : CharacterController
             }
         }
 
-        if (_heldItem)
-        {
-            _heldItem.Drop();
-            _heldItem = null;
-        }
-    }
+        if (!_heldItem) return;
 
-    void InteractHeld()
-    {
-        //if (_heldItem && _holdingItem)
-        //{
-        //    _heldItem.ChargeThrow();
-        //}
-    }
-
-    void InteractReleased()
-    {
-        //if (!_holdingItem && _heldItem)
-        //{
-        //    _holdingItem = true;
-        //}
-        //else if (_heldItem && _heldItem.Throw())
-        //{
-        //    _heldItem = null;
-        //    _holdingItem = false;
-        //}
+        _heldItem.Drop();
+        _heldItem = null;
     }
 
     protected override void PlayerAction()

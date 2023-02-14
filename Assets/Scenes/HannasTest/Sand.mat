@@ -90,6 +90,7 @@ Material:
     - _DistortAmplitude: 2
     - _DistortNoise: 4
     - _DstBlend: 0
+    - _DuneShineHeightMin: 0.5
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -98,14 +99,14 @@ Material:
     - _GrainPeriod: 200
     - _GrainShineStrength: 500
     - _Metallic: 0
-    - _NormalStrength: 10
+    - _NormalStrength: 5
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _PolygonSides: 6
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _ShineThreshold: 0.95
+    - _ShineThreshold: 0.9
     - _SineAmplitude: 0.5
     - _SineFrequency: 5
     - _SineRotation: 10
