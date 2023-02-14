@@ -17,9 +17,9 @@ public class SharkSchool : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Player":
-                Debug.Log("Player has entered the shark school");
+                other.GetComponent<CharacterController>().Respawn();
                 break;
-            
+
             case "Coconut":
                 StartCoroutine(DisableCollider());
                 break;

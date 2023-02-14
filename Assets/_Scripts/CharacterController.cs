@@ -29,6 +29,8 @@ public class CharacterController : MonoBehaviour
     float _currentSpeed;
     Vector2 _lastDirection = Vector2.zero;
 
+    Vector3 _respawnPoint;
+
     // References
     protected InputHandler _inputHandler;
     protected Rigidbody _rb;
@@ -41,6 +43,7 @@ public class CharacterController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = false;
         FindCollider();
+        _respawnPoint = transform.position;
     }
 
     void FindCollider()
@@ -178,6 +181,17 @@ public class CharacterController : MonoBehaviour
     protected virtual void PlayerAction()
     {
         Debug.Log("Player Action");
+    }
+
+    public void SetRespawnPoint(Vector3 respawnPoint)
+    {
+        _respawnPoint = respawnPoint;
+    }
+
+    public virtual void Respawn()
+    {
+        transform.position = _respawnPoint;
+        _rb.velocity = Vector3.zero;
     }
 
 #if UNITY_EDITOR
