@@ -22,6 +22,7 @@ public class Checkpoint : MonoBehaviour
             case LandCharacterController when _player == Player.Landie:
             case WaterCharacterController when _player == Player.Swimmie:
                 characterController.SetRespawnPoint(_respawnPoint.position);
+                gameObject.SetActive(false);
                 break;
         }
     }
