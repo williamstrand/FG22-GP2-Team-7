@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class LandCharacterController : CharacterController
 {
-    // TODO: Rework everything about picking up and dropping.
-
     [Header("Climbing")]
     [Range(0, 2)][SerializeField] float _climbSpeed = 1f;
     Climbable _currentClimbable;
@@ -12,9 +10,9 @@ public class LandCharacterController : CharacterController
     [SerializeField] float _catapultAimSpeed = 1f;
     Catapult _catapult;
 
-    [Space(15)]
-    [SerializeField] float _interactRange = 1f;
-
+    [Header("Pickup")] 
+    [SerializeField] Transform _pickupPoint;
+    
     LandPlayerState _playerState = LandPlayerState.Default;
     PickUpDrop _heldItem;
 
@@ -117,7 +115,7 @@ public class LandCharacterController : CharacterController
                     return;
 
                 case PickUpDrop pickUpDrop:
-                    pickUpDrop.Pickup(transform);
+                    pickUpDrop.Pickup(_pickupPoint);
                     _heldItem = pickUpDrop;
                     return;
             }
