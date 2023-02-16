@@ -13,8 +13,11 @@ public class PickUpDrop : MonoBehaviour, IInteractable
         _collider = GetComponent<Collider>();
         _respawnPoint = transform.position;
     }
-    
 
+    /// <summary>
+    /// Pick up object and set it's parent to pickupPoint.
+    /// </summary>
+    /// <param name="pickupPoint"></param>
     public void Pickup(Transform pickupPoint)
     {
         _rigidbody.useGravity = false;
@@ -25,6 +28,9 @@ public class PickUpDrop : MonoBehaviour, IInteractable
         transform.parent = pickupPoint.transform;
     }
 
+    /// <summary>
+    /// Drop object.
+    /// </summary>
     public void Drop()
     {
         transform.parent = null;
