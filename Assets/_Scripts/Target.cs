@@ -13,6 +13,6 @@ public class Target : MonoBehaviour
 
     public void Hit()
     {
-        _animator.SetTrigger("IsHit");
+        _animator.SetTrigger("isHit");
     }
 }
