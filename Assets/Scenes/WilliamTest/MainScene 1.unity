@@ -9964,7 +9964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4998997230725685389, guid: 23a19d0dc30aa24409745f6d9ebf7941, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 64.8
+      value: 67.88
       objectReference: {fileID: 0}
     - target: {fileID: 4998997230725685389, guid: 23a19d0dc30aa24409745f6d9ebf7941, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15314,7 +15314,7 @@ GameObject:
   - component: {fileID: 1937610903}
   m_Layer: 4
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16963,10 +16963,6 @@ PrefabInstance:
     - target: {fileID: 6390472127413455938, guid: a9951b2f3f9f86f43bbf2b465376268a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6390472127413455939, guid: a9951b2f3f9f86f43bbf2b465376268a, type: 3}
-      propertyPath: _moveSpeed
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6390472127413455949, guid: a9951b2f3f9f86f43bbf2b465376268a, type: 3}
       propertyPath: m_Name
