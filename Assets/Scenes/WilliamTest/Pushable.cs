@@ -1,10 +1,12 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class Pushable : MonoBehaviour, IInteractable
 {
     Transform _player;
     [SerializeField] float _pushOffset;
-    bool _canPush;
+    public bool IsPushed => _player != null;
+    bool _canPush = true;
 
     /// <summary>
     /// Starts pushing the object.

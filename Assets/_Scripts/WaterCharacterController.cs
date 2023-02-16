@@ -130,7 +130,7 @@ public class WaterCharacterController : CharacterController
                 {
                     _pushable.Push(5);
                 }
-                else if (direction.x != 0)
+                if (direction.x != 0)
                 {
                     _pushable.Turn(direction.x);
                 }
