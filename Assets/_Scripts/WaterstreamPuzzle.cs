@@ -15,6 +15,8 @@ public class WaterstreamPuzzle : MonoBehaviour
     [SerializeField] Transform[] _lane2Positions;
     bool _lane2Ready;
 
+    [SerializeField] float _moveSpeed = 1;
+
     void OnEnable()
     {
         _dropOffZone.OnDropOff += OnDropOff;
@@ -34,6 +36,8 @@ public class WaterstreamPuzzle : MonoBehaviour
         }
         else if (_lane2Pushable == null)
         {
+            if (_lane1Pushable == pushable) return;
+
             _lane2Pushable = pushable;
             StartCoroutine(MoveToStart(2));
         }
@@ -128,7 +132,7 @@ public class WaterstreamPuzzle : MonoBehaviour
 
         while (lerp < 1)
         {
-            lerp += Time.deltaTime;
+            lerp += Time.deltaTime * _moveSpeed;
             if (lane == 1)
             {
                 _lane1Pushable.transform.position = Vector3.Lerp(_lane1Positions[startPos].position, _lane1Positions[endPos].position, lerp);
