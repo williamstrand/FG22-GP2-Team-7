@@ -15,14 +15,17 @@ public class WaterCharacterController : CharacterController
     [Header("Water Power")]
     [Range(1, 5)][SerializeField] float _waterPowerTurnSpeed = 1;
 
-
+    [Header("Push Pull")]
+    [SerializeField] float _pushForce = 5f;
+    Pushable _pushable;
     WaterPower _waterPower;
 
     public enum WaterPlayerState
     {
         Default,
         Diving,
-        WaterPower
+        WaterPower,
+        Pushing
     }
 
     protected override void Awake()
@@ -58,15 +61,41 @@ public class WaterCharacterController : CharacterController
         switch (_playerState)
         {
             case WaterPlayerState.Default:
-                _playerState = WaterPlayerState.WaterPower;
-                _waterPower.ActivateWaterPower();
+                DefaultInteract();
                 break;
 
             case WaterPlayerState.WaterPower:
                 _playerState = WaterPlayerState.Default;
                 _waterPower.DeactivateWaterPower();
                 break;
+
+            case WaterPlayerState.Pushing:
+                _pushable.StopPush();
+                _playerState = WaterPlayerState.Default;
+                break;
         }
+    }
+
+    void DefaultInteract()
+    {
+        var closeObjects = Physics.OverlapSphere(transform.position, _interactRange);
+        foreach (var closeObject in closeObjects)
+        {
+            if (!closeObject.TryGetComponent(out IInteractable interactable)) continue;
+            switch (interactable)
+            {
+                case Pushable pushable:
+                    _pushable = pushable;
+                    pushable.StartPush(transform);
+                    _playerState = WaterPlayerState.Pushing;
+                    var rot = (new Vector3(pushable.transform.position.x, transform.position.y, pushable.transform.position.z) - transform.position).normalized;
+                    transform.rotation = Quaternion.LookRotation(rot);
+                    return;
+            }
+        }
+
+        _playerState = WaterPlayerState.WaterPower;
+        _waterPower.ActivateWaterPower();
     }
 
     protected override void Jump()
@@ -93,6 +122,18 @@ public class WaterCharacterController : CharacterController
 
             case WaterPlayerState.WaterPower:
                 _waterPower.Turn(direction.x, _waterPowerTurnSpeed);
+                break;
+
+            case WaterPlayerState.Pushing:
+                if (_pushable == null) return;
+                if (direction.y > 0)
+                {
+                    _pushable.Push(5);
+                }
+                if (direction.x != 0)
+                {
+                    _pushable.Turn(direction.x);
+                }
                 break;
         }
     }
