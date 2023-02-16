@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     [SerializeField] Canvas pauseCanvas;
+    [SerializeField] Animator animator;
+    private int sceneToLoad;
 
     private void Awake()
     {
@@ -22,10 +24,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void FadeToScene(int levelIndex)
+    {
+        sceneToLoad = levelIndex;
+        animator.SetTrigger("FadeOut");
+    }
+
     //start new game
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     //pause game - call on pause input
@@ -45,7 +53,7 @@ public class UIManager : MonoBehaviour
     public void ReturnGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(levelIndex);
     }
 
     //quit game
