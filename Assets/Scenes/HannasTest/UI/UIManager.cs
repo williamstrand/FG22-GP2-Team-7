@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+    [SerializeField] Canvas pauseCanvas;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class UIManager : MonoBehaviour
     //resume game
     public void ResumeGame()
     {
+        pauseCanvas.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
 
