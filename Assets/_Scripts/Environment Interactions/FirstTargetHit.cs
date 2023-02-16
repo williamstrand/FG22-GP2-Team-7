@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SharkDucking : MonoBehaviour
+public class FirstTargetHit : MonoBehaviour
 {
     private Animator _animator;
 
@@ -13,7 +13,7 @@ public class SharkDucking : MonoBehaviour
     {
         if (other.CompareTag("Coconut"))
         {
-            _animator.Play("Ducking");
+            _animator.SetBool("isHit", true);
         }
     }
 }
