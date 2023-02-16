@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+    [SerializeField] Canvas pauseCanvas;
+    [SerializeField] Animator animator;
+    private int sceneToLoad;
 
     private void Awake()
     {
@@ -21,29 +24,36 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void FadeToScene(int levelIndex)
+    {
+        sceneToLoad = levelIndex;
+        animator.SetTrigger("FadeOut");
+    }
+
     //start new game
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneToLoad);
     }
 
-    //pause game - call on pause input not a button hehe
+    //pause game - call on pause input
     public void PauseGame()
     {
-        Time.timeScale = 0; //might be better to tell gamemanager to set timescale depending on gamestate
+        Time.timeScale = 0;
     }
 
     //resume game
     public void ResumeGame()
     {
-        Time.timeScale = 1f; //might be better to tell gamemanager to set timescale depending on gamestate
+        pauseCanvas.gameObject.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     //return to menu
     public void ReturnGame()
     {
-        Time.timeScale = 1f; //might be better to tell gamemanager to set timescale depending on gamestate
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(levelIndex);
     }
 
     //quit game
