@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &471317081142434274
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 915457935938911004, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+      propertyPath: m_Name
+      value: CoconutBasket (with rope)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+--- !u!4 &105263857514231876 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 576333797042364838, guid: 6688c30f0c22bf044bef0f946cddd230, type: 3}
+  m_PrefabInstance: {fileID: 471317081142434274}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &730560720218035690
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 105263857514231876}
+    m_Modifications:
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.7526157
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.194152
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619000677099636002, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_Name
+      value: BasketRope (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+--- !u!1001 &5464403799078636004
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 105263857514231876}
+    m_Modifications:
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7291
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0287602
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.8348618
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851719649692749983, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619000677099636002, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
+      propertyPath: m_Name
+      value: BasketRope
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec21de083e1f9884790fc8f9c287dcc3, type: 3}
