@@ -27,22 +27,22 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    //pause game - call on pause input not a button hehe
+    //pause game - call on pause input
     public void PauseGame()
     {
-        Time.timeScale = 0; //might be better to tell gamemanager to set timescale depending on gamestate
+        Time.timeScale = 0;
     }
 
     //resume game
     public void ResumeGame()
     {
-        Time.timeScale = 1f; //might be better to tell gamemanager to set timescale depending on gamestate
+        Time.timeScale = 1f;
     }
 
     //return to menu
     public void ReturnGame()
     {
-        Time.timeScale = 1f; //might be better to tell gamemanager to set timescale depending on gamestate
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
