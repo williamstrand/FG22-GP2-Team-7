@@ -43,7 +43,7 @@ public class WaterstreamPuzzle : MonoBehaviour
         }
     }
 
-    void OnLever1()
+    public void OnLever1()
     {
         if (_lane1Position == 1 - 1)
         {
@@ -60,7 +60,7 @@ public class WaterstreamPuzzle : MonoBehaviour
         }
     }
 
-    void OnLever2()
+    public void OnLever2()
     {
         if (_lane1Position == 2 - 1)
         {
@@ -77,7 +77,7 @@ public class WaterstreamPuzzle : MonoBehaviour
         }
     }
 
-    void OnLever3()
+    public void OnLever3()
     {
         if (_lane1Position == 3 - 1)
         {
