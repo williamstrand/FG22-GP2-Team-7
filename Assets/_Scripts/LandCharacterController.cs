@@ -184,4 +184,12 @@ public class LandCharacterController : CharacterController
         _collider.enabled = true;
         _rb.velocity = Vector3.zero;
     }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Water"))
+        {
+            Respawn();
+        }
+    }
 }
