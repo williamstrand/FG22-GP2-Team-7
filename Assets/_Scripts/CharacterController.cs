@@ -169,7 +169,6 @@ public class CharacterController : MonoBehaviour
             lerp += Time.deltaTime * 5;
 
             _audioSource.volume = Mathf.Lerp(volume, 0, lerp);
-            Debug.Log((_audioSource.volume));
             yield return null;
         }
 
