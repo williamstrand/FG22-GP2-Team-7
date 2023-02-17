@@ -101,20 +101,20 @@ public class WaterstreamPuzzle : MonoBehaviour
 
     void Update()
     {
-        if (_lever1)
-        {
-            OnLever1();
-        }
+        //if (_lever1)
+        //{
+        //    OnLever1();
+        //}
 
-        if (_lever2)
-        {
-            OnLever2();
-        }
+        //if (_lever2)
+        //{
+        //    OnLever2();
+        //}
 
-        if (_lever3)
-        {
-            OnLever3();
-        }
+        //if (_lever3)
+        //{
+        //    OnLever3();
+        //}
     }
 
     IEnumerator MoveLane(int lane, int startPos, int endPos)
