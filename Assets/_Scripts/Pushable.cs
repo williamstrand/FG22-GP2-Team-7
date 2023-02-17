@@ -31,7 +31,7 @@ public class Pushable : MonoBehaviour, IInteractable
             }
         }
 
-        //player.GetComponent<Collider>().enabled = false;
+        player.GetComponent<Collider>().enabled = false;
         player.GetComponent<Rigidbody>().isKinematic = true;
         player.transform.position = new Vector3(closest.x, player.transform.position.y, closest.z);
         player.SetParent(transform);
