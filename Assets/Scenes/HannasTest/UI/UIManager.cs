@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
     }
 
     //return to menu
-    public void ReturnGame()
+    public void ReturnGame(int levelIndex)
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(levelIndex);
