@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Target : MonoBehaviour
 {
     Animator _animator;
     [SerializeField] float _cooldown = 1;
     float _currentCooldown;
+    [SerializeField] UnityEvent _onHit;
 
     void Awake()
     {
@@ -20,7 +22,7 @@ public class Target : MonoBehaviour
         _currentCooldown = _cooldown;
         _animator.SetTrigger("isHit");
 
-        // TODO: Add functionality
+        _onHit?.Invoke();
     }
 
     void Update()
