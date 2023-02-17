@@ -24,17 +24,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    //fade to a scene
     public void FadeToScene(int levelIndex)
     {
         sceneToLoad = levelIndex;
         animator.SetTrigger("FadeOut");
     }
 
-    //start new game
-    public void PlayGame()
+    public void FadeComplete()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneToLoad);
     }
+
 
     //pause game - call on pause input
     public void PauseGame()
@@ -47,13 +49,6 @@ public class UIManager : MonoBehaviour
     {
         pauseCanvas.gameObject.SetActive(false);
         Time.timeScale = 1f;
-    }
-
-    //return to menu
-    public void ReturnGame(int levelIndex)
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(levelIndex);
     }
 
     //quit game
