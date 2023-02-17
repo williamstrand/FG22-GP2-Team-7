@@ -77,7 +77,6 @@ public class LandCharacterController : CharacterController
                             _audioFader = null;
                         }
                         _audioSource.volume = 1;
-                        _audioSource.volume = 1;
                         _audioSource.PlayOneShot(_climbSound, _climbVolume);
                     }
                 }
