@@ -41,6 +41,7 @@ public class UIManager : MonoBehaviour
     //pause game - call on pause input
     public void PauseGame()
     {
+        pauseCanvas.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 
