@@ -1,4 +1,4 @@
-using System.Numerics;
+using System.Collections;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
@@ -17,6 +17,8 @@ public class CharacterController : MonoBehaviour
     [Tooltip("Should acceleration and deceleration be used")]
     [SerializeField] bool _useAcceleration = true;
     [Range(0, 10)][SerializeField] float _rotationSpeed = 2;
+    [SerializeField] AudioClip _footstepSound;
+    [SerializeField] float _footstepVolume = 1;
 
     [Header("Jump")]
     [Range(0, 50)][SerializeField] float _jumpForce = 5;
@@ -29,7 +31,7 @@ public class CharacterController : MonoBehaviour
 
     [Space(15)]
     [SerializeField] protected float _interactRange = 1f;
-    
+
     protected bool _applyGravity = true;
     protected float _currentSpeed;
     Vector2 _lastDirection = Vector2.zero;
@@ -42,11 +44,15 @@ public class CharacterController : MonoBehaviour
     protected Rigidbody _rb;
     protected Collider _collider;
     [SerializeField] protected Transform _cameraTransform;
+    protected AudioSource _audioSource;
+
+    protected Coroutine _audioFader;
 
     protected virtual void Awake()
     {
         _inputHandler = GetComponent<InputHandler>();
         _rb = GetComponent<Rigidbody>();
+        _audioSource = GetComponent<AudioSource>();
         _rb.useGravity = false;
         FindCollider();
         _respawnPoint = transform.position;
@@ -110,6 +116,24 @@ public class CharacterController : MonoBehaviour
     /// <param name="direction">the direction to move the character.</param>
     protected virtual void Move(Vector2 direction)
     {
+        if (_currentSpeed > 0)
+        {
+            if (!_audioSource.isPlaying)
+            {
+                if (_audioFader != null)
+                {
+                    StopCoroutine(_audioFader);
+                    _audioFader = null;
+                }
+                _audioSource.volume = 1;
+                _audioSource.PlayOneShot(_footstepSound, _footstepVolume);
+            }
+        }
+        else
+        {
+            _audioFader ??= StartCoroutine(FadeOutSound());
+        }
+
         _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
         if (!_useAcceleration)
         {
@@ -133,6 +157,24 @@ public class CharacterController : MonoBehaviour
             _dirWithCamera = DirectionToCameraDirection(direction3D, _cameraTransform);
             _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * _dirWithCamera);
         }
+    }
+
+    protected IEnumerator FadeOutSound()
+    {
+        var lerp = 0f;
+        var volume = _audioSource.volume;
+
+        while (lerp < 1)
+        {
+            lerp += Time.deltaTime * 5;
+
+            _audioSource.volume = Mathf.Lerp(volume, 0, lerp);
+            Debug.Log((_audioSource.volume));
+            yield return null;
+        }
+
+        _audioSource.Stop();
+        _audioFader = null;
     }
 
     /// <summary>
