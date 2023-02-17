@@ -5,6 +5,8 @@ public class LandCharacterController : CharacterController
     [Header("Climbing")]
     [Range(0, 2)][SerializeField] float _climbSpeed = 1f;
     Climbable _currentClimbable;
+    [SerializeField] AudioClip _climbSound;
+    [SerializeField] float _climbVolume;
 
     [Header("Catapult")]
     [SerializeField] float _catapultAimSpeed = 1f;
@@ -63,6 +65,25 @@ public class LandCharacterController : CharacterController
                     case < 0:
                         _currentClimbable.Climb(Mathf.FloorToInt(direction.y), _climbSpeed);
                         break;
+                }
+
+                if (direction.y != 0)
+                {
+                    if (!_audioSource.isPlaying)
+                    {
+                        if (_audioFader != null)
+                        {
+                            StopCoroutine(_audioFader);
+                            _audioFader = null;
+                        }
+                        _audioSource.volume = 1;
+                        _audioSource.volume = 1;
+                        _audioSource.PlayOneShot(_climbSound, _climbVolume);
+                    }
+                }
+                else
+                {
+                    _audioFader ??= StartCoroutine(FadeOutSound());
                 }
                 break;
 

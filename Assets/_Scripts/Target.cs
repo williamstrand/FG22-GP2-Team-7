@@ -19,6 +19,8 @@ public class Target : MonoBehaviour
 
         _currentCooldown = _cooldown;
         _animator.SetTrigger("isHit");
+
+        // TODO: Add functionality
     }
 
     void Update()
