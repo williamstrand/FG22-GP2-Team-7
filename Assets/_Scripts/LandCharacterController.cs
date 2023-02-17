@@ -118,6 +118,10 @@ public class LandCharacterController : CharacterController
                     pickUpDrop.Pickup(_pickupPoint);
                     _heldItem = pickUpDrop;
                     return;
+                
+                case LeverPull leverPull:
+                    leverPull.Pull();
+                    break;
             }
         }
 
