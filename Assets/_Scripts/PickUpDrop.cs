@@ -2,38 +2,48 @@ using UnityEngine;
 
 public class PickUpDrop : MonoBehaviour, IInteractable
 {
-    bool _itemIsPicked;
-
     Rigidbody _rigidbody;
     Collider _collider;
+    [SerializeField] bool _respawnInWater = true;
+    Vector3 _respawnPoint;
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
+        _respawnPoint = transform.position;
     }
 
-    public void Pickup(Transform player)
+    /// <summary>
+    /// Pick up object and set it's parent to pickupPoint.
+    /// </summary>
+    /// <param name="pickupPoint"></param>
+    public void Pickup(Transform pickupPoint)
     {
-        if (_itemIsPicked) return;
-
         _rigidbody.useGravity = false;
         _collider.enabled = false;
         _rigidbody.isKinematic = true;
-
-        var pickupPoint = player.Find("PickupPoint");
+        
         transform.position = pickupPoint.position;
         transform.parent = pickupPoint.transform;
-
-        _itemIsPicked = true;
     }
 
+    /// <summary>
+    /// Drop object.
+    /// </summary>
     public void Drop()
     {
         transform.parent = null;
         _rigidbody.useGravity = true;
         _collider.enabled = true;
-        _itemIsPicked = false;
         _rigidbody.isKinematic = false;
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Water") && _respawnInWater)
+        {
+            transform.position = _respawnPoint;
+        }
     }
 }

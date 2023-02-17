@@ -11,6 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: b7839dad95683814aa64166edc107ae2, type: 3}
   m_ValidKeywords:
   - _ALPHATEST_ON
+  - _COLORADDSUBDIFF_ON
   - _EMISSION
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords:
@@ -103,7 +104,7 @@ Material:
     - _ClearCoat: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorMode: 0
+    - _ColorMode: 1
     - _Cull: 2
     - _Cutoff: 0
     - _DecalAngleFadeSupported: 1
@@ -128,7 +129,7 @@ Material:
     - _GlossinessSource: 0
     - _GlossyReflections: 0
     - _LightingEnabled: 1
-    - _Metallic: 0
+    - _Metallic: 0.096
     - _Mode: 0
     - _NoiseScale: 4
     - _OcclusionStrength: 1
@@ -151,10 +152,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.2971698, g: 0.62484086, b: 1, a: 0.2901961}
+    - _BaseColor: {r: 0, g: 0.9411765, b: 1, a: 0.92156863}
     - _BaseColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.29716977, g: 0.62484074, b: 1, a: 0.2901961}
+    - _Color: {r: 0, g: 0.9411765, b: 1, a: 0.92156863}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0.59896106, g: 0.9649928, b: 2.1185474, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}

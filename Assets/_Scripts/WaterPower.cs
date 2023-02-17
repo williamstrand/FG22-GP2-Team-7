@@ -60,6 +60,7 @@ public class WaterPower : MonoBehaviour
     /// </summary>
     void UpdateAim()
     {
+        // TODO: FIx
         _aimLineRenderer.SetPosition(0, transform.position);
         _aimLineRenderer.SetPosition(1, transform.position + transform.forward * 10 + transform.up * 2);
     }
@@ -76,6 +77,9 @@ public class WaterPower : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
-        // TODO: Add particle collision detection
+        if (other.TryGetComponent<Target>(out var hit))
+        {
+            hit.Hit();
+        }
     }
 }

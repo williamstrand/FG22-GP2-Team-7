@@ -1,4 +1,8 @@
+using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(InputHandler), typeof(Rigidbody))]
 public class CharacterController : MonoBehaviour
@@ -22,11 +26,14 @@ public class CharacterController : MonoBehaviour
     [Range(0, 2)][SerializeField] float _groundCheckDistance = .5f;
     [Tooltip("The radius of the ground check.")]
     [Range(0, 2)][SerializeField] float _groundCheckRadius = .45f;
+
     [Space(15)]
-    [Tooltip("Should character be affected by gravity?")]
+    [SerializeField] protected float _interactRange = 1f;
+    
     protected bool _applyGravity = true;
-    float _currentSpeed;
+    protected float _currentSpeed;
     Vector2 _lastDirection = Vector2.zero;
+    protected Vector3 _dirWithCamera;
 
     Vector3 _respawnPoint;
 
@@ -63,14 +70,14 @@ public class CharacterController : MonoBehaviour
         Debug.LogError($"No collider on {name} or it's children");
     }
 
-    void OnEnable()
+    protected virtual void OnEnable()
     {
         _inputHandler.OnJump += Jump;
         _inputHandler.OnInteract += Interact;
         _inputHandler.OnPlayerAction += PlayerAction;
     }
 
-    void OnDisable()
+    protected virtual void OnDisable()
     {
         _inputHandler.OnJump -= Jump;
         _inputHandler.OnInteract -= Interact;
@@ -123,8 +130,8 @@ public class CharacterController : MonoBehaviour
             _currentSpeed = Mathf.Clamp(_currentSpeed, 0, _maxSpeed);
 
             var direction3D = new Vector3(_lastDirection.x, 0, _lastDirection.y).normalized;
-            var dirWithCamera = DirectionToCameraDirection(direction3D, _cameraTransform);
-            _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * dirWithCamera);
+            _dirWithCamera = DirectionToCameraDirection(direction3D, _cameraTransform);
+            _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * _dirWithCamera);
         }
     }
 
