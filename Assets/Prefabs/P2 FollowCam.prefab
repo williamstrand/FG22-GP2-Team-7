@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5309100959412190856}
-  m_LocalRotation: {x: 0.3026195, y: -0.000000016399598, z: 0.000000005206986, w: 0.95311147}
+  m_LocalRotation: {x: 0.30261943, y: 0, z: 0, w: 0.95311147}
   m_LocalPosition: {x: -9.7, y: 15.08, z: -32.379997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -32,7 +32,7 @@ Transform:
   - {fileID: 5309100961078852348}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 35.23, y: 0, z: 0}
 --- !u!114 &5309100959412190859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 50
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 5309100961078852348}
   - component: {fileID: 5309100961078852345}
   - component: {fileID: 5309100961078852350}
-  - component: {fileID: 5309100961078852351}
+  - component: {fileID: 1644484272}
   m_Layer: 12
   m_Name: cm
   m_TagString: Untagged
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
---- !u!114 &5309100961078852351
+--- !u!114 &1644484272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 10.24, z: -14.5}
+  m_BindingMode: 4
+  m_FollowOffset: {x: -30, y: 20, z: -20}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
