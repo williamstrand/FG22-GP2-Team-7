@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     public void FadeToScene(int levelIndex)
     {
         sceneToLoad = levelIndex;
-        animator.SetTrigger("FadeOut");
+        animator.SetTrigger("SceneFadeOut");
     }
 
     public void FadeComplete()
