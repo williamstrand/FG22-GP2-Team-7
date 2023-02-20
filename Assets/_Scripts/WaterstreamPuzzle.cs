@@ -5,6 +5,10 @@ public class WaterstreamPuzzle : MonoBehaviour
 {
     [SerializeField] DropOffZone _dropOffZone;
 
+    [SerializeField] Vector2Int _lever1Positions;
+    [SerializeField] Vector2Int _lever2Positions;
+    [SerializeField] Vector2Int _lever3Positions;
+
     Pushable _lane1Pushable;
     int _lane1Position;
     [SerializeField] Transform[] _lane1Positions;
@@ -16,6 +20,11 @@ public class WaterstreamPuzzle : MonoBehaviour
     bool _lane2Ready;
 
     [SerializeField] float _moveSpeed = 1;
+
+    [Header("Testing")]
+    [SerializeField] bool _lever1;
+    [SerializeField] bool _lever2;
+    [SerializeField] bool _lever3;
 
     void OnEnable()
     {
@@ -29,8 +38,13 @@ public class WaterstreamPuzzle : MonoBehaviour
 
     void OnDropOff(Pushable pushable)
     {
+        pushable.GetComponent<Rigidbody>().isKinematic = true;
+        pushable.GetComponent<Collider>().enabled = false;
+        pushable.enabled = false;
+
         if (_lane1Pushable == null)
         {
+            _lane1Position = 0;
             _lane1Pushable = pushable;
             StartCoroutine(MoveToStart(1));
         }
@@ -38,6 +52,7 @@ public class WaterstreamPuzzle : MonoBehaviour
         {
             if (_lane1Pushable == pushable) return;
 
+            _lane1Position = 0;
             _lane2Pushable = pushable;
             StartCoroutine(MoveToStart(2));
         }
@@ -45,76 +60,85 @@ public class WaterstreamPuzzle : MonoBehaviour
 
     public void OnLever1()
     {
-        if (_lane1Position == 1 - 1)
-        {
-            if (!_lane1Ready) return;
-            StartCoroutine(MoveLane(1, _lane1Position, _lane1Position + 1));
-            _lane1Position++;
-        }
-
-        if (_lane2Position == 2 - 1)
-        {
-            if (!_lane2Ready) return;
-            StartCoroutine(MoveLane(2, _lane2Position, _lane2Position + 1));
-            _lane2Position++;
-        }
+        _lever1 = !_lever1;
     }
 
     public void OnLever2()
     {
-        if (_lane1Position == 2 - 1)
-        {
-            if (!_lane1Ready) return;
-            StartCoroutine(MoveLane(1, _lane1Position, _lane1Position + 1));
-            _lane1Position++;
-        }
-
-        if (_lane2Position == 3 - 1)
-        {
-            if (!_lane2Ready) return;
-            StartCoroutine(MoveLane(2, _lane2Position, _lane2Position + 1));
-            _lane2Position++;
-        }
+        _lever2 = !_lever2;
     }
 
     public void OnLever3()
     {
-        if (_lane1Position == 3 - 1)
-        {
-            if (!_lane1Ready) return;
-            StartCoroutine(MoveLane(1, _lane1Position, _lane1Position + 1));
-            _lane1Position++;
-        }
-
-        if (_lane2Position == 1 - 1)
-        {
-            if (!_lane2Ready) return;
-            StartCoroutine(MoveLane(2, _lane2Position, _lane2Position + 1));
-            _lane2Position++;
-        }
+        _lever3 = !_lever3;
     }
 
-    [Header("Testing")]
-    [SerializeField] bool _lever1;
-    [SerializeField] bool _lever2;
-    [SerializeField] bool _lever3;
+
 
     void Update()
     {
-        //if (_lever1)
-        //{
-        //    OnLever1();
-        //}
+        if (_lever1)
+        {
+            if (_lane1Position == _lever1Positions.x)
+            {
+                if (!_lane1Ready) return;
+                MoveLane1();
+            }
+        }
+        else
+        {
+            if (_lane2Position == _lever1Positions.y)
+            {
+                if (!_lane2Ready) return;
+                MoveLane2();
+            }
+        }
 
-        //if (_lever2)
-        //{
-        //    OnLever2();
-        //}
+        if (_lever2)
+        {
+            if (_lane1Position == _lever2Positions.x)
+            {
+                if (!_lane1Ready) return;
+                MoveLane1();
+            }
+        }
+        else
+        {
+            if (_lane2Position == _lever2Positions.y)
+            {
+                if (!_lane2Ready) return;
+                MoveLane2();
+            }
+        }
 
-        //if (_lever3)
-        //{
-        //    OnLever3();
-        //}
+        if (_lever3)
+        {
+            if (_lane1Position == _lever3Positions.x)
+            {
+                if (!_lane1Ready) return;
+                MoveLane1();
+            }
+        }
+        else
+        {
+            if (_lane2Position == _lever3Positions.y)
+            {
+                if (!_lane2Ready) return;
+                MoveLane2();
+            }
+        }
+    }
+
+    void MoveLane2()
+    {
+        StartCoroutine(MoveLane(2, _lane2Position, _lane2Position + 1));
+        _lane2Position++;
+    }
+
+    void MoveLane1()
+    {
+        StartCoroutine(MoveLane(1, _lane1Position, _lane1Position + 1));
+        _lane1Position++;
     }
 
     IEnumerator MoveLane(int lane, int startPos, int endPos)
@@ -150,6 +174,9 @@ public class WaterstreamPuzzle : MonoBehaviour
 
             if (_lane1Position + 1 >= _lane1Positions.Length)
             {
+                _lane1Pushable.enabled = false;
+                _lane1Pushable.GetComponent<Rigidbody>().isKinematic = false;
+                _lane1Pushable.GetComponent<Collider>().enabled = true;
                 _lane1Pushable = null;
             }
         }
@@ -159,6 +186,9 @@ public class WaterstreamPuzzle : MonoBehaviour
 
             if (_lane2Position + 1 >= _lane2Positions.Length)
             {
+                _lane2Pushable.enabled = false;
+                _lane2Pushable.GetComponent<Rigidbody>().isKinematic = false;
+                _lane2Pushable.GetComponent<Collider>().enabled = true;
                 _lane2Pushable = null;
             }
         }
