@@ -18,6 +18,7 @@ public class Catapult : MonoBehaviour, IInteractable
     [SerializeField] Transform _cockpit;
     [SerializeField] Transform _target;
     LineRenderer _lineRenderer;
+    Animator _animator;
 
     public float Force { get; private set; }
     public float AimAngle { get; private set; } = 45f;
@@ -28,6 +29,7 @@ public class Catapult : MonoBehaviour, IInteractable
     void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     /// <summary>
@@ -42,7 +44,13 @@ public class Catapult : MonoBehaviour, IInteractable
         SetAim(AimAngle);
 
         _coconut.transform.SetParent(null);
-        _coconut.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * Force, ForceMode.VelocityChange);
+        var rb = _coconut.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.AddForce(_shootPoint.forward * Force, ForceMode.VelocityChange);
+        Physics.IgnoreCollision(_coconut.GetComponent<Collider>(), GetComponent<Collider>(), false);
+
+        _animator.SetTrigger("Fire");
+        _coconut = null;
 
         ClearAim();
     }
@@ -59,6 +67,9 @@ public class Catapult : MonoBehaviour, IInteractable
         coconut.transform.position = _shootPoint.position;
         coconut.transform.SetParent(_shootPoint);
         _coconut = coconut;
+        _animator.SetTrigger("Load");
+        Physics.IgnoreCollision(coconut.GetComponent<Collider>(), GetComponent<Collider>(), true);
+        coconut.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     /// <summary>
