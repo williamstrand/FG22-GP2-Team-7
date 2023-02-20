@@ -19,6 +19,11 @@ public class Climbable : MonoBehaviour, IInteractable
         var botToCharacter = _characterTransform.position - _bottomPoint.position;
         _characterHeight = botToCharacter.magnitude / botToTop.magnitude;
         _characterTransform.position = GetPositionOnClimbable(_characterHeight);
+
+        var dir = -(character.transform.position - transform.position).normalized;
+
+        var rotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
+        character.transform.rotation = rotation;
     }
 
     /// <summary>
