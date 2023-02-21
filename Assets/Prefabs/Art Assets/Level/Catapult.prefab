@@ -171,6 +171,7 @@ MonoBehaviour:
   _shootPoint: {fileID: 4600812680529000847}
   _cockpit: {fileID: 1455124623}
   _target: {fileID: 1617525962}
+  _coconutPosition: {fileID: 9143045843272044149}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 144
@@ -568,5 +569,10 @@ Animator:
 --- !u!4 &1772420873173734091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b3fefb94ecf3eeb4d870b3e9bf18fd69, type: 3}
+  m_PrefabInstance: {fileID: 2238955429524632864}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9143045843272044149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2166018281370485931, guid: b3fefb94ecf3eeb4d870b3e9bf18fd69, type: 3}
   m_PrefabInstance: {fileID: 2238955429524632864}
   m_PrefabAsset: {fileID: 0}

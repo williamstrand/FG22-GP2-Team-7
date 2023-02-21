@@ -17,6 +17,7 @@ public class Catapult : MonoBehaviour, IInteractable
     [SerializeField] Transform _shootPoint;
     [SerializeField] Transform _cockpit;
     [SerializeField] Transform _target;
+    [SerializeField] Transform _coconutPosition;
     LineRenderer _lineRenderer;
     Animator _animator;
 
@@ -67,9 +68,9 @@ public class Catapult : MonoBehaviour, IInteractable
         var rb = coconut.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         rb.rotation = Quaternion.identity;
-        coconut.transform.position = _shootPoint.position;
-        coconut.transform.SetParent(_shootPoint);
-        coconut.gameObject.SetActive(false);
+        coconut.transform.position = _coconutPosition.position;
+        coconut.transform.SetParent(_coconutPosition);
+        coconut.transform.localPosition = new Vector3(0, .8f / 100f, 0);
         _coconut = coconut;
         Physics.IgnoreCollision(coconut.GetComponent<Collider>(), GetComponent<Collider>(), true);
         coconut.GetComponent<Rigidbody>().isKinematic = true;
@@ -78,7 +79,7 @@ public class Catapult : MonoBehaviour, IInteractable
 
     public void LoadComplete()
     {
-        _coconut.gameObject.SetActive(true);
+        _coconut.transform.position = _shootPoint.position;
         _canFire = true;
     }
 
@@ -172,6 +173,11 @@ public class Catapult : MonoBehaviour, IInteractable
         if (_cooldownTimer > 0)
         {
             _cooldownTimer -= Time.deltaTime;
+        }
+
+        if (_coconut)
+        {
+            _coconut.transform.localScale = _coconutPosition.localScale / 100f;
         }
     }
 
