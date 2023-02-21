@@ -45,6 +45,22 @@ public class LandCharacterController : CharacterController
         }
     }
 
+    protected override void Jump()
+    {
+        switch (_playerState)
+        {
+            case LandPlayerState.Default:
+                base.Jump();
+                break;
+
+            case LandPlayerState.Climbing:
+                _currentClimbable.StopClimb();
+                _currentClimbable = null;
+                StopClimb();
+                break;
+        }
+    }
+
     protected override void Move(Vector2 direction)
     {
         switch (_playerState)
@@ -119,7 +135,7 @@ public class LandCharacterController : CharacterController
                     return;
 
                 case PickUpDrop pickUpDrop:
-                    pickUpDrop.GetComponentInChildren<UIInteraction>().gameObject.SetActive(false);
+                    pickUpDrop.GetComponentInChildren<UIInteraction>().enabled = false;
                     pickUpDrop.Pickup(_pickupPoint);
                     _heldItem = pickUpDrop;
                     return;
@@ -132,8 +148,8 @@ public class LandCharacterController : CharacterController
 
         if (!_heldItem) return;
 
+        _heldItem.GetComponentInChildren<UIInteraction>().enabled = true;
         _heldItem.Drop();
-        _heldItem.GetComponentInChildren<UIInteraction>().gameObject.SetActive(true);
         _heldItem = null;
 
     }

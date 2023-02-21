@@ -19,31 +19,32 @@ public class CoconutBasket : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Coconut"))
+        if (!other.CompareTag("Coconut")) return;
+        
+        if (!_coconut1)
         {
-            if (!_coconut1)
-            {
-                _coconut1 = true;
-                other.transform.position = _coconut1Position.position;
-                other.GetComponent<Rigidbody>().isKinematic = true;
-                other.GetComponent<Collider>().enabled = false;
-            }
-            else if (!_coconut2)
-            {
-                _coconut2 = true;
-                other.transform.position = _coconut2Position.position;
-                other.GetComponent<Rigidbody>().isKinematic = true;
-                other.GetComponent<Collider>().enabled = false;
-            }
-            else
-            {
-                _coconutTrigger.enabled = false;
-            }
+            _coconut1 = true;
+            other.transform.position = _coconut1Position.position;
+            other.transform.parent = transform.parent;
+            other.GetComponent<Rigidbody>().isKinematic = true;
+            other.GetComponent<Collider>().enabled = false;
+        }
+        else if (!_coconut2)
+        {
+            _coconut2 = true;
+            other.transform.position = _coconut2Position.position;
+            other.transform.parent = transform.parent;
+            other.GetComponent<Rigidbody>().isKinematic = true;
+            other.GetComponent<Collider>().enabled = false;
+        }
+        else
+        {
+            _coconutTrigger.enabled = false;
+        }
 
-            if (_coconut1 && _coconut2)
-            {
-                _puzzleComplete?.Invoke();
-            }
+        if (_coconut1 && _coconut2)
+        {
+            _puzzleComplete?.Invoke();
         }
     }
 }
