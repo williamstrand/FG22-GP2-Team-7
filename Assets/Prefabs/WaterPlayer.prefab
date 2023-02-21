@@ -274,7 +274,6 @@ MonoBehaviour:
   _decelerationTime: 0.3
   _useAcceleration: 1
   _rotationSpeed: 1
-  _footstepSound: {fileID: 8300000, guid: 78b1cf9572d663646a528c82a484478f, type: 3}
   _footstepVolume: 0.1
   _jumpForce: 20
   _groundLayer:
@@ -284,10 +283,12 @@ MonoBehaviour:
   _groundCheckDistance: 0.5
   _groundCheckRadius: 0.45
   _interactRange: 1
+  _soundHolder: {fileID: 11400000, guid: 2807226fb7e39324f8d98784b413fc22, type: 2}
   _cameraTransform: {fileID: 0}
   _diveSpeed: 2
   _diveDepth: 1
   _waterPowerTurnSpeed: 1
+  _waterSquirtVolume: 0.2
   _pushForce: 5
 --- !u!54 &5856157690419383512
 Rigidbody:

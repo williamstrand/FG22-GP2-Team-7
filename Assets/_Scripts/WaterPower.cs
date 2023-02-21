@@ -15,15 +15,17 @@ public class WaterPower : MonoBehaviour
     /// <summary>
     /// Toggles water shooting.
     /// </summary>
-    public void ToggleShooting()
+    public bool ToggleShooting()
     {
         if (_waterPowerParticles.isEmitting)
         {
             _waterPowerParticles.Stop();
+            return false;
         }
         else
         {
             _waterPowerParticles.Play();
+            return true;
         }
     }
 

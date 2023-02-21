@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429dc0061aa247438abe53ba3962e9e, type: 3}
+  m_Name: SoundHolder
+  m_EditorClassIdentifier: 
+  <SandFootsteps>k__BackingField: {fileID: 8300000, guid: a6b86fe55e9295c49a529c32c71cd898, type: 3}
+  <RockFootsteps>k__BackingField: {fileID: 8300000, guid: 93b98afebe6510348b8d73db1a050a9d, type: 3}
+  <Climbing>k__BackingField: {fileID: 8300000, guid: d044a10fe3e752c4f8b7e29f4a9c17e7, type: 3}
+  <Swimming>k__BackingField: {fileID: 8300000, guid: 78b1cf9572d663646a528c82a484478f, type: 3}
+  <WaterSquirting>k__BackingField: {fileID: 8300000, guid: 66b8bbe7ceeafdb4fb0c9b5f4a025c09, type: 3}
+  <OceanLoop>k__BackingField: {fileID: 8300000, guid: ad1df64ce8d0cd4489de05aad43403e8, type: 3}
+  <SeagullLoop>k__BackingField: {fileID: 8300000, guid: 8d0a294879a9698438eb51421eb6755d, type: 3}
+  <BGM>k__BackingField: {fileID: 0}

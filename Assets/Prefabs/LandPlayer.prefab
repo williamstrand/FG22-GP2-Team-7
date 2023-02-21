@@ -182,7 +182,6 @@ MonoBehaviour:
   _decelerationTime: 0.3
   _useAcceleration: 1
   _rotationSpeed: 2
-  _footstepSound: {fileID: 8300000, guid: a6b86fe55e9295c49a529c32c71cd898, type: 3}
   _footstepVolume: 0.5
   _jumpForce: 20
   _groundLayer:
@@ -192,6 +191,7 @@ MonoBehaviour:
   _groundCheckDistance: 0.5
   _groundCheckRadius: 0.45
   _interactRange: 1
+  _soundHolder: {fileID: 11400000, guid: 2807226fb7e39324f8d98784b413fc22, type: 2}
   _cameraTransform: {fileID: 0}
   _climbSpeed: 1
   _climbSound: {fileID: 8300000, guid: d044a10fe3e752c4f8b7e29f4a9c17e7, type: 3}
