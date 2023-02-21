@@ -41,6 +41,9 @@ public class WaterCharacterController : CharacterController
     protected override void Update()
     {
         base.Update();
+
+        if (_playerState != WaterPlayerState.WaterPower) return;
+
         PlaySound(_soundHolder.WaterSquirting, _waterSquirtVolume, _waterPower.IsShooting);
     }
 
