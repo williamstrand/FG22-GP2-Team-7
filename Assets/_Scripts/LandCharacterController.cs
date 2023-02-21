@@ -52,6 +52,12 @@ public class LandCharacterController : CharacterController
             case LandPlayerState.Default:
                 base.Jump();
                 break;
+
+            case LandPlayerState.Climbing:
+                _currentClimbable.StopClimb();
+                _currentClimbable = null;
+                StopClimb();
+                break;
         }
     }
 
