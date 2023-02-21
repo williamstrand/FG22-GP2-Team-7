@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 [RequireComponent(typeof(AudioSource))]
 public class BgmController : MonoBehaviour

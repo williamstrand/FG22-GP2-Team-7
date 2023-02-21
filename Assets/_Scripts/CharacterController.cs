@@ -144,12 +144,18 @@ public abstract class CharacterController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Plays sound if condition is true, otherwise fades out sound.
+    /// </summary>
+    /// <param name="clip">the audio clip.</param>
+    /// <param name="volume">the volume.</param>
+    /// <param name="condition">the condition.</param>
     protected void PlaySound(AudioClip clip, float volume, bool condition)
     {
         if (condition)
         {
             if (_audioSource.isPlaying) return;
-            
+
             if (_audioFader != null)
             {
                 StopCoroutine(_audioFader);

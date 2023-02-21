@@ -11,9 +11,9 @@ public class LandCharacterController : CharacterController
     [SerializeField] float _catapultAimSpeed = 1f;
     Catapult _catapult;
 
-    [Header("Pickup")] 
+    [Header("Pickup")]
     [SerializeField] Transform _pickupPoint;
-    
+
     LandPlayerState _playerState = LandPlayerState.Default;
     PickUpDrop _heldItem;
     protected override AudioClip _footstepSound => _soundHolder.SandFootsteps;
@@ -122,7 +122,7 @@ public class LandCharacterController : CharacterController
                     pickUpDrop.Pickup(_pickupPoint);
                     _heldItem = pickUpDrop;
                     return;
-                
+
                 case LeverPull leverPull:
                     leverPull.Pull();
                     break;
