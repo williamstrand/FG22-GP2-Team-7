@@ -18,6 +18,8 @@ public class SoundHolder : ScriptableObject
     // General
     [field:SerializeField] public AudioClip OceanLoop { get; private set; }
     [field:SerializeField] public AudioClip SeagullLoop { get; private set; }
-    [field: SerializeField] public AudioClip BGM { get; private set; }
+    [field: SerializeField] public AudioClip BgmIntro { get; private set; }
+    [field: SerializeField] public AudioClip BgmLoop { get; private set; }
+
 
 }

@@ -5,6 +5,7 @@ public class WaterPower : MonoBehaviour
 {
     LineRenderer _aimLineRenderer;
     ParticleSystem _waterPowerParticles;
+    public bool IsShooting { get; private set; }
 
     void Awake()
     {
@@ -15,17 +16,17 @@ public class WaterPower : MonoBehaviour
     /// <summary>
     /// Toggles water shooting.
     /// </summary>
-    public bool ToggleShooting()
+    public void ToggleShooting()
     {
         if (_waterPowerParticles.isEmitting)
         {
+            IsShooting = false;
             _waterPowerParticles.Stop();
-            return false;
         }
         else
         {
+            IsShooting = true;
             _waterPowerParticles.Play();
-            return true;
         }
     }
 

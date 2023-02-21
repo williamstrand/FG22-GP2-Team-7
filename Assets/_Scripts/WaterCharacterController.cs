@@ -37,6 +37,12 @@ public class WaterCharacterController : CharacterController
         _waterPower = GetComponent<WaterPower>();
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        PlaySound(_soundHolder.WaterSquirting, _waterSquirtVolume, _waterPower.IsShooting);
+    }
+
     protected override void PlayerAction()
     {
 
@@ -54,8 +60,7 @@ public class WaterCharacterController : CharacterController
                 break;
 
             case WaterPlayerState.WaterPower:
-                var shooting = _waterPower.ToggleShooting();
-                PlaySound(_soundHolder.WaterSquirting, _waterSquirtVolume, shooting);
+                _waterPower.ToggleShooting();
                 break;
         }
     }

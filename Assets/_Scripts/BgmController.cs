@@ -31,8 +31,17 @@ public class BgmController : MonoBehaviour
         seagullLoop.Play();
 
         var bgmLoop = _audioSources[2];
-        bgmLoop.clip = _soundHolder.BGM;
+        bgmLoop.clip = _soundHolder.BgmIntro;
         bgmLoop.volume = _bgmVolume;
         bgmLoop.Play();
+    }
+
+    void Update()
+    {
+        if (!_audioSources[2].isPlaying)
+        {
+            _audioSources[2].clip = _soundHolder.BgmLoop;
+            _audioSources[2].loop = true;
+        }
     }
 }
