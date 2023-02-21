@@ -84,7 +84,7 @@ public class WaterPower : MonoBehaviour
             _lineRenderer.positionCount++;
             if (hit.Length > 0)
             {
-                _lineRenderer.SetPosition(i, hit[0].ClosestPoint(pos));
+                _lineRenderer.SetPosition(i, hit[0].ClosestPointOnBounds(pos));
                 break;
             }
             _lineRenderer.SetPosition(i, pos);
