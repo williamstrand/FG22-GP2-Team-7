@@ -22,6 +22,7 @@ public class Catapult : MonoBehaviour, IInteractable
 
     public float Force { get; private set; }
     public float AimAngle { get; private set; } = 45f;
+    bool _canFire;
 
     [Space(15)]
     [SerializeField] LayerMask _groundLayer;
@@ -39,6 +40,7 @@ public class Catapult : MonoBehaviour, IInteractable
     {
         if (_coconut == null) return;
         if (_cooldownTimer > 0) return;
+        if (!_canFire) return;
         _cooldownTimer = _cooldown;
 
         SetAim(AimAngle);
@@ -61,15 +63,23 @@ public class Catapult : MonoBehaviour, IInteractable
     /// <param name="coconut">the coconut.</param>
     public void LoadCoconut(PickUpDrop coconut)
     {
+        _animator.SetTrigger("Load");
         var rb = coconut.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         rb.rotation = Quaternion.identity;
         coconut.transform.position = _shootPoint.position;
         coconut.transform.SetParent(_shootPoint);
+        coconut.gameObject.SetActive(false);
         _coconut = coconut;
-        _animator.SetTrigger("Load");
         Physics.IgnoreCollision(coconut.GetComponent<Collider>(), GetComponent<Collider>(), true);
         coconut.GetComponent<Rigidbody>().isKinematic = true;
+        _canFire = false;
+    }
+
+    public void LoadComplete()
+    {
+        _coconut.gameObject.SetActive(true);
+        _canFire = true;
     }
 
     /// <summary>
