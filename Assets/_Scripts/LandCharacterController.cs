@@ -5,7 +5,6 @@ public class LandCharacterController : CharacterController
     [Header("Climbing")]
     [Range(0, 2)][SerializeField] float _climbSpeed = 1f;
     Climbable _currentClimbable;
-    [SerializeField] AudioClip _climbSound;
     [SerializeField] float _climbVolume;
 
     [Header("Catapult")]
@@ -17,6 +16,7 @@ public class LandCharacterController : CharacterController
     
     LandPlayerState _playerState = LandPlayerState.Default;
     PickUpDrop _heldItem;
+    protected override AudioClip _footstepSound => _soundHolder.SandFootsteps;
 
     public enum LandPlayerState
     {
@@ -67,23 +67,7 @@ public class LandCharacterController : CharacterController
                         break;
                 }
 
-                if (direction.y != 0)
-                {
-                    if (!_audioSource.isPlaying)
-                    {
-                        if (_audioFader != null)
-                        {
-                            StopCoroutine(_audioFader);
-                            _audioFader = null;
-                        }
-                        _audioSource.volume = 1;
-                        _audioSource.PlayOneShot(_climbSound, _climbVolume);
-                    }
-                }
-                else
-                {
-                    _audioFader ??= StartCoroutine(FadeOutSound());
-                }
+                PlaySound(_soundHolder.Climbing, _climbVolume, direction.y != 0);
                 break;
 
             case LandPlayerState.Catapult:

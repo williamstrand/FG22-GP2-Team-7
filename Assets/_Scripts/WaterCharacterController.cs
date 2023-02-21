@@ -14,11 +14,14 @@ public class WaterCharacterController : CharacterController
 
     [Header("Water Power")]
     [Range(1, 5)][SerializeField] float _waterPowerTurnSpeed = 1;
+    [SerializeField] float _waterSquirtVolume = 1;
 
     [Header("Push Pull")]
     [SerializeField] float _pushForce = 5f;
     Pushable _pushable;
     WaterPower _waterPower;
+
+    protected override AudioClip _footstepSound => _soundHolder.Swimming;
 
     public enum WaterPlayerState
     {
@@ -51,10 +54,13 @@ public class WaterCharacterController : CharacterController
                 break;
 
             case WaterPlayerState.WaterPower:
-                _waterPower.ToggleShooting();
+                var shooting = _waterPower.ToggleShooting();
+                PlaySound(_soundHolder.WaterSquirting, _waterSquirtVolume, shooting);
                 break;
         }
     }
+
+
 
     protected override void Interact()
     {
@@ -96,6 +102,9 @@ public class WaterCharacterController : CharacterController
 
         _playerState = WaterPlayerState.WaterPower;
         _waterPower.ActivateWaterPower();
+        _rb.velocity = Vector3.zero;
+        _currentSpeed = 0;
+        _audioFader ??= StartCoroutine(FadeOutSound());
     }
 
     protected override void Jump()

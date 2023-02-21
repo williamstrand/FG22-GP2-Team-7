@@ -5,7 +5,7 @@ using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(InputHandler), typeof(Rigidbody))]
-public class CharacterController : MonoBehaviour
+public abstract class CharacterController : MonoBehaviour
 {
     [Header("Move")]
     [Tooltip("Speed if acceleration is on")]
@@ -17,7 +17,7 @@ public class CharacterController : MonoBehaviour
     [Tooltip("Should acceleration and deceleration be used")]
     [SerializeField] bool _useAcceleration = true;
     [Range(0, 10)][SerializeField] float _rotationSpeed = 2;
-    [SerializeField] AudioClip _footstepSound;
+    protected abstract AudioClip _footstepSound { get; }
     [SerializeField] float _footstepVolume = 1;
 
     [Header("Jump")]
@@ -31,6 +31,7 @@ public class CharacterController : MonoBehaviour
 
     [Space(15)]
     [SerializeField] protected float _interactRange = 1f;
+    [SerializeField] protected SoundHolder _soundHolder;
 
     protected bool _applyGravity = true;
     protected float _currentSpeed;
@@ -116,23 +117,7 @@ public class CharacterController : MonoBehaviour
     /// <param name="direction">the direction to move the character.</param>
     protected virtual void Move(Vector2 direction)
     {
-        if (_currentSpeed > 0)
-        {
-            if (!_audioSource.isPlaying)
-            {
-                if (_audioFader != null)
-                {
-                    StopCoroutine(_audioFader);
-                    _audioFader = null;
-                }
-                _audioSource.volume = 1;
-                _audioSource.PlayOneShot(_footstepSound, _footstepVolume);
-            }
-        }
-        else
-        {
-            _audioFader ??= StartCoroutine(FadeOutSound());
-        }
+        PlaySound(_footstepSound, _footstepVolume, _currentSpeed > 0);
 
         _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
         if (!_useAcceleration)
@@ -156,6 +141,26 @@ public class CharacterController : MonoBehaviour
             var direction3D = new Vector3(_lastDirection.x, 0, _lastDirection.y).normalized;
             _dirWithCamera = DirectionToCameraDirection(direction3D, _cameraTransform);
             _rb.MovePosition(_rb.position + _currentSpeed * Time.deltaTime * _dirWithCamera);
+        }
+    }
+
+    protected void PlaySound(AudioClip clip, float volume, bool condition)
+    {
+        if (condition)
+        {
+            if (_audioSource.isPlaying) return;
+            
+            if (_audioFader != null)
+            {
+                StopCoroutine(_audioFader);
+                _audioFader = null;
+            }
+            _audioSource.volume = 1;
+            _audioSource.PlayOneShot(clip, volume);
+        }
+        else
+        {
+            _audioFader ??= StartCoroutine(FadeOutSound());
         }
     }
 
