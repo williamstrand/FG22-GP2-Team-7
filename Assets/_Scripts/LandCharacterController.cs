@@ -119,6 +119,7 @@ public class LandCharacterController : CharacterController
                     return;
 
                 case PickUpDrop pickUpDrop:
+                    pickUpDrop.GetComponentInChildren<UIInteraction>().gameObject.SetActive(false);
                     pickUpDrop.Pickup(_pickupPoint);
                     _heldItem = pickUpDrop;
                     return;
@@ -132,7 +133,9 @@ public class LandCharacterController : CharacterController
         if (!_heldItem) return;
 
         _heldItem.Drop();
+        _heldItem.GetComponentInChildren<UIInteraction>().gameObject.SetActive(true);
         _heldItem = null;
+
     }
 
     protected override void PlayerAction()
