@@ -14,6 +14,7 @@ public class WaterCharacterController : CharacterController
 
     [Header("Water Power")]
     [Range(1, 5)][SerializeField] float _waterPowerTurnSpeed = 1;
+    [Range(1, 5)][SerializeField] float _waterPowerAimSpeed = 1;
     [SerializeField] float _waterSquirtVolume = 1;
 
     [Header("Push Pull")]
@@ -136,6 +137,7 @@ public class WaterCharacterController : CharacterController
 
             case WaterPlayerState.WaterPower:
                 _waterPower.Turn(direction.x, _waterPowerTurnSpeed);
+                _waterPower.Aim(direction.y, _waterPowerAimSpeed);
                 break;
 
             case WaterPlayerState.Pushing:

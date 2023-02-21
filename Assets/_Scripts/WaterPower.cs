@@ -3,13 +3,16 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer), typeof(ParticleSystem))]
 public class WaterPower : MonoBehaviour
 {
-    LineRenderer _aimLineRenderer;
+    [SerializeField] LayerMask _groundLayer;
+    [SerializeField] Vector2 _minMaxShootAngle;
+
+    LineRenderer _lineRenderer;
     ParticleSystem _waterPowerParticles;
     public bool IsShooting { get; private set; }
 
     void Awake()
     {
-        _aimLineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer = GetComponent<LineRenderer>();
         _waterPowerParticles = GetComponent<ParticleSystem>();
     }
 
@@ -41,6 +44,13 @@ public class WaterPower : MonoBehaviour
         UpdateAim();
     }
 
+    public void Aim(float direction, float speed)
+    {
+        var shape = _waterPowerParticles.shape;
+        shape.rotation = new Vector3(Mathf.Clamp(shape.rotation.x + -direction * speed, _minMaxShootAngle.x, _minMaxShootAngle.y), 0, 0);
+        UpdateAim();
+    }
+
     /// <summary>
     /// Activates the water power.
     /// </summary>
@@ -63,9 +73,47 @@ public class WaterPower : MonoBehaviour
     /// </summary>
     void UpdateAim()
     {
-        // TODO: FIx
-        _aimLineRenderer.SetPosition(0, transform.position);
-        _aimLineRenderer.SetPosition(1, transform.position + transform.forward * 10 + transform.up * 2);
+        ClearAim();
+        var angle = -_waterPowerParticles.shape.rotation.x;
+        var main = _waterPowerParticles.main;
+        var force = main.startSpeed.constant;
+        for (int i = 0; i < 100; i++)
+        {
+            var pos = GetPosition(i / 10f, force, angle);
+            var hit = Physics.OverlapSphere(pos, .1f, _groundLayer);
+            _lineRenderer.positionCount++;
+            if (hit.Length > 0)
+            {
+                _lineRenderer.SetPosition(i, hit[0].ClosestPoint(pos));
+                break;
+            }
+            _lineRenderer.SetPosition(i, pos);
+        }
+    }
+
+    /// <summary>
+    /// Clears the aim.
+    /// </summary>
+    void ClearAim()
+    {
+        _lineRenderer.positionCount = 0;
+    }
+
+    /// <summary>
+    /// Gets the position of the shot coconut at a specific x on the estimated trajectory.
+    /// </summary>
+    /// <param name="x">the x value.</param>
+    /// <param name="force">the force the coconut is shot at.</param>
+    /// <param name="angle">TODO:</param>
+    /// <returns>a Vector3 representing a position in world space.</returns>
+    Vector3 GetPosition(float x, float force, float angle)
+    {
+        var angleRad = angle * Mathf.Deg2Rad;
+        var y = x * Mathf.Tan(angleRad) - 9.81f * x * x / (2 * force * force * Mathf.Cos(angleRad) * Mathf.Cos(angleRad));
+        var vector = new Vector3(0, y, x);
+        var shape = _waterPowerParticles.shape;
+        var pos = transform.position + (shape.position.z * transform.forward + shape.position.y * transform.up);
+        return pos + vector.x * transform.right + vector.y * transform.up + vector.z * transform.forward;
     }
 
     /// <summary>
@@ -74,7 +122,7 @@ public class WaterPower : MonoBehaviour
     /// <param name="isEnabled"></param>
     void AimEnabled(bool isEnabled)
     {
-        _aimLineRenderer.enabled = isEnabled;
+        _lineRenderer.enabled = isEnabled;
         UpdateAim();
     }
 
