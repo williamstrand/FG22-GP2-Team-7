@@ -12,11 +12,6 @@ public class UIInteraction : MonoBehaviour
     {
         child = this.transform.GetChild(0).gameObject;
     }
-    //UI look at camera
-    private void LateUpdate()
-    {
-        transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
