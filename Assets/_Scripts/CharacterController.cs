@@ -153,7 +153,7 @@ public abstract class CharacterController : MonoBehaviour
     {
         if (condition)
         {
-            if (source.isPlaying) return;
+            if (source.isPlaying && source.loop) return;
 
             if (_audioFader != null)
             {
