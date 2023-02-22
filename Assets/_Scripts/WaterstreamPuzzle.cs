@@ -81,16 +81,20 @@ public class WaterstreamPuzzle : MonoBehaviour
         {
             if (_lane1Position == _lever1Positions.x)
             {
-                if (!_lane1Ready) return;
-                MoveLane1();
+                if (_lane1Ready)
+                {
+                    MoveLane1();
+                }
             }
         }
         else
         {
             if (_lane2Position == _lever1Positions.y)
             {
-                if (!_lane2Ready) return;
-                MoveLane2();
+                if (_lane2Ready)
+                {
+                    MoveLane2();
+                }
             }
         }
 
@@ -98,16 +102,20 @@ public class WaterstreamPuzzle : MonoBehaviour
         {
             if (_lane1Position == _lever2Positions.x)
             {
-                if (!_lane1Ready) return;
-                MoveLane1();
+                if (_lane1Ready)
+                {
+                    MoveLane1();
+                }
             }
         }
         else
         {
             if (_lane2Position == _lever2Positions.y)
             {
-                if (!_lane2Ready) return;
-                MoveLane2();
+                if (_lane2Ready)
+                {
+                    MoveLane2();
+                }
             }
         }
 
@@ -115,16 +123,20 @@ public class WaterstreamPuzzle : MonoBehaviour
         {
             if (_lane1Position == _lever3Positions.x)
             {
-                if (!_lane1Ready) return;
-                MoveLane1();
+                if (_lane1Ready)
+                {
+                    MoveLane1();
+                }
             }
         }
         else
         {
             if (_lane2Position == _lever3Positions.y)
             {
-                if (!_lane2Ready) return;
-                MoveLane2();
+                if (_lane2Ready)
+                {
+                    MoveLane2();
+                }
             }
         }
     }
