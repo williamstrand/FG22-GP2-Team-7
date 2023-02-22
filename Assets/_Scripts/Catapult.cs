@@ -57,6 +57,8 @@ public class Catapult : MonoBehaviour, IInteractable
         rb.AddForce(_shootPoint.forward * Force, ForceMode.VelocityChange);
         Physics.IgnoreCollision(_coconut.GetComponent<Collider>(), GetComponent<Collider>(), false);
 
+        _coconut.GetComponentInChildren<UIInteraction>().gameObject.SetActive(true);
+
         _animator.SetTrigger("Fire");
         _coconut = null;
         _fireAudioSource.Play();
