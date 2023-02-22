@@ -201,7 +201,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d044a10fe3e752c4f8b7e29f4a9c17e7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c7f760f3135d15e4a97b72c45599cd38, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -439,7 +439,8 @@ MonoBehaviour:
   _decelerationTime: 0.3
   _useAcceleration: 1
   _rotationSpeed: 2
-  _footstepVolume: 0.5
+  _footstepAudioSource: {fileID: 4119673121231985820}
+  _footStepVolume: 1
   _jumpForce: 20
   _groundLayer:
     serializedVersion: 2
@@ -447,14 +448,13 @@ MonoBehaviour:
   _gravityScale: 50
   _groundCheckDistance: 0.5
   _groundCheckRadius: 0.45
+  _jumpAudioSource: {fileID: 6648855448506980012}
   _jumpVolume: 1
   _interactRange: 1
-  _soundHolder: {fileID: 11400000, guid: 2807226fb7e39324f8d98784b413fc22, type: 2}
   _cameraTransform: {fileID: 0}
-  _footstepAudioSource: {fileID: 4119673121231985820}
-  _jumpAudioSource: {fileID: 6648855448506980012}
   _climbSpeed: 1
   _climbAudioSource: {fileID: 8805341042086815855}
+  _climbVolume: 1
   _catapultAimSpeed: 1
   _pickupPoint: {fileID: 1996259071}
 --- !u!54 &6389759222064143228
@@ -722,7 +722,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a6b86fe55e9295c49a529c32c71cd898, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 75f7e0717cd0f1947a31c19ea8c1ccdb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
