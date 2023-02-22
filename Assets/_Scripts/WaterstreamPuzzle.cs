@@ -39,7 +39,6 @@ public class WaterstreamPuzzle : MonoBehaviour
     void OnDropOff(Pushable pushable)
     {
         pushable.GetComponent<Rigidbody>().isKinematic = true;
-        pushable.GetComponent<Collider>().enabled = false;
         pushable.enabled = false;
 
         if (_lane1Pushable == null)
@@ -155,13 +154,19 @@ public class WaterstreamPuzzle : MonoBehaviour
 
     IEnumerator MoveLane(int lane, int startPos, int endPos)
     {
+        Collider pushCollider;
         if (lane == 1)
         {
             _lane1Ready = false;
+            pushCollider = _lane1Pushable.GetComponent<Collider>();
+            pushCollider.enabled = false;
+
         }
-        else if (lane == 2)
+        else
         {
             _lane2Ready = false;
+            pushCollider = _lane2Pushable.GetComponent<Collider>();
+            pushCollider.enabled = false;
         }
 
         var lerp = 0f;
@@ -180,6 +185,8 @@ public class WaterstreamPuzzle : MonoBehaviour
             yield return null;
         }
 
+        pushCollider.enabled = true;
+        
         if (lane == 1)
         {
             _lane1Ready = true;
