@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8067947180914293727}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.66, y: 1.79, z: -4.18}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
@@ -115,11 +115,20 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 1, y: 0.8467639, z: 0.2688679, w: 0}
+      - m_Value: {x: 0.7490196, y: 0.7490196, z: 0.7490196, w: 0}
         m_Name: FireColor
         m_Overridden: 1
-      - m_Value: {x: 1, y: 0.48789138, z: 0.2117647, w: 0}
+      - m_Value: {x: 0.7924528, y: 0.18640155, z: 0, w: 0}
         m_Name: SmokeColor
+        m_Overridden: 1
+      - m_Value: {x: 2.9960785, y: 0.88194007, z: 0, w: 0}
+        m_Name: EmissionColorFire
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 0, w: 0}
+        m_Name: EmissionColorEmbers
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 0, w: 0}
+        m_Name: EmissionColorSmoke
         m_Overridden: 1
     m_Uint:
       m_Array: []
