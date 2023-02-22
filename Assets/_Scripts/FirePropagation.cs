@@ -1,31 +1,36 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class FirePropagation : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem _fireParticles;
+    [SerializeField] private VisualEffect _fireEffect;
     [SerializeField] private float _fireIntensity = 1.0f;
-    private float fireEmission;
     private bool fireStarted = false;
     private float fireLerp = 0.0f;
     private float fireLerpSpeed = 0.1f;
-    
+
     private void Start()
     {
-        fireEmission = _fireParticles.emission.rateOverTime.constant;
-        var fireParticlesEmission = _fireParticles.emission;
-        fireParticlesEmission.rateOverTime = 0;
+        if (_fireEffect == null)
+        {
+            Debug.LogError("Visual Effect is not set in FirePropagation script.");
+        }
+        else
+        {
+            _fireEffect.SetFloat("Intensity", 0);
+        }
     }
 
     public void IgniteFire()
     {
-        if (_fireParticles != null)
+        if (_fireEffect != null)
         {
             fireStarted = true;
-            _fireParticles.Play();
+            _fireEffect.Play();
         }
         else
         {
-            Debug.LogError("Particle System is not set in FirePropagation script.");
+            Debug.LogError("Visual Effect is not set in FirePropagation script.");
         }
     }
 
@@ -36,22 +41,20 @@ public class FirePropagation : MonoBehaviour
 
     private void Update()
     {
-        var fireParticlesEmission = _fireParticles.emission;
-        
+        if (_fireEffect == null) return;
+
         if (fireStarted)
         {
             fireLerp = Mathf.MoveTowards(fireLerp, 1.0f, fireLerpSpeed * Time.deltaTime);
-            fireParticlesEmission.rateOverTime = Mathf.Lerp(0, fireEmission, fireLerp);
-            _fireIntensity = Mathf.Lerp(0, 1.0f, fireLerp);
+            _fireEffect.SetFloat("Intensity", Mathf.Lerp(0, _fireIntensity, fireLerp));
         }
         else
         {
             fireLerp = Mathf.MoveTowards(fireLerp, 0.0f, fireLerpSpeed * Time.deltaTime);
-            fireParticlesEmission.rateOverTime = Mathf.Lerp(fireParticlesEmission.rateOverTime.constant, 0, fireLerp);
-            _fireIntensity = Mathf.Lerp(_fireIntensity, 0, fireLerp);
-            if (_fireIntensity <= 0.1f)
+            _fireEffect.SetFloat("Intensity", Mathf.Lerp(_fireIntensity, 0, fireLerp));
+            if (_fireEffect.GetFloat("Intensity") <= 0.1f)
             {
-                _fireParticles.Stop();
+                _fireEffect.Stop();
             }
         }
     }
