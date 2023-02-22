@@ -11564,6 +11564,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1965181765132142515, guid: bb88983d78e1c3f468ab022ede755dfe, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965181765132142515, guid: bb88983d78e1c3f468ab022ede755dfe, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965181765132142515, guid: bb88983d78e1c3f468ab022ede755dfe, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965181765132142515, guid: bb88983d78e1c3f468ab022ede755dfe, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965181765132142515, guid: bb88983d78e1c3f468ab022ede755dfe, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965181765132142515, guid: bb88983d78e1c3f468ab022ede755dfe, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965181765132142515, guid: bb88983d78e1c3f468ab022ede755dfe, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[2].m_Value.x
+      value: 3.6226416
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965181765132142515, guid: bb88983d78e1c3f468ab022ede755dfe, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[2].m_Value.y
+      value: 1.2559214
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965181765132142515, guid: bb88983d78e1c3f468ab022ede755dfe, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[2].m_Value.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5573114770766190807, guid: bb88983d78e1c3f468ab022ede755dfe, type: 3}
       propertyPath: m_Name
       value: Firepit
