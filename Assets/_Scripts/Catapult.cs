@@ -11,6 +11,8 @@ public class Catapult : MonoBehaviour, IInteractable
     float _cooldownTimer;
     [SerializeField] float _minForce;
     [SerializeField] float _maxForce;
+    [SerializeField] float _fireSoundVolume;
+    [SerializeField] float _loadSoundVolume;
 
     [Header("References")]
     PickUpDrop _coconut;
@@ -18,8 +20,11 @@ public class Catapult : MonoBehaviour, IInteractable
     [SerializeField] Transform _cockpit;
     [SerializeField] Transform _target;
     [SerializeField] Transform _coconutPosition;
+    [SerializeField] SoundHolder _soundHolder;
     LineRenderer _lineRenderer;
     Animator _animator;
+    [SerializeField] AudioSource _loadAudioSource;
+    [SerializeField] AudioSource _fireAudioSource;
 
     public float Force { get; private set; }
     public float AimAngle { get; private set; } = 45f;
@@ -54,6 +59,7 @@ public class Catapult : MonoBehaviour, IInteractable
 
         _animator.SetTrigger("Fire");
         _coconut = null;
+        _fireAudioSource.Play();
 
         ClearAim();
     }
@@ -65,6 +71,7 @@ public class Catapult : MonoBehaviour, IInteractable
     public void LoadCoconut(PickUpDrop coconut)
     {
         _animator.SetTrigger("Load");
+        _loadAudioSource.Play();
         var rb = coconut.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         rb.rotation = Quaternion.identity;

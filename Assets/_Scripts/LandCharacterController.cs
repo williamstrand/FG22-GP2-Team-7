@@ -5,7 +5,8 @@ public class LandCharacterController : CharacterController
     [Header("Climbing")]
     [Range(0, 2)][SerializeField] float _climbSpeed = 1f;
     Climbable _currentClimbable;
-    [SerializeField] float _climbVolume;
+    [SerializeField] AudioSource _climbAudioSource;
+    [SerializeField] float _climbVolume = 1;
 
     [Header("Catapult")]
     [SerializeField] float _catapultAimSpeed = 1f;
@@ -16,7 +17,6 @@ public class LandCharacterController : CharacterController
 
     LandPlayerState _playerState = LandPlayerState.Default;
     PickUpDrop _heldItem;
-    protected override AudioClip _footstepSound => _soundHolder.SandFootsteps;
 
     public enum LandPlayerState
     {
@@ -83,7 +83,7 @@ public class LandCharacterController : CharacterController
                         break;
                 }
 
-                PlaySound(_soundHolder.Climbing, _climbVolume, direction.y != 0);
+                PlaySound(_climbAudioSource, _climbVolume, direction.y != 0);
                 break;
 
             case LandPlayerState.Catapult:
@@ -186,6 +186,7 @@ public class LandCharacterController : CharacterController
         _playerState = LandPlayerState.Default;
         _collider.enabled = true;
         _rb.velocity = Vector3.zero;
+        PlaySound(_climbAudioSource, 0, false);
     }
 
     void OnCollisionEnter(Collision other)

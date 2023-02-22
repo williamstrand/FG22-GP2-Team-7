@@ -17,8 +17,8 @@ public abstract class CharacterController : MonoBehaviour
     [Tooltip("Should acceleration and deceleration be used")]
     [SerializeField] bool _useAcceleration = true;
     [Range(0, 10)][SerializeField] float _rotationSpeed = 2;
-    protected abstract AudioClip _footstepSound { get; }
-    [SerializeField] float _footstepVolume = 1;
+    [SerializeField] protected AudioSource _footstepAudioSource;
+    [SerializeField] protected float _footStepVolume = 1;
 
     [Header("Jump")]
     [Range(0, 50)][SerializeField] float _jumpForce = 5;
@@ -28,10 +28,11 @@ public abstract class CharacterController : MonoBehaviour
     [Range(0, 2)][SerializeField] float _groundCheckDistance = .5f;
     [Tooltip("The radius of the ground check.")]
     [Range(0, 2)][SerializeField] float _groundCheckRadius = .45f;
+    [SerializeField] protected AudioSource _jumpAudioSource;
+    [SerializeField] protected float _jumpVolume = 1;
 
     [Space(15)]
     [SerializeField] protected float _interactRange = 1f;
-    [SerializeField] protected SoundHolder _soundHolder;
 
     protected bool _applyGravity = true;
     protected float _currentSpeed;
@@ -45,7 +46,6 @@ public abstract class CharacterController : MonoBehaviour
     protected Rigidbody _rb;
     protected Collider _collider;
     [SerializeField] protected Transform _cameraTransform;
-    protected AudioSource _audioSource;
 
     protected Coroutine _audioFader;
 
@@ -53,7 +53,6 @@ public abstract class CharacterController : MonoBehaviour
     {
         _inputHandler = GetComponent<InputHandler>();
         _rb = GetComponent<Rigidbody>();
-        _audioSource = GetComponent<AudioSource>();
         _rb.useGravity = false;
         FindCollider();
         _respawnPoint = transform.position;
@@ -117,7 +116,7 @@ public abstract class CharacterController : MonoBehaviour
     /// <param name="direction">the direction to move the character.</param>
     protected virtual void Move(Vector2 direction)
     {
-        PlaySound(_footstepSound, _footstepVolume, _currentSpeed > 0);
+        PlaySound(_footstepAudioSource, _footStepVolume, _currentSpeed > 0);
 
         _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
         if (!_useAcceleration)
@@ -147,43 +146,43 @@ public abstract class CharacterController : MonoBehaviour
     /// <summary>
     /// Plays sound if condition is true, otherwise fades out sound.
     /// </summary>
-    /// <param name="clip">the audio clip.</param>
-    /// <param name="volume">the volume.</param>
+    /// <param name="source">the AudioSource to play from.</param>
+    /// <param name="volume">the volume of the sound.</param>
     /// <param name="condition">the condition.</param>
-    protected void PlaySound(AudioClip clip, float volume, bool condition)
+    protected void PlaySound(AudioSource source, float volume, bool condition)
     {
         if (condition)
         {
-            if (_audioSource.isPlaying) return;
+            if (source.isPlaying) return;
 
             if (_audioFader != null)
             {
                 StopCoroutine(_audioFader);
                 _audioFader = null;
             }
-            _audioSource.volume = 1;
-            _audioSource.PlayOneShot(clip, volume);
+            source.volume = volume;
+            source.Play();
         }
         else
         {
-            _audioFader ??= StartCoroutine(FadeOutSound());
+            _audioFader ??= StartCoroutine(FadeOutSound(source));
         }
     }
 
-    protected IEnumerator FadeOutSound()
+    protected IEnumerator FadeOutSound(AudioSource source)
     {
         var lerp = 0f;
-        var volume = _audioSource.volume;
+        var volume = source.volume;
 
         while (lerp < 1)
         {
             lerp += Time.deltaTime * 5;
 
-            _audioSource.volume = Mathf.Lerp(volume, 0, lerp);
+            source.volume = Mathf.Lerp(volume, 0, lerp);
             yield return null;
         }
 
-        _audioSource.Stop();
+        source.Stop();
         _audioFader = null;
     }
 
@@ -220,6 +219,7 @@ public abstract class CharacterController : MonoBehaviour
 
         //_rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
+        PlaySound(_jumpAudioSource, _jumpVolume, true);
     }
 
     /// <summary>
