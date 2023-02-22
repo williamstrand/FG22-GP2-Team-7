@@ -3,20 +3,19 @@ using UnityEngine;
 
 public class FireController : MonoBehaviour
 {
-    
+    private bool _isInsideIgnitableObjectTrigger = false;
+    private TorchIgnition _torchIgnition;
+
+    private void Start()
+    {
+        _torchIgnition = GetComponent<TorchIgnition>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("IgnitableObject"))
+        if (other.CompareTag("IgnitableObject") && _torchIgnition._isTorchLit)
         {
-            IgnitedObject ignitedObject = other.GetComponent<IgnitedObject>();
-            ignitedObject.Ignite();
-            
-
-            FirePropagation firePropagation = other.GetComponent<FirePropagation>();
-            if (firePropagation != null)
-            {
-                firePropagation.IgniteFire();
-            }
+            _isInsideIgnitableObjectTrigger = true;
         }
     }
 
@@ -24,16 +23,24 @@ public class FireController : MonoBehaviour
     {
         if (other.CompareTag("IgnitableObject"))
         {
-            IgnitedObject ignitedObject = other.GetComponent<IgnitedObject>();
-            ignitedObject.Extinguish();
-
-            FirePropagation firePropagation = other.GetComponent<FirePropagation>();
-            if (firePropagation != null)
-            {
-                firePropagation.PutOutFire();
-            }
+            _isInsideIgnitableObjectTrigger = false;
         }
     }
 
-    
+    private void OnTriggerStay(Collider other)
+    {
+        if (_isInsideIgnitableObjectTrigger && Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            IgnitedObject ignitedObject = other.GetComponentInParent<IgnitedObject>();
+            ignitedObject.Ignite();
+
+            FirePropagation firePropagation = other.GetComponentInParent<FirePropagation>();
+            if (firePropagation != null)
+            {
+                firePropagation.IgniteFire();
+            }
+
+            _torchIgnition.PutOutTorchFire();
+        }
+    }
 }

@@ -1,28 +1,46 @@
-using System;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class TorchIgnition : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem _fireParticles;
+    [SerializeField] private VisualEffect _fire;
+    [SerializeField] private string _ignitionSourceTag = "IgnitionSource";
+
+    private bool _isInsideIgnitionSourceTrigger = false;
+    public bool _isTorchLit = false;
 
     private void Start()
     {
-        _fireParticles.gameObject.SetActive(false);
+        _fire.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("IgnitionSource"))
+        if (other.CompareTag(_ignitionSourceTag))
         {
-            _fireParticles.gameObject.SetActive(true);
+            _isInsideIgnitionSourceTrigger = true;
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("IgnitableObject"))
+        if (_isInsideIgnitionSourceTrigger && Input.GetKeyDown(KeyCode.Keypad2))
         {
-            _fireParticles.gameObject.SetActive(false);
+            IgniteTorch();
         }
+    }
+
+    public void IgniteTorch()
+    {
+        _isTorchLit = true;
+        _fire.gameObject.SetActive(true);
+        Debug.Log("Torch is now lit.");
+    }
+
+    public void PutOutTorchFire()
+    {
+        _isTorchLit = false;
+        _fire.gameObject.SetActive(false);
+        Debug.Log("Torch fire put out.");
     }
 }
