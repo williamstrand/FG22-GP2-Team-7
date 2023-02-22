@@ -118,6 +118,7 @@ public class LandCharacterController : CharacterController
                     climbable.StartClimb(this);
                     _currentClimbable = climbable;
                     StartClimb();
+                    _footstepAudioSource.Stop();
                     return;
 
                 case Catapult when _playerState == LandPlayerState.Catapult:
@@ -193,7 +194,7 @@ public class LandCharacterController : CharacterController
         _playerState = LandPlayerState.Default;
         _collider.enabled = true;
         _rb.velocity = Vector3.zero;
-        PlaySound(_climbAudioSource, 0, false);
+        _climbAudioSource.Stop();
     }
 
     void OnCollisionEnter(Collision other)

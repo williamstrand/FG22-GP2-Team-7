@@ -44,7 +44,7 @@ public class Climbable : MonoBehaviour, IInteractable
         if (direction == 0) return;
 
         var dir = Mathf.Sign(direction);
-        _characterHeight += dir * speed * Time.deltaTime;
+        _characterHeight = Mathf.Clamp01(_characterHeight + dir * speed * Time.deltaTime);
         _characterTransform.position = GetPositionOnClimbable(_characterHeight);
     }
 
