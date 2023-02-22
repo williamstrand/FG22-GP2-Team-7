@@ -149,7 +149,7 @@ public abstract class CharacterController : MonoBehaviour
     /// <param name="source">the AudioSource to play from.</param>
     /// <param name="volume">the volume of the sound.</param>
     /// <param name="condition">the condition.</param>
-    protected void PlaySound(AudioSource source, float volume, bool condition)
+    protected void PlaySound(AudioSource source, float volume = 1, bool condition = true)
     {
         if (condition)
         {

@@ -14,6 +14,10 @@ public class LandCharacterController : CharacterController
 
     [Header("Pickup")]
     [SerializeField] Transform _pickupPoint;
+    [SerializeField] AudioSource _pickupAudioSource;
+    [SerializeField] float _pickupVolume = 1;
+    [SerializeField] AudioSource _dropAudioSource;
+    [SerializeField] float _dropVolume = 1;
 
     LandPlayerState _playerState = LandPlayerState.Default;
     PickUpDrop _heldItem;
@@ -129,6 +133,7 @@ public class LandCharacterController : CharacterController
                     return;
 
                 case Catapult catapult when _heldItem:
+                    PlaySound(_dropAudioSource, _dropVolume);
                     _heldItem.Drop();
                     catapult.LoadCoconut(_heldItem);
                     _heldItem = null;
@@ -138,6 +143,7 @@ public class LandCharacterController : CharacterController
                     pickUpDrop.GetComponentInChildren<UIInteraction>().enabled = false;
                     pickUpDrop.Pickup(_pickupPoint);
                     _heldItem = pickUpDrop;
+                    PlaySound(_pickupAudioSource, _pickupVolume);
                     return;
 
                 case LeverPull leverPull:
@@ -148,6 +154,7 @@ public class LandCharacterController : CharacterController
 
         if (!_heldItem) return;
 
+        PlaySound(_dropAudioSource, _dropVolume);
         _heldItem.GetComponentInChildren<UIInteraction>().enabled = true;
         _heldItem.Drop();
         _heldItem = null;
