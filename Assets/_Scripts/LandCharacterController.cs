@@ -86,6 +86,7 @@ public class LandCharacterController : CharacterController
                         _currentClimbable.Climb(Mathf.FloorToInt(direction.y), _climbSpeed);
                         break;
                 }
+                _animator.SetFloat("ClimbDirection", direction.y);
 
                 PlaySound(_climbAudioSource, _climbVolume, direction.y != 0);
                 break;
@@ -115,6 +116,7 @@ public class LandCharacterController : CharacterController
                     return;
 
                 case Climbable climbable:
+                    if (_heldItem) break;
                     climbable.StartClimb(this);
                     _currentClimbable = climbable;
                     StartClimb();
@@ -137,6 +139,7 @@ public class LandCharacterController : CharacterController
                     PlaySound(_dropAudioSource, _dropVolume);
                     _heldItem.Drop();
                     catapult.LoadCoconut(_heldItem);
+                    _animator.SetBool("HoldingItem", false);
                     _heldItem = null;
                     return;
 
@@ -145,9 +148,12 @@ public class LandCharacterController : CharacterController
                     pickUpDrop.Pickup(_pickupPoint);
                     _heldItem = pickUpDrop;
                     PlaySound(_pickupAudioSource, _pickupVolume);
+                    _animator.SetBool("HoldingItem", true);
+                    _animator.SetTrigger("Pickup");
                     return;
 
                 case LeverPull leverPull:
+                    _animator.SetTrigger("Hit");
                     leverPull.Pull();
                     break;
             }
@@ -159,7 +165,7 @@ public class LandCharacterController : CharacterController
         _heldItem.GetComponentInChildren<UIInteraction>().enabled = true;
         _heldItem.Drop();
         _heldItem = null;
-
+        _animator.SetBool("HoldingItem", false);
     }
 
     protected override void PlayerAction()
@@ -184,6 +190,7 @@ public class LandCharacterController : CharacterController
         _playerState = LandPlayerState.Climbing;
         _collider.enabled = false;
         _rb.velocity = Vector3.zero;
+        _animator.SetBool("Climb", true);
     }
 
     /// <summary>
@@ -195,6 +202,7 @@ public class LandCharacterController : CharacterController
         _collider.enabled = true;
         _rb.velocity = Vector3.zero;
         _climbAudioSource.Stop();
+        _animator.SetBool("Climb", false);
     }
 
     void OnCollisionEnter(Collision other)

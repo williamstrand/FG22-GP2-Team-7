@@ -122,6 +122,7 @@ public class WaterCharacterController : CharacterController
 
     protected override void Jump()
     {
+        // TODO: Add cooldown
         switch (_playerState)
         {
             case WaterPlayerState.Default:
@@ -180,6 +181,7 @@ public class WaterCharacterController : CharacterController
     /// </summary>
     void Dive()
     {
+        // TODO: Fix
         if (_rb.SweepTest(Vector3.down, out _, _diveDepth)) return;
 
         StartCoroutine(DiveRoutine(true));
