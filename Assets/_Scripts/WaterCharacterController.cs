@@ -222,11 +222,10 @@ public class WaterCharacterController : CharacterController
 
             lerp += Time.deltaTime * _diveSpeed;
 
-            var moveSpeed = Time.deltaTime * 5 * _inputHandler.MoveInput;
-            var targetPosition = new Vector3(transform.position.x, targetY, transform.position.z);
-            var startPosition = new Vector3(transform.position.x, startY, transform.position.z);
+            var targetPosition = new Vector3(_rb.position.x, targetY, _rb.position.z);
+            var startPosition = new Vector3(_rb.position.x, startY, _rb.position.z);
 
-            transform.position = Vector3.Lerp(startPosition, targetPosition, lerp) + new Vector3(moveSpeed.x, 0, moveSpeed.y);
+            _rb.position = Vector3.Lerp(startPosition, targetPosition, lerp);
             yield return null;
         }
 
