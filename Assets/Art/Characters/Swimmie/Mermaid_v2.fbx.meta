@@ -58,11 +58,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Breath
-      takeName: Armature|Breath
+      name: Armature|Push (1)
+      takeName: Armature|Push
       internalID: -3699539937663401228
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 218
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -201,6 +201,13 @@ ModelImporter:
         functionName: Shock
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 956bda2a43ef1bf44bc26dbf2159abb4, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8561497
+        functionName: JumpFinished
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: d8effd49f57763c44b1dac1ab0bb0820, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

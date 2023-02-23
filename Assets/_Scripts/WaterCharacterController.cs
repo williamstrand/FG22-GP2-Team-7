@@ -7,6 +7,7 @@ public class WaterCharacterController : CharacterController
 
     WaterPlayerState _playerState = WaterPlayerState.Default;
     bool _canDive = true;
+    bool _canJump = true;
 
     [Header("Diving")]
     [Range(0, 5)][SerializeField] float _diveSpeed = 1;
@@ -125,9 +126,16 @@ public class WaterCharacterController : CharacterController
         switch (_playerState)
         {
             case WaterPlayerState.Default:
+                if (!_canJump) break;
                 base.Jump();
+                _canJump = false;
                 break;
         }
+    }
+
+    public void JumpFinished()
+    {
+        _canJump = true;
     }
 
     protected override void Move(Vector2 direction)
@@ -180,6 +188,7 @@ public class WaterCharacterController : CharacterController
     /// </summary>
     void Dive()
     {
+        // TODO: Fix
         if (_rb.SweepTest(Vector3.down, out _, _diveDepth)) return;
 
         StartCoroutine(DiveRoutine(true));

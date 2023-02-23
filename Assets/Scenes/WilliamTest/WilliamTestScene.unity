@@ -1603,11 +1603,11 @@ PrefabInstance:
     - target: {fileID: 8138299981985125570, guid: 47ecc519f8000e147af7f98af58a296b, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 1962149167}
+      objectReference: {fileID: 0}
     - target: {fileID: 8138299981985125570, guid: 47ecc519f8000e147af7f98af58a296b, type: 3}
       propertyPath: m_LookAt
       value: 
-      objectReference: {fileID: 1962149167}
+      objectReference: {fileID: 0}
     - target: {fileID: 8138299981985125571, guid: 47ecc519f8000e147af7f98af58a296b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1739,6 +1739,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1996259071, guid: 1eb2caa3c0f4a3c46907c4062652efef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433109619578502348, guid: 1eb2caa3c0f4a3c46907c4062652efef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.57
+      objectReference: {fileID: 0}
     - target: {fileID: 6389759222064143218, guid: 1eb2caa3c0f4a3c46907c4062652efef, type: 3}
       propertyPath: _cameraTransform
       value: 
@@ -2144,11 +2152,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908532392}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1962149167 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6389759220413808050, guid: 1eb2caa3c0f4a3c46907c4062652efef, type: 3}
-  m_PrefabInstance: {fileID: 1781663727}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1975632431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,7 +2549,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6183573849262586592, guid: 58efdfeac87071845969bab99361a2d9, type: 3}
       propertyPath: _player
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6183573849262586592, guid: 58efdfeac87071845969bab99361a2d9, type: 3}
       propertyPath: m_Enabled
