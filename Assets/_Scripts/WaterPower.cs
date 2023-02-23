@@ -9,12 +9,14 @@ public class WaterPower : MonoBehaviour
     LineRenderer _lineRenderer;
     [SerializeField] ParticleSystem _waterPowerParticles;
     [SerializeField] GameObject _particleEmitter;
+    Vector3 _aimVelocity = Vector3.zero;
     public bool IsShooting { get; private set; }
 
     void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
         _particleEmitter.GetComponent<ParticleCollisionHandler>().ParticleCollisionEvent += OnParticleCollision;
+        _aimVelocity = Vector3.zero;
     }
 
     /// <summary>
@@ -54,7 +56,11 @@ public class WaterPower : MonoBehaviour
     public void Aim(float direction, float speed)
     {
         var shape = _waterPowerParticles.shape;
-        shape.rotation = new Vector3(Mathf.Clamp(shape.rotation.x + -direction * speed, _minMaxShootAngle.x, _minMaxShootAngle.y), 0, 0);
+        var currentRotation = shape.rotation;
+        var targetRotation = new Vector3(Mathf.Clamp(currentRotation.x + -direction * speed, _minMaxShootAngle.x, _minMaxShootAngle.y), 0, 0);
+        var smoothTime = 0.025f; // adjust this value to control the smoothness of the movement <--TMG
+        var dampRotation = Vector3.SmoothDamp(currentRotation, targetRotation, ref _aimVelocity, smoothTime);
+        shape.rotation = dampRotation;
         UpdateAim();
     }
 
