@@ -34,10 +34,18 @@ public class LandCharacterController : CharacterController
         Catapult
     }
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         _torch.OnTorchLit += OnTorchLit;
         _torch.OnTorchPutOut += OnTorchPutOut;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        _torch.OnTorchLit -= OnTorchLit;
+        _torch.OnTorchPutOut -= OnTorchPutOut;
     }
 
     void OnTorchPutOut()
@@ -77,6 +85,7 @@ public class LandCharacterController : CharacterController
 
     protected override void Jump()
     {
+        Debug.Log("Jump");
         switch (_playerState)
         {
             case LandPlayerState.Default:
