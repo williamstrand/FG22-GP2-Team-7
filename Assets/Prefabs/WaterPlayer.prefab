@@ -371,7 +371,6 @@ MonoBehaviour:
   _waterPowerAimSpeed: 1
   _waterSquirtSource: {fileID: 8395832819287296496}
   _waterSquirtVolume: 1
-  _pushForce: 5
 --- !u!54 &5856157690419383512
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -802,15 +801,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7801071391532865003, guid: 9cc51d4c9aab3e847a7e164c02a7b7a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.007
       objectReference: {fileID: 0}
     - target: {fileID: 7801071391532865003, guid: 9cc51d4c9aab3e847a7e164c02a7b7a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.36
+      value: 0.232
       objectReference: {fileID: 0}
     - target: {fileID: 7801071391532865003, guid: 9cc51d4c9aab3e847a7e164c02a7b7a6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.864
+      value: 0.668
       objectReference: {fileID: 0}
     - target: {fileID: 7801071391532865003, guid: 9cc51d4c9aab3e847a7e164c02a7b7a6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -995,6 +994,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &704791236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930499718998288583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e7aa95bb218840a3de331f260672b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2685409394335925866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1017,18 +1028,6 @@ MonoBehaviour:
   originalMaterials:
   - {fileID: 2100000, guid: 86322a289b08cb841a5a438a8807f6c8, type: 2}
   - {fileID: 2100000, guid: 91f7ce361f46c2347aa73abb7422a363, type: 2}
---- !u!114 &704791236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5930499718998288583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 217e7aa95bb218840a3de331f260672b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6414971667436679805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d9d6ccc11056ff640b1699ff97c11bf6, type: 3}
