@@ -1,20 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer), typeof(ParticleSystem))]
 public class WaterPower : MonoBehaviour
 {
     [SerializeField] LayerMask _groundLayer;
     [SerializeField] Vector2 _minMaxShootAngle;
 
     LineRenderer _lineRenderer;
-    ParticleSystem _waterPowerParticles;
+    [SerializeField] ParticleSystem _waterPowerParticles;
     public bool IsShooting { get; private set; }
 
     void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
-        _waterPowerParticles = GetComponent<ParticleSystem>();
     }
 
     /// <summary>
