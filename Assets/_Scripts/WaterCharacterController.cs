@@ -20,7 +20,6 @@ public class WaterCharacterController : CharacterController
     [SerializeField] float _waterSquirtVolume = 1;
 
     [Header("Push Pull")]
-    [SerializeField] float _pushForce = 5f;
     Pushable _pushable;
     WaterPower _waterPower;
 
