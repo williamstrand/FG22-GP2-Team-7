@@ -69,6 +69,7 @@ public class WaterPower : MonoBehaviour
     /// </summary>
     public void DeactivateWaterPower()
     {
+        IsShooting = false;
         AimEnabled(false);
         _waterPowerParticles.Stop();
     }

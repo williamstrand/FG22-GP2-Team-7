@@ -84,6 +84,8 @@ public class WaterCharacterController : CharacterController
             case WaterPlayerState.WaterPower:
                 _playerState = WaterPlayerState.Default;
                 _waterPower.DeactivateWaterPower();
+                PlaySound(_waterSquirtSource, 0, false);
+                _animator.SetBool("Spitting", false);
                 break;
 
             case WaterPlayerState.Pushing:
@@ -117,6 +119,7 @@ public class WaterCharacterController : CharacterController
         _waterPower.ActivateWaterPower();
         _rb.velocity = Vector3.zero;
         _currentSpeed = 0;
+        _animator.SetBool("Move", false);
         PlaySound(_footstepAudioSource, 0, false);
     }
 
