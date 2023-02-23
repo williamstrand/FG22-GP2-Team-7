@@ -41,7 +41,7 @@ public class PickUpDrop : MonoBehaviour, IInteractable
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Water") && _respawnInWater)
+        if (other.gameObject.CompareTag("Water") || other.gameObject.CompareTag("Rocks") && _respawnInWater )
         {
             transform.position = _respawnPoint;
         }
