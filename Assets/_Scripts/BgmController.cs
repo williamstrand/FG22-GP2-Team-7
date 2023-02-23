@@ -37,8 +37,10 @@ public class BgmController : MonoBehaviour
     {
         if (!_audioSources[2].isPlaying)
         {
+            _audioSources[2].Stop();
             _audioSources[2].clip = _soundHolder.BgmLoop;
             _audioSources[2].loop = true;
+            _audioSources[2].Play();
         }
     }
 }
