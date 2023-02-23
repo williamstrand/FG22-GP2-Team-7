@@ -85,7 +85,6 @@ public class LandCharacterController : CharacterController
 
     protected override void Jump()
     {
-        Debug.Log("Jump");
         switch (_playerState)
         {
             case LandPlayerState.Default:
