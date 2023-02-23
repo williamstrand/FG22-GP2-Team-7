@@ -58,11 +58,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Push (1)
-      takeName: Armature|Push
+      name: Armature|Breath
+      takeName: Armature|Breath
       internalID: -3699539937663401228
       firstFrame: 0
-      lastFrame: 218
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -204,7 +204,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8561497
+      - time: 0.9953438
         functionName: JumpFinished
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: d8effd49f57763c44b1dac1ab0bb0820, type: 3}
