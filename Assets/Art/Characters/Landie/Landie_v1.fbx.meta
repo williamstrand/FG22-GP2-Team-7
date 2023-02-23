@@ -42,7 +42,27 @@ ModelImporter:
   - first:
       74: -4344155331355331167
     second: SlideDownLadder
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: IslandGuy_Rig_A_POSE_Body1
+    second: {fileID: 2100000, guid: a30331934e8959141bd928c2d5841ef1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: IslandGuy_Rig_A_POSE_Hair
+    second: {fileID: 2100000, guid: d28662e4602f67d47a11e3b61dca4194, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: IslandGuy_Rig_A_POSE_Mask
+    second: {fileID: 2100000, guid: a78fbe8e4adb9e947bd865bf05750ffb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: IslandGuy_Rig_A_POSE_Skirt
+    second: {fileID: 2100000, guid: 736eeb4605642524d80be16295a94f1a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
