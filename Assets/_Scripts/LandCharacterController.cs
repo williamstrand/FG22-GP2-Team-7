@@ -19,6 +19,11 @@ public class LandCharacterController : CharacterController
     [SerializeField] AudioSource _dropAudioSource;
     [SerializeField] float _dropVolume = 1;
 
+    [Header("Torch")]
+    [SerializeField] TorchIgnition _torch;
+    [SerializeField] GameObject _torchMesh;
+    bool _torchOn = false;
+
     LandPlayerState _playerState = LandPlayerState.Default;
     PickUpDrop _heldItem;
 
@@ -27,6 +32,27 @@ public class LandCharacterController : CharacterController
         Default,
         Climbing,
         Catapult
+    }
+
+    void OnEnable()
+    {
+        _torch.OnTorchLit += OnTorchLit;
+        _torch.OnTorchPutOut += OnTorchPutOut;
+    }
+
+    void OnTorchPutOut()
+    {
+        _torchOn = false;
+        _torchMesh.SetActive(false);
+        _animator.SetBool("TorchOn", false);
+    }
+
+    void OnTorchLit()
+    {
+        _torchOn = true;
+        _torchMesh.SetActive(true);
+        _animator.SetBool("TorchOn", true);
+        _animator.SetTrigger("TorchLit");
     }
 
     protected override void FixedUpdate()

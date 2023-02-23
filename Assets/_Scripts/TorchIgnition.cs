@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.VFX;
 
 public class TorchIgnition : MonoBehaviour
 {
+    public Action OnTorchLit;
+    public Action OnTorchPutOut;
     [SerializeField] private VisualEffect _fire;
     [SerializeField] private string _ignitionSourceTag = "IgnitionSource";
 
@@ -35,6 +38,7 @@ public class TorchIgnition : MonoBehaviour
         _isTorchLit = true;
         _fire.gameObject.SetActive(true);
         Debug.Log("Torch is now lit.");
+        OnTorchLit?.Invoke();
     }
 
     public void PutOutTorchFire()
@@ -42,5 +46,6 @@ public class TorchIgnition : MonoBehaviour
         _isTorchLit = false;
         _fire.gameObject.SetActive(false);
         Debug.Log("Torch fire put out.");
+        OnTorchPutOut?.Invoke();
     }
 }
