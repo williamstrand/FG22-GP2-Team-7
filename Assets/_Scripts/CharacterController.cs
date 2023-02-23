@@ -39,6 +39,8 @@ public abstract class CharacterController : MonoBehaviour
     protected float _currentSpeed;
     Vector2 _lastDirection = Vector2.zero;
     protected Vector3 _dirWithCamera;
+    const float JumpDelay = .1f;
+    protected float _jumpTimer;
 
     Vector3 _respawnPoint;
 
@@ -96,6 +98,8 @@ public abstract class CharacterController : MonoBehaviour
     {
         Move(_inputHandler.MoveInput);
         Rotate();
+
+        if (_jumpTimer > 0) _jumpTimer -= Time.deltaTime;
     }
 
     protected virtual void FixedUpdate()
@@ -118,7 +122,8 @@ public abstract class CharacterController : MonoBehaviour
     /// <param name="direction">the direction to move the character.</param>
     protected virtual void Move(Vector2 direction)
     {
-        PlaySound(_footstepAudioSource, _footStepVolume, _currentSpeed > 0);
+        if (IsGrounded()) PlaySound(_footstepAudioSource, _footStepVolume, direction != Vector2.zero);
+        else _footstepAudioSource.Stop();
 
         _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
         if (!_useAcceleration)
@@ -223,15 +228,18 @@ public abstract class CharacterController : MonoBehaviour
 
         //_rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
-        PlaySound(_jumpAudioSource, _jumpVolume, true);
+
+        PlaySound(_jumpAudioSource, _jumpVolume);
+        _footstepAudioSource.Stop();
         _animator.SetTrigger("Jump");
+        _jumpTimer = JumpDelay;
     }
 
     /// <summary>
     /// Checks if character is on the ground.
     /// </summary>
     /// <returns>true if character is on the ground.</returns>
-    protected bool IsGrounded() => Physics.CheckSphere(transform.position + Vector3.down * _groundCheckDistance, _groundCheckRadius, _groundLayer);
+    protected bool IsGrounded() => !(_jumpTimer > 0) && Physics.CheckSphere(transform.position + Vector3.down * _groundCheckDistance, _groundCheckRadius, _groundLayer);
 
     /// <summary>
     /// Interact with an object.
