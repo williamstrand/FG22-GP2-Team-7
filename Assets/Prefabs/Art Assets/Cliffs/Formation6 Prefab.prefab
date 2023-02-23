@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 16, z: 10}
-  m_Center: {x: 0, y: 8, z: 0}
+  m_Size: {x: 10, y: 17, z: 10}
+  m_Center: {x: 0, y: 8.5, z: 0}
 --- !u!1 &5170338338022487333
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,8 +88,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 16, z: 10}
-  m_Center: {x: 0, y: 8, z: 0}
+  m_Size: {x: 10, y: 17, z: 10}
+  m_Center: {x: 0, y: 8.5, z: 0}
 --- !u!1 &7081732583201649974
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,14 +114,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7081732583201649974}
-  m_LocalRotation: {x: -0.5654765, y: -0, z: -0, w: 0.8247645}
+  m_LocalRotation: {x: -0.5735764, y: 0, z: 0, w: 0.8191521}
   m_LocalPosition: {x: 0, y: 12.56, z: 8.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7786396205007851040}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -68.871, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -70, y: 0, z: 0}
 --- !u!65 &9075679281354400309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 47db6ac7cb1b07e49b20babd316ff436, type: 3}
       propertyPath: m_Name
-      value: Formation6 Variant
+      value: Formation6 Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 47db6ac7cb1b07e49b20babd316ff436, type: 3}
       propertyPath: m_Layer
