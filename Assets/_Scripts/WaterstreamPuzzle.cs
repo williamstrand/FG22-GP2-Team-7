@@ -39,7 +39,7 @@ public class WaterstreamPuzzle : MonoBehaviour
     void OnDropOff(Pushable pushable)
     {
         pushable.GetComponent<Rigidbody>().isKinematic = true;
-        pushable.enabled = false;
+        pushable.CanBePushed = false;
 
         if (_lane1Pushable == null)
         {
@@ -193,7 +193,7 @@ public class WaterstreamPuzzle : MonoBehaviour
 
             if (_lane1Position + 1 >= _lane1Positions.Length)
             {
-                _lane1Pushable.enabled = false;
+                _lane1Pushable.CanBePushed = true;
                 _lane1Pushable.GetComponent<Rigidbody>().isKinematic = false;
                 _lane1Pushable.GetComponent<Collider>().enabled = true;
                 _lane1Pushable = null;
@@ -205,7 +205,7 @@ public class WaterstreamPuzzle : MonoBehaviour
 
             if (_lane2Position + 1 >= _lane2Positions.Length)
             {
-                _lane2Pushable.enabled = false;
+                _lane2Pushable.CanBePushed = true;
                 _lane2Pushable.GetComponent<Rigidbody>().isKinematic = false;
                 _lane2Pushable.GetComponent<Collider>().enabled = true;
                 _lane2Pushable = null;

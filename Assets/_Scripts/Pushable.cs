@@ -7,6 +7,13 @@ public class Pushable : MonoBehaviour, IInteractable
     [SerializeField] float _pushOffset;
     public bool IsPushed => _player != null;
     bool _canPush = true;
+    public bool CanBePushed = true;
+    UIInteraction _ui;
+
+    void Awake()
+    {
+        _ui = GetComponentInChildren<UIInteraction>();
+    }
 
     /// <summary>
     /// Starts pushing the object.
@@ -14,6 +21,7 @@ public class Pushable : MonoBehaviour, IInteractable
     /// <param name="player">the player that will push.</param>
     public void StartPush(Transform player)
     {
+        _ui.gameObject.SetActive(false);
         var points = new Vector3[]
         {
             transform.position + transform.forward * _pushOffset,
@@ -49,6 +57,7 @@ public class Pushable : MonoBehaviour, IInteractable
 
         _player.SetParent(null);
         _player = null;
+        _ui.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -58,6 +67,8 @@ public class Pushable : MonoBehaviour, IInteractable
     public void Push(float speed)
     {
         if(!_canPush) return;
+
+        if(!CanBePushed) return;
 
         var direction = new Vector3(_player.position.x, 0, _player.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
         direction.Normalize();
