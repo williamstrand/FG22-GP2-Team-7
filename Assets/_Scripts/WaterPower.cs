@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer), typeof(ParticleSystem))]
@@ -29,8 +30,14 @@ public class WaterPower : MonoBehaviour
         else
         {
             IsShooting = true;
-            _waterPowerParticles.Play();
+            StartCoroutine(ShootDelay(.25f));
         }
+    }
+
+    IEnumerator ShootDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _waterPowerParticles.Play();
     }
 
     /// <summary>

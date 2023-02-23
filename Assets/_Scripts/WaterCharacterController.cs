@@ -66,6 +66,7 @@ public class WaterCharacterController : CharacterController
 
             case WaterPlayerState.WaterPower:
                 _waterPower.ToggleShooting();
+                _animator.SetBool("Spitting", _waterPower.IsShooting);
                 break;
         }
     }
@@ -88,6 +89,7 @@ public class WaterCharacterController : CharacterController
             case WaterPlayerState.Pushing:
                 _pushable.StopPush();
                 _playerState = WaterPlayerState.Default;
+                _animator.SetBool("Pushing", false);
                 break;
         }
     }
@@ -106,6 +108,7 @@ public class WaterCharacterController : CharacterController
                     _playerState = WaterPlayerState.Pushing;
                     var rot = (new Vector3(pushable.transform.position.x, transform.position.y, pushable.transform.position.z) - transform.position).normalized;
                     transform.rotation = Quaternion.LookRotation(rot);
+                    _animator.SetBool("Pushing", true);
                     return;
             }
         }

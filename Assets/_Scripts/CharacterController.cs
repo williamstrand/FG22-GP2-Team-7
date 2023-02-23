@@ -33,6 +33,7 @@ public abstract class CharacterController : MonoBehaviour
 
     [Space(15)]
     [SerializeField] protected float _interactRange = 1f;
+    protected Animator _animator;
 
     protected bool _applyGravity = true;
     protected float _currentSpeed;
@@ -53,6 +54,7 @@ public abstract class CharacterController : MonoBehaviour
     {
         _inputHandler = GetComponent<InputHandler>();
         _rb = GetComponent<Rigidbody>();
+        _animator = GetComponentInChildren<Animator>();
         _rb.useGravity = false;
         FindCollider();
         _respawnPoint = transform.position;
@@ -129,11 +131,13 @@ public abstract class CharacterController : MonoBehaviour
             if (direction == Vector2.zero)
             {
                 _currentSpeed -= _maxSpeed / _decelerationTime * Time.deltaTime;
+                _animator.SetBool("Move", false);
             }
             else
             {
                 _lastDirection = direction;
                 _currentSpeed += _maxSpeed / _accelerationTime * Time.deltaTime;
+                _animator.SetBool("Move", true);
             }
             _currentSpeed = Mathf.Clamp(_currentSpeed, 0, _maxSpeed);
 
@@ -220,6 +224,7 @@ public abstract class CharacterController : MonoBehaviour
         //_rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
         PlaySound(_jumpAudioSource, _jumpVolume, true);
+        _animator.SetTrigger("Jump");
     }
 
     /// <summary>
