@@ -85,7 +85,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: 0.25
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -201,7 +201,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0c3573016ad87194b91261b0a8b9e2ea, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9ca774079fa8a49a6bfca740bd28ceb2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -213,7 +213,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: 0.25
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -341,7 +341,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: 0.25
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -469,7 +469,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: 0.25
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -613,7 +613,7 @@ MonoBehaviour:
   _useAcceleration: 1
   _rotationSpeed: 2
   _footstepAudioSource: {fileID: 4119673121231985820}
-  _footStepVolume: 1
+  _footStepVolume: 0.5
   _jumpForce: 20
   _groundLayer:
     serializedVersion: 2
@@ -622,7 +622,7 @@ MonoBehaviour:
   _groundCheckDistance: 0.5
   _groundCheckRadius: 0.45
   _jumpAudioSource: {fileID: 6648855448506980012}
-  _jumpVolume: 1
+  _jumpVolume: 0.7
   _interactRange: 2
   _cameraTransform: {fileID: 0}
   _climbSpeed: 1
@@ -901,7 +901,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 75f7e0717cd0f1947a31c19ea8c1ccdb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 91f017c46e1d3494cb8f5010e770743d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -913,7 +913,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: 0.25
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0

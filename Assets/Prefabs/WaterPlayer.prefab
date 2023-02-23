@@ -133,7 +133,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: -0.3
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -353,7 +353,7 @@ MonoBehaviour:
   _useAcceleration: 1
   _rotationSpeed: 1
   _footstepAudioSource: {fileID: 8355375895308274600}
-  _footStepVolume: 0.2
+  _footStepVolume: 0.3
   _jumpForce: 20
   _groundLayer:
     serializedVersion: 2
@@ -362,7 +362,7 @@ MonoBehaviour:
   _groundCheckDistance: 0.5
   _groundCheckRadius: 0.45
   _jumpAudioSource: {fileID: 6600557619638534956}
-  _jumpVolume: 0.5
+  _jumpVolume: 0.6
   _interactRange: 2
   _cameraTransform: {fileID: 0}
   _diveSpeed: 2
@@ -370,7 +370,7 @@ MonoBehaviour:
   _waterPowerTurnSpeed: 2.16
   _waterPowerAimSpeed: 1
   _waterSquirtSource: {fileID: 8395832819287296496}
-  _waterSquirtVolume: 0.4
+  _waterSquirtVolume: 0.5
 --- !u!54 &5856157690419383512
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -571,7 +571,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: -0.3
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -699,7 +699,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: -0.3
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
