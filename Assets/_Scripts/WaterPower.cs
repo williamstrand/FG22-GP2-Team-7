@@ -8,11 +8,13 @@ public class WaterPower : MonoBehaviour
 
     LineRenderer _lineRenderer;
     [SerializeField] ParticleSystem _waterPowerParticles;
+    [SerializeField] GameObject _particleEmitter;
     public bool IsShooting { get; private set; }
 
     void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
+        _particleEmitter.GetComponent<ParticleCollisionHandler>().ParticleCollisionEvent += OnParticleCollision;
     }
 
     /// <summary>
