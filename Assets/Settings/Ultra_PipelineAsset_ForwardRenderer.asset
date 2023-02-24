@@ -69,13 +69,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    passTag: PlayerVisible
+    passTag: ShowPlayer
     Event: 300
     filterSettings:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 1073741824
+        m_Bits: 1073741825
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
