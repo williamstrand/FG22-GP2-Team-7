@@ -29,11 +29,11 @@ public class UIManager : MonoBehaviour
     {
         sceneToLoad = levelIndex;
         animator.SetTrigger("SceneFadeOut");
+        Time.timeScale = 1f;
     }
 
     public void FadeComplete()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneToLoad);
     }
 
