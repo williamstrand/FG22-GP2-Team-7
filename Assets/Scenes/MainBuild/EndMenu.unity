@@ -2439,18 +2439,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 59032901, guid: 5bb6e9b4b3564d444b62ff6728be611f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2109869195, guid: 5bb6e9b4b3564d444b62ff6728be611f, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2112455882, guid: 5bb6e9b4b3564d444b62ff6728be611f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5729492247748301988, guid: 5bb6e9b4b3564d444b62ff6728be611f, type: 3}
       propertyPath: m_Name
       value: UI Manager
@@ -2498,10 +2486,6 @@ PrefabInstance:
     - target: {fileID: 5729492247748301993, guid: 5bb6e9b4b3564d444b62ff6728be611f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6278612690403154011, guid: 5bb6e9b4b3564d444b62ff6728be611f, type: 3}
-      propertyPath: pauseCanvas
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bb6e9b4b3564d444b62ff6728be611f, type: 3}

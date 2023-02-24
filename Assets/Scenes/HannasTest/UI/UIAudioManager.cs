@@ -1,19 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIAudioManager : MonoBehaviour
 {
-    public AudioSource audioSource;
+    AudioSource[] audioSources;
     [SerializeField] AudioClip hoverSound;
     [SerializeField] AudioClip pressedSound;
+    int currentScene;
+
+    private void Awake()
+    {
+        audioSources = GetComponents<AudioSource>();
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+        Debug.Log(currentScene);
+    }
+
+    private void Start()
+    {
+        if (currentScene != 1)
+        {
+            audioSources[1].Play();
+            audioSources[1].loop = true;
+        }
+        
+    }
 
     public void hoverButton()
     {
-        audioSource.PlayOneShot(hoverSound);
+        audioSources[0].PlayOneShot(hoverSound);
     }
     public void clickButton()
     {
-        audioSource.PlayOneShot(pressedSound);
+        audioSources[0].PlayOneShot(pressedSound);
     }
 }
