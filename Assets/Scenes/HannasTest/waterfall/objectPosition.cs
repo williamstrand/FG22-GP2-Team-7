@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class ObjectPosition : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
 
     // Set object position
     void Update()
