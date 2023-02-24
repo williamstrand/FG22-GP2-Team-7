@@ -240,4 +240,10 @@ public class WaterCharacterController : CharacterController
     }
 
     bool CanDive() => _canDive;
+
+    public override void Respawn()
+    {
+        base.Respawn();
+        _playerState = WaterPlayerState.Default;
+    }
 }
