@@ -24,6 +24,9 @@ public class LandCharacterController : CharacterController
     [SerializeField] GameObject _torchMesh;
     bool _torchOn = false;
 
+    [SerializeField] AudioSource _landingAudioSource;
+    [SerializeField] float _landingVolume = 1;
+
     LandPlayerState _playerState = LandPlayerState.Default;
     PickUpDrop _heldItem;
 
@@ -245,5 +248,12 @@ public class LandCharacterController : CharacterController
         {
             Respawn();
         }
+
+        if (!Physics.Raycast(transform.position, Vector3.down, out var hit, 1, _groundLayer)) return;
+        Debug.Log(hit);
+        if (hit.collider == null) return;
+
+        if (hit.collider.gameObject != other.gameObject) return;
+        PlaySound(_landingAudioSource, _landingVolume);
     }
 }

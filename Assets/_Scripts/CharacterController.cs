@@ -25,7 +25,7 @@ public abstract class CharacterController : MonoBehaviour
     [SerializeField] protected LayerMask _groundLayer;
     [Range(0, 100)][SerializeField] float _gravityScale = 1;
     [Tooltip("The distance from the middle of the character to check for ground.")]
-    [Range(0, 2)][SerializeField] float _groundCheckDistance = .5f;
+    [Range(0, 2)][SerializeField] protected float _groundCheckDistance = .5f;
     [Tooltip("The radius of the ground check.")]
     [Range(0, 2)][SerializeField] float _groundCheckRadius = .45f;
     [SerializeField] protected AudioSource _jumpAudioSource;
