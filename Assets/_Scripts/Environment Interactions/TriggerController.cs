@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -42,6 +39,17 @@ public class TriggerController : MonoBehaviour
                     isPressed = true;
                 }
             }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.CompareTag("Player") && !other.CompareTag("Coconut")) return;
+
+        if (!isPressed)
+        {
+            //_trigger.position = _triggerDown.position;
+            isPressed = true;
         }
     }
 

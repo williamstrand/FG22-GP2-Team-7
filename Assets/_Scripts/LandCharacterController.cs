@@ -178,6 +178,7 @@ public class LandCharacterController : CharacterController
                     return;
 
                 case PickUpDrop pickUpDrop:
+                    if (_heldItem) break;
                     pickUpDrop.GetComponentInChildren<UIInteraction>().enabled = false;
                     pickUpDrop.Pickup(_pickupPoint);
                     _heldItem = pickUpDrop;
@@ -194,7 +195,6 @@ public class LandCharacterController : CharacterController
         }
 
         if (!_heldItem) return;
-
         PlaySound(_dropAudioSource, _dropVolume);
         _heldItem.GetComponentInChildren<UIInteraction>().enabled = true;
         _heldItem.Drop();

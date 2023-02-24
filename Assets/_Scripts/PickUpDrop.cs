@@ -21,7 +21,7 @@ public class PickUpDrop : MonoBehaviour, IInteractable
     public void Pickup(Transform pickupPoint)
     {
         _rigidbody.useGravity = false;
-        _collider.enabled = false;
+        //_collider.enabled = false;
         _rigidbody.isKinematic = true;
         
         transform.position = pickupPoint.position;
