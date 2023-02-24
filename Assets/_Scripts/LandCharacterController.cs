@@ -248,12 +248,5 @@ public class LandCharacterController : CharacterController
         {
             Respawn();
         }
-
-        if (!Physics.Raycast(transform.position, Vector3.down, out var hit, 1, _groundLayer)) return;
-        Debug.Log(hit);
-        if (hit.collider == null) return;
-
-        if (hit.collider.gameObject != other.gameObject) return;
-        PlaySound(_landingAudioSource, _landingVolume);
     }
 }

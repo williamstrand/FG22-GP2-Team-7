@@ -243,7 +243,10 @@ public class WaterCharacterController : CharacterController
 
     public override void Respawn()
     {
+        if (_playerState == WaterPlayerState.Diving)
+        {
+            Resurface();
+        }
         base.Respawn();
-        _playerState = WaterPlayerState.Default;
     }
 }
