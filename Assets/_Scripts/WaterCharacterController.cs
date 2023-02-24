@@ -89,11 +89,16 @@ public class WaterCharacterController : CharacterController
                 break;
 
             case WaterPlayerState.Pushing:
-                _pushable.StopPush();
-                _playerState = WaterPlayerState.Default;
-                _animator.SetBool("Pushing", false);
+                StopPush();
                 break;
         }
+    }
+
+    public void StopPush()
+    {
+        _pushable.StopPush();
+        _playerState = WaterPlayerState.Default;
+        _animator.SetBool("Pushing", false);
     }
 
     void DefaultInteract()

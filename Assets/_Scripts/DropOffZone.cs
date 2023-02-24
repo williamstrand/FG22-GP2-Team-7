@@ -10,7 +10,6 @@ public class DropOffZone : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (!other.TryGetComponent(out Pushable pushable)) return;
-        if (pushable.IsPushed) return;
         
         OnDropOff?.Invoke(pushable);
     }

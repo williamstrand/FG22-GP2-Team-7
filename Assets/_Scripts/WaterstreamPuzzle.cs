@@ -8,6 +8,8 @@ public class WaterstreamPuzzle : MonoBehaviour
     [SerializeField] Vector2Int _lever1Positions;
     [SerializeField] Vector2Int _lever2Positions;
     [SerializeField] Vector2Int _lever3Positions;
+    [SerializeField] Transform[] _path;
+    [SerializeField] Transform[] _playerPath;
 
     Pushable _lane1Pushable;
     int _lane1Position;
@@ -55,6 +57,9 @@ public class WaterstreamPuzzle : MonoBehaviour
             _lane2Pushable = pushable;
             StartCoroutine(MoveToStart(2));
         }
+
+        GameObject.Find("WaterPlayer").GetComponent<WaterCharacterController>().StopPush();
+        StartCoroutine(MovePlayerToStart());
     }
 
     public void OnLever1()
@@ -186,7 +191,7 @@ public class WaterstreamPuzzle : MonoBehaviour
         }
 
         pushCollider.enabled = true;
-        
+
         if (lane == 1)
         {
             _lane1Ready = true;
@@ -227,19 +232,27 @@ public class WaterstreamPuzzle : MonoBehaviour
             start = _lane2Pushable.transform.position;
         }
 
-        var lerp = 0f;
+        var finalPos = lane == 1 ? _lane1Positions[0].position : _lane2Positions[0].position;
 
-        while (lerp < 1)
+        for (int i = 0; i < _path.Length + 1; i++)
         {
-            lerp += Time.deltaTime;
-            if (lane == 1)
+            var target = i < _path.Length ? _path[i].position : finalPos;
+            var lerp = 0f;
+            while (lerp < 1)
             {
-                _lane1Pushable.transform.position = Vector3.Lerp(start, _lane1Positions[0].position, lerp);
+                lerp += Time.deltaTime;
+                if (lane == 1)
+                {
+                    _lane1Pushable.transform.position = Vector3.Lerp(start, target, lerp);
+                }
+                else
+                {
+                    _lane2Pushable.transform.position = Vector3.Lerp(start, target, lerp);
+                }
+                yield return null;
             }
-            else
-            {
-                _lane2Pushable.transform.position = Vector3.Lerp(start, _lane2Positions[0].position, lerp);
-            }
+
+            start = target;
             yield return null;
         }
 
@@ -251,6 +264,36 @@ public class WaterstreamPuzzle : MonoBehaviour
         {
             _lane2Ready = true;
         }
+    }
+
+    IEnumerator MovePlayerToStart()
+    {
+        var player = GameObject.Find("WaterPlayer").GetComponent<WaterCharacterController>();
+        player.enabled = false;
+        var animator = player.GetComponentInChildren<Animator>();
+        animator.SetBool("Move", true);
+
+        var start = player.transform.position;
+        foreach (var pos in _playerPath)
+        {
+            var target = pos.position;
+            var lerp = 0f;
+            var dir = (target - player.transform.position).normalized;
+            player.transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
+            while (lerp < 1)
+            {
+                lerp += Time.deltaTime * 2;
+
+                player.transform.position = Vector3.Lerp(start, target, lerp);
+
+                yield return null;
+            }
+
+            start = target;
+            yield return null;
+        }
+        animator.SetBool("Move", false);
+        player.enabled = true;
     }
 
 }
