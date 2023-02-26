@@ -25,9 +25,17 @@ public class TorchIgnition : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(_ignitionSourceTag))
+        {
+            _isInsideIgnitionSourceTrigger = false;
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        if (_isInsideIgnitionSourceTrigger && Input.GetKeyDown(KeyCode.Keypad2))
+        if (_isInsideIgnitionSourceTrigger && Input.GetKey(KeyCode.Keypad2))
         {
             IgniteTorch();
         }
