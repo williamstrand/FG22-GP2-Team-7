@@ -1964,7 +1964,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4508843587408002907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 32, z: -0.5}
+  m_LocalPosition: {x: 0, y: 30, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3810,15 +3810,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a9e4189fb369a4481e41d7634c2a1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6637583
+      value: 111.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a9e4189fb369a4481e41d7634c2a1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000009536743
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a9e4189fb369a4481e41d7634c2a1e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.503342
+      value: 609.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a9e4189fb369a4481e41d7634c2a1e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3826,15 +3826,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a9e4189fb369a4481e41d7634c2a1e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a9e4189fb369a4481e41d7634c2a1e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a9e4189fb369a4481e41d7634c2a1e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a9e4189fb369a4481e41d7634c2a1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3850,7 +3850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5a9e4189fb369a4481e41d7634c2a1e, type: 3}
       propertyPath: m_Name
-      value: LadderSuperLongBamboo Climbable
+      value: LadderSuperLongBamboo Variant Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5a9e4189fb369a4481e41d7634c2a1e, type: 3}
@@ -3875,8 +3875,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 16, z: 1}
-  m_Center: {x: 0, y: 8, z: 0}
+  m_Size: {x: 2, y: 30, z: 1}
+  m_Center: {x: 0, y: 15, z: 0}
 --- !u!114 &4716280515793284582
 MonoBehaviour:
   m_ObjectHideFlags: 0
