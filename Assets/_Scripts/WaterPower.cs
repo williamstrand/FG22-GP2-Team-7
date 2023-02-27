@@ -9,6 +9,7 @@ public class WaterPower : MonoBehaviour
     LineRenderer _lineRenderer;
     [SerializeField] ParticleSystem _waterPowerParticles;
     [SerializeField] GameObject _particleEmitter;
+    [SerializeField] Transform _aimTransform;
     Vector3 _aimVelocity = Vector3.zero;
     public bool IsShooting { get; private set; }
 
@@ -126,7 +127,7 @@ public class WaterPower : MonoBehaviour
         var y = x * Mathf.Tan(angleRad) - 9.81f * x * x / (2 * force * force * Mathf.Cos(angleRad) * Mathf.Cos(angleRad));
         var vector = new Vector3(0, y, x);
         var shape = _waterPowerParticles.shape;
-        var pos = transform.position + (shape.position.z * transform.forward + shape.position.y * transform.up);
+        var pos = _aimTransform.position + (shape.position.z * transform.forward + shape.position.y * transform.up);
         return pos + vector.x * transform.right + vector.y * transform.up + vector.z * transform.forward;
     }
 
