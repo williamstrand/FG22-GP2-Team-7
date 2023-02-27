@@ -9,10 +9,12 @@ public class Target : MonoBehaviour
     [SerializeField] float _cooldown = 1;
     float _currentCooldown;
     [SerializeField] UnityEvent _onHit;
+    AudioSource _audioSource;
 
     void Awake()
     {
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void Hit()
@@ -21,6 +23,7 @@ public class Target : MonoBehaviour
 
         _currentCooldown = _cooldown;
         _animator.SetTrigger("isHit");
+        _audioSource.Play();
 
         _onHit?.Invoke();
     }
