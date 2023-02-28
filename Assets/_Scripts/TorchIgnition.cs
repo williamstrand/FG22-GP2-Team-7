@@ -6,6 +6,7 @@ public class TorchIgnition : MonoBehaviour
 {
     public Action OnTorchLit;
     public Action OnTorchPutOut;
+    AudioSource _audioSource;
     [SerializeField] private VisualEffect _fire;
     [SerializeField] private string _ignitionSourceTag = "IgnitionSource";
 
@@ -15,6 +16,7 @@ public class TorchIgnition : MonoBehaviour
     private void Start()
     {
         _fire.gameObject.SetActive(false);
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,6 +46,7 @@ public class TorchIgnition : MonoBehaviour
     public void IgniteTorch()
     {
         _isTorchLit = true;
+        _audioSource.Play();
         _fire.gameObject.SetActive(true);
         Debug.Log("Torch is now lit.");
         OnTorchLit?.Invoke();
@@ -52,6 +55,7 @@ public class TorchIgnition : MonoBehaviour
     public void PutOutTorchFire()
     {
         _isTorchLit = false;
+        _audioSource.Play();
         _fire.gameObject.SetActive(false);
         Debug.Log("Torch fire put out.");
         OnTorchPutOut?.Invoke();
