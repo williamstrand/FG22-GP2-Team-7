@@ -8,6 +8,7 @@ public class CoconutBasket : MonoBehaviour
     Collider _coconutTrigger;
     [SerializeField] Transform _coconut1Position;
     [SerializeField] Transform _coconut2Position;
+    AudioSource _audioSource;
 
     bool _coconut1;
     bool _coconut2;
@@ -15,6 +16,7 @@ public class CoconutBasket : MonoBehaviour
     void Awake()
     {
         _coconutTrigger = GetComponent<Collider>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -28,6 +30,7 @@ public class CoconutBasket : MonoBehaviour
             other.transform.parent = transform.parent;
             other.GetComponent<Rigidbody>().isKinematic = true;
             other.GetComponent<Collider>().enabled = false;
+            _audioSource.Play();
         }
         else if (!_coconut2)
         {
@@ -36,6 +39,7 @@ public class CoconutBasket : MonoBehaviour
             other.transform.parent = transform.parent;
             other.GetComponent<Rigidbody>().isKinematic = true;
             other.GetComponent<Collider>().enabled = false;
+            _audioSource.Play();
         }
         else
         {
