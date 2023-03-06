@@ -27,13 +27,13 @@ public class BgmController : MonoBehaviour
         seagullLoop.volume = _seagullLoopVolume;
         seagullLoop.Play();
 
-        var bgmLoop = _audioSources[2];
+        /*var bgmLoop = _audioSources[2];
         bgmLoop.clip = _soundHolder.BgmIntro;
         bgmLoop.volume = _bgmVolume;
-        bgmLoop.Play();
+        bgmLoop.Play();*/
     }
 
-    void Update()
+    /*void Update()
     {
         if (!_audioSources[2].isPlaying)
         {
@@ -42,5 +42,5 @@ public class BgmController : MonoBehaviour
             _audioSources[2].loop = true;
             _audioSources[2].Play();
         }
-    }
+    }*/
 }
