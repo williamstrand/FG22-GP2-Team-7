@@ -230,6 +230,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a64af239-cf25-4356-a6e0-3e16a8d13beb"",
+                    ""path"": ""<Keyboard>/rightShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM2"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a841b497-3bbc-47a5-8b72-0da5f1d7e406"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
@@ -263,6 +274,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ebd9c7fb-5c63-4f32-a2e5-e525314dd62f"",
+                    ""path"": ""<Keyboard>/slash"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM2"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4078b8db-cc10-4f55-abd4-804a76d390d4"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -287,6 +309,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""ed76f0f6-702c-4be1-80fc-6acd75f0fbef"",
                     ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM2"",
+                    ""action"": ""Player Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27912bac-d06e-4eb6-a9c4-cddb79a85036"",
+                    ""path"": ""<Keyboard>/period"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KBM2"",
