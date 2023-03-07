@@ -402,7 +402,7 @@ MonoBehaviour:
   _waterPowerTurnSpeed: 1.5
   _waterPowerAimSpeed: 1
   _waterSquirtSource: {fileID: 8395832819287296496}
-  _waterSquirtVolume: 0.5
+  _waterSquirtVolume: 0.45
 --- !u!54 &5856157690419383512
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1677,18 +1677,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &704791236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5930499718998288583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 217e7aa95bb218840a3de331f260672b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2685409394335925866
 MonoBehaviour:
   m_ObjectHideFlags: 0

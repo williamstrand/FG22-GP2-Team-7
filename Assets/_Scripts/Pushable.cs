@@ -9,10 +9,12 @@ public class Pushable : MonoBehaviour, IInteractable
     bool _canPush = true;
     public bool CanBePushed = true;
     UIInteraction _ui;
+    Rigidbody _rigidbody;
 
     void Awake()
     {
         _ui = GetComponentInChildren<UIInteraction>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     /// <summary>
@@ -21,6 +23,7 @@ public class Pushable : MonoBehaviour, IInteractable
     /// <param name="player">the player that will push.</param>
     public void StartPush(Transform player)
     {
+        _rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
         _ui.gameObject.SetActive(false);
         var points = new Vector3[]
         {
@@ -52,6 +55,7 @@ public class Pushable : MonoBehaviour, IInteractable
     /// </summary>
     public void StopPush()
     {
+        _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         _player.GetComponent<Collider>().enabled = true;
         _player.GetComponent<Rigidbody>().isKinematic = false;
 

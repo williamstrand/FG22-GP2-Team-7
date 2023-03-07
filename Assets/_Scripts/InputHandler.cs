@@ -17,9 +17,12 @@ public class InputHandler : MonoBehaviour
     public bool InteractButtonHeld { get; private set; }
 
     Controls _controls;
+    InputUser _user;
 
     void Awake()
     {
+        PlayerIndex = 0;
+        
         _controls = new Controls();
         _controls.Player.Jump.performed += _ => OnJump?.Invoke();
 
@@ -35,11 +38,11 @@ public class InputHandler : MonoBehaviour
 
     public void Join(InputDevice device, bool keyboard2 = false)
     {
-        var user = InputUser.PerformPairingWithDevice(device);
-        user.AssociateActionsWithUser(_controls);
+        _user = InputUser.PerformPairingWithDevice(device);
+        _user.AssociateActionsWithUser(_controls);
         if (keyboard2)
         {
-            user.ActivateControlScheme(PlayerIndex == 0 ? "KBM" : "KBM2");
+            _user.ActivateControlScheme(PlayerIndex == 0 ? "KBM" : "KBM2");
             PlayerIndex++;
         }
         _controls.Enable();

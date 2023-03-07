@@ -65,6 +65,7 @@ public class PlayerManager : MonoBehaviour
             }
             yield return null;
         }
+        Debug.Log("Player 1 bound to " + _device1.displayName);
 
         Debug.Log("Press any button on the second device");
         while (_device2 == null)

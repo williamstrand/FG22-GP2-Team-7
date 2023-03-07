@@ -23,6 +23,8 @@ public class WaterCharacterController : CharacterController
     Pushable _pushable;
     WaterPower _waterPower;
 
+    [Space(15)]
+    [SerializeField] float _jumpCooldown = 2f;
 
     public enum WaterPlayerState
     {
@@ -136,11 +138,12 @@ public class WaterCharacterController : CharacterController
                 if (!_canJump) break;
                 base.Jump();
                 _canJump = false;
+                Invoke(nameof(JumpFinished), _jumpCooldown);
                 break;
         }
     }
 
-    public void JumpFinished()
+    void JumpFinished()
     {
         _canJump = true;
     }
