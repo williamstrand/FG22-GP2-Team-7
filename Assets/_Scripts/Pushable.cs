@@ -92,6 +92,11 @@ public class Pushable : MonoBehaviour, IInteractable
         transform.Rotate(0, dir * 90 * Time.deltaTime, 0);
     }
 
+    void Update()
+    {
+        _rigidbody.constraints = _canPush ? RigidbodyConstraints.FreezePositionY : RigidbodyConstraints.FreezeAll;
+    }
+
     void OnCollisionEnter(Collision col)
     {
         if (!col.gameObject.CompareTag("Player")) return;
