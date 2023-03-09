@@ -4,6 +4,7 @@ public class Climbable : MonoBehaviour, IInteractable
 {
     [SerializeField] Transform _topPoint;
     [SerializeField] Transform _bottomPoint;
+    float _totalHeight => (_topPoint.position.y - _bottomPoint.position.y);
 
     Transform _characterTransform;
     float _characterHeight;
@@ -44,7 +45,7 @@ public class Climbable : MonoBehaviour, IInteractable
         if (direction == 0) return;
 
         var dir = Mathf.Sign(direction);
-        _characterHeight = Mathf.Clamp01(_characterHeight + dir * speed * Time.deltaTime);
+        _characterHeight = Mathf.Clamp01(_characterHeight + dir * speed * 1 / _totalHeight * Time.deltaTime);
         _characterTransform.position = GetPositionOnClimbable(_characterHeight);
     }
 

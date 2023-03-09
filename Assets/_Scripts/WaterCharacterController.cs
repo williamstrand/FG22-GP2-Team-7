@@ -219,7 +219,6 @@ public class WaterCharacterController : CharacterController
         _applyGravity = false;
         _canDive = false;
         var waterCollider = Physics.OverlapSphere(transform.position, _diveDepth, _groundLayer)[0];
-        Physics.IgnoreCollision(_collider, waterCollider, down);
         var targetY = down ? transform.position.y - _diveDepth : transform.position.y + _diveDepth;
         var startY = transform.position.y;
 
@@ -238,6 +237,7 @@ public class WaterCharacterController : CharacterController
             yield return null;
         }
 
+        Physics.IgnoreCollision(_collider, waterCollider, down);
         _canDive = true;
         _applyGravity = !down;
     }

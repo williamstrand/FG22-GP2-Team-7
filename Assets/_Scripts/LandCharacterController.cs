@@ -3,7 +3,7 @@ using UnityEngine;
 public class LandCharacterController : CharacterController
 {
     [Header("Climbing")]
-    [Range(0, 2)][SerializeField] float _climbSpeed = 1f;
+    [Range(0, 5)][SerializeField] float _climbSpeed = 1f;
     Climbable _currentClimbable;
     [SerializeField] AudioSource _climbAudioSource;
     [SerializeField] float _climbVolume = 1;
