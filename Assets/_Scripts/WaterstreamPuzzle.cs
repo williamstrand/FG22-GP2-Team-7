@@ -212,6 +212,7 @@ public class WaterstreamPuzzle : MonoBehaviour
 
             if (_lane2Position + 1 >= _lane2Positions.Length)
             {
+                _lane2Pushable.CanBePushed = true;
                 var rb = _lane2Pushable.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
                 rb.constraints = RigidbodyConstraints.FreezeAll;
