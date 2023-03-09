@@ -94,6 +94,7 @@ public class Pushable : MonoBehaviour, IInteractable
 
     void Update()
     {
+        if(_player == null) return;
         _rigidbody.constraints = _canPush ? RigidbodyConstraints.FreezePositionY : RigidbodyConstraints.FreezeAll;
     }
 
